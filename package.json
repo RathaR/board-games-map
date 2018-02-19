@@ -1,0 +1,27 @@
+{
+  "name": "board-games-map",
+  "version": "1.0.0",
+  "description": "board-games-map",
+  "main": "index.js",
+  "scripts": {
+    "test": "eslint ."
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/RathaR/board-games-map.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/RathaR/board-games-map/issues"
+  },
+  "homepage": "https://github.com/RathaR/board-games-map#readme",
+  "devDependencies": {
+    "eslint": "^4.18.0",
+    "eslint-config-airbnb": "^16.1.0",
+    "eslint-plugin-import": "^2.8.0",
+    "eslint-plugin-jsx-a11y": "^6.0.3",
+    "eslint-plugin-react": "^7.6.1"
+  }
+}
