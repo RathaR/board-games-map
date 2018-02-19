@@ -13,7 +13,7 @@ const settings = {
     app: [
       'react-hot-loader/patch',
       'babel-polyfill',
-      './src/index'
+      './client/index'
     ],
     vendor,
   },

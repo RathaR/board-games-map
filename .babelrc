@@ -1,9 +1,17 @@
 {
-  "presets": ["env", "react"],
-  "plugins": [
-    "transform-class-properties",
-    "transform-object-rest-spread",
-    "react-hot-loader/babel",
-    "lodash"
-  ]
+  "env": {
+    "client": {
+      "presets": ["env", "react"],
+      "plugins": [
+        "transform-class-properties",
+        "transform-object-rest-spread",
+        "react-hot-loader/babel",
+        "lodash"
+      ]
+    },
+    "server": {
+      "presets": ["es2015", "stage-2"],
+      "plugins": []
+    }
+  }
 }

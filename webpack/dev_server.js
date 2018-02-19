@@ -8,6 +8,14 @@ const devServer = {
   inline: true,
   noInfo: false,
   headers: { 'Access-Control-Allow-Origin': '*' },
+  proxy: {
+    // "/api/**": {
+    //   target: "http://localhost:9000",
+    //   secure: false,
+    //   changeOrigin: true,
+    // }
+    "/api": "http://localhost:9000"
+  },
   stats: {
     assets: false,
     colors: true,
