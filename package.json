@@ -5,12 +5,13 @@
   "main": "index.js",
   "scripts": {
     "test": "eslint .",
-    "start": "cross-env BABEL_ENV=client webpack-dev-server --inline",
-    "server": "cross-env BABEL_ENV=server NODE_ENV=development nodemon server/index --exec babel-node",
-    "build": "cross-env BABEL_ENV=client NODE_ENV=production webpack",
+    "clean": "rimraf dist/* && rimraf dist_server",
+    "server": "cross-env NODE_ENV=development BABEL_ENV=server nodemon server/index --exec babel-node",
+    "start": "cross-env BABEL_ENV=client webpack-dev-server --inline | npm run server",
+
+    "build:client": "cross-env BABEL_ENV=client NODE_ENV=production webpack",
     "build:server": "cross-env BABEL_ENV=server babel server -d dist_server ",
-    "serve:server": "cross-env NODE_ENV=development node dist_server/index.js",
-    "start:server": "cross-env NODE_ENV=development BABEL_ENV=server nodemon server/index --exec babel-node"
+    "serve:server": "cross-env NODE_ENV=development node dist_server/index.js"
   },
   "repository": {
     "type": "git",
@@ -81,6 +82,7 @@
     "react-virtualized": "^9.18.5",
     "redux": "^3.7.2",
     "redux-observable": "^0.18.0",
+    "rimraf": "^2.6.2",
     "rxjs": "^5.5.6",
     "serve-favicon": "^2.4.5"
   }
