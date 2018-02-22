@@ -1,12 +1,15 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { AppContainer } from 'react-hot-loader';
+import {AppContainer} from 'react-hot-loader';
 import App from './components/App';
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 
 const render = (Component) => {
   ReactDOM.render(
     <AppContainer>
-      <Component />
+      <MuiThemeProvider>
+        <Component/>
+      </MuiThemeProvider>
     </AppContainer>,
     document.getElementById('root'),
   );

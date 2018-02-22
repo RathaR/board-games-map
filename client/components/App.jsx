@@ -1,53 +1,35 @@
 import React, { Component } from 'react';
-import { AppBar, Checkbox, IconButton, Layout, NavDrawer, Panel, Sidebar } from 'react-toolbox';
+import EventsList from './EventsList';
 
 class App extends Component {
   state = {
-    drawerActive: false,
-    drawerPinned: false,
-    sidebarPinned: false,
+    events: [{
+        game: 'Game of Thrones',
+        organizer: 'Ivan',
+        date: new Date(),
+        description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Itaque, maxime.',
+      },{
+      game: 'Smash Up',
+        organizer: 'Ivan',
+        date: new Date(),
+        description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Itaque, maxime.',
+      }],
+    filter: {
+      persons: {
+       from: 0,
+       till: 8,
+      },
+      date: {
+        from: null,
+        till: null,
+      }
+    },
   };
-  toggleDrawerActive = () => {
-    this.setState({ drawerActive: !this.state.drawerActive });
-  };
-  toggleDrawerPinned = () => {
-    this.setState({ drawerPinned: !this.state.drawerPinned });
-  };
-  toggleSidebar = () => {
-    this.setState({ sidebarPinned: !this.state.sidebarPinned });
-  };
+
   render() {
-    return (
-      <Layout>
-        <NavDrawer
-          active={this.state.drawerActive}
-          pinned={this.state.drawerPinned}
-          permanentAt="xxxl"
-          onOverlayClick={this.toggleDrawerActive}
-        >
-          <p>
-            Navigation, account switcher, etc. go here.
-          </p>
-        </NavDrawer>
-        <Panel>
-          <AppBar title="React Toolbox" leftIcon="menu" onLeftIconClick={this.toggleDrawerActive} />
-          <div style={{ flex: 1, overflowY: 'auto', padding: '1.8rem' }}>
-            <h1>Main Content</h1>
-            <h1>Main Content</h1>
-            <h1>Main Content</h1>
-            <p>Main content goes here.</p>
-            <Checkbox label="Pin drawer" checked={this.state.drawerPinned} onChange={this.toggleDrawerPinned} />
-            <Checkbox label="Show sidebar" checked={this.state.sidebarPinned} onChange={this.toggleSidebar} />
-          </div>
-        </Panel>
-        <Sidebar pinned={this.state.sidebarPinned} width={5}>
-          <div><IconButton icon="close" onClick={this.toggleSidebar} /></div>
-          <div style={{ flex: 1 }}>
-            <p>Supplemental content goes here.</p>
-          </div>
-        </Sidebar>
-      </Layout>
-    );
+    return (<div>
+      <EventsList events={this.state.events}/>
+    </div>);
   }
 }
 module.exports = App;
