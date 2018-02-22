@@ -8,22 +8,14 @@ class App extends Component {
         organizer: 'Ivan',
         date: new Date(),
         description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Itaque, maxime.',
+        participants: 3,
       },{
       game: 'Smash Up',
         organizer: 'Ivan',
         date: new Date(),
         description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Itaque, maxime.',
+        participants: 4,
       }],
-    filter: {
-      persons: {
-       from: 0,
-       till: 8,
-      },
-      date: {
-        from: null,
-        till: null,
-      }
-    },
   };
 
   render() {
