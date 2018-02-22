@@ -81,7 +81,7 @@ if (isProduction) {
             debug: true,
         }),
         new webpack.HotModuleReplacementPlugin(),
-        new BundleAnalyzerPlugin()
+        new BundleAnalyzerPlugin({openAnalyzer: false})
     );
 }
 module.exports = plugins;
