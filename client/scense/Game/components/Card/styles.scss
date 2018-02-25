@@ -1,6 +1,6 @@
 $card-width: 100px;
 $card-height: 160px;
-$card-width-reserved: 70px;
+$card-width-reserved: 80px;
 $card-height-reserved: 100px;
 
 .card {
@@ -16,9 +16,24 @@ $card-height-reserved: 100px;
 
   text-align: center;
 
-
   &__title {
     flex-grow: 1;
+  }
+
+  &__prestige {
+    flex-grow: 1;
+
+    &--deck {
+      display: none;
+    }
+  }
+
+  &__bonus {
+    flex-grow: 1;
+
+    &--deck {
+      display: none;
+    }
   }
 
   &__cost {
