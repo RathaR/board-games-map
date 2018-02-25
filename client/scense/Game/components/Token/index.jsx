@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import './styles.scss'
+import {COLORS} from "../../../../constants/common";
 
 const BLOCK = 'token';
 class Token extends Component {
@@ -10,9 +11,16 @@ class Token extends Component {
 
   render() {
     const {color, amount} = this.props;
-    const blocClasses = classNames(this.props.className, `${BLOCK}`);
+    const blockClasses = classNames(this.props.className, `${BLOCK}`, {
+      [`${BLOCK}--red`]: color === COLORS.RED,
+      [`${BLOCK}--black`]: color === COLORS.BLACK,
+      [`${BLOCK}--green`]: color === COLORS.GREEN,
+      [`${BLOCK}--gold`]: color === COLORS.GOLD,
+      [`${BLOCK}--blue`]: color === COLORS.BLUE,
+      [`${BLOCK}--white`]: color === COLORS.WHITE,
+    });
 
-    return (<div className={blocClasses}>
+    return (<div className={blockClasses}>
       <div className={`${BLOCK}__icon`}>
         <div className={`${BLOCK}__amount`}>
           {amount}

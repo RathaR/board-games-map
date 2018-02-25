@@ -14,6 +14,30 @@ $token-size-minimized: 50px;
     width: $token-size-minimized;
   }
 
+  &--red {
+    background-color: red;
+  }
+
+  &--black {
+    background-color: black;
+  }
+
+  &--gold {
+    background-color: gold;
+  }
+
+  &--blue {
+    background-color: blue;
+  }
+
+  &--green {
+    background-color: green;
+  }
+
+  &--white {
+    background-color: lightgray;
+  }
+
   &__icon {
     margin: auto;
     width: 50%;
@@ -21,30 +45,7 @@ $token-size-minimized: 50px;
     border: 1px solid black;
     border-radius: 50%;
     display: flex;
-
-    &--red {
-      background-color: red;
-    }
-
-    &--black {
-      background-color: black;
-    }
-
-    &--yellow {
-      background-color: yellow;
-    }
-
-    &--blue {
-      background-color: blue;
-    }
-
-    &--green {
-      background-color: green;
-    }
-
-    &--white {
-      background-color: lightgray;
-    }
+    background-color: white;
   }
 
   &__amount {

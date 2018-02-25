@@ -2,16 +2,24 @@ import React, { Component } from 'react';
 import './styles.scss'
 import PropTypes from  'prop-types';
 import classNames from 'classnames';
+import {COLORS} from "../../../../constants/common";
 
 const BLOCK = 'card';
 
 class Card extends Component {
 
+  getCostTokenClasses(color, type) {
+    return classNames(
+      `${BLOCK}__cost-token`,
+      `${BLOCK}__cost-token--${color}`,
+      {[`${BLOCK}__cost-token--reserved`]: type === 'Reserved'});
+  }
+
   render() {
     const {card: {prestige, bonus, cost}, type} = this.props;
 
     const blockClasses = classNames(`${BLOCK}`, {[`${BLOCK}--reserved`]: type === 'Reserved'});
-    const costTokenClasses = classNames(`${BLOCK}__cost-token`, {[`${BLOCK}__cost-token--reserved`]: type === 'Reserved'});
+
 
     return (<div className={blockClasses}>
       <div className={`${BLOCK}__title`}>
@@ -20,7 +28,7 @@ class Card extends Component {
       <div className={`${BLOCK}__prestige`}>{prestige}</div>
       <div className={`${BLOCK}__bonus`}>{bonus}</div>
       <div className={`${BLOCK}__cost`}>
-        {Object.keys(cost).map((elem, index) => <div className={costTokenClasses} key={index}>{index}</div> )}
+        {Object.keys(cost).map((color, index) => <div className={this.getCostTokenClasses(color, type)}  key={index}>{index}</div> )}
       </div>
     </div>);
   }

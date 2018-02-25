@@ -4,9 +4,21 @@ $bonus-height: 60px;
 .bonus {
   width: $bonus-width;
   height: $bonus-height;
-  border: 1px solid black;
-  line-height: $bonus-height;
+  border: 5px solid black;
   text-align: center;
   margin: 10px;
   font-size: 0.8em;
+  display: flex;
+
+  &__amount {
+    margin: auto;
+  }
+
+  &--red {
+    border-color: red;
+  }
+
+  &--green {
+    border-color: green;
+  }
 }

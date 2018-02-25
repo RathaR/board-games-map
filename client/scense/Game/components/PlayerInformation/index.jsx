@@ -30,7 +30,7 @@ class PlayerInformation extends Component {
         {[1,2,3,4,5].map(
           (elem, index) =>
             <div key={index} className={`${BLOCK}__bonus-container`}>
-              <Bonus />
+              <Bonus amount={1} color='red'/>
             </div>)}
       </div>)
   }

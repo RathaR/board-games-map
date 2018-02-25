@@ -33,7 +33,16 @@ const GAME_STATE = {
       white: 2,
       gold: 1,
     },
-    cards: [],
+    cards: [{
+      level: 1,
+      prestige: 1,
+      bonus: COLORS.GREEN,
+      cost: {
+        red: 1,
+        blue: 2,
+        black: 3,
+      }
+    }],
   }, {
     id: 'Player2',
     nobles: [{
