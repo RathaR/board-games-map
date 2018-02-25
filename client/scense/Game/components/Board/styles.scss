@@ -1,0 +1,30 @@
+.board {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+
+  &__nobles {
+    display: flex;
+    justify-content: space-around;
+  }
+
+  &__tokens {
+    display: flex;
+    justify-content: space-around;
+  }
+
+  &__token-container {
+    margin: 5px;
+  }
+
+  &__deck-container {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-between;
+    padding: 10px;
+  }
+
+  &__card-container {
+    margin: 10px;
+  }
+}

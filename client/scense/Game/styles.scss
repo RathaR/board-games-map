@@ -1,0 +1,23 @@
+.game {
+  display: flex;
+  margin: auto;
+  flex-wrap: wrap;
+  justify-content: space-around;
+
+  &__board {
+
+  }
+
+  &__chat {
+
+  }
+
+  &__players-information {
+    display: flex;
+    flex-flow: column nowrap;
+  }
+
+  &__player-information-container {
+    margin-bottom: 30px;
+  }
+}

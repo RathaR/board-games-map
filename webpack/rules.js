@@ -14,7 +14,7 @@ const rules = [{
       options: {
         sourceMap: true,
         importLoaders: 2,
-        modules: true,
+        modules: false,
         localIdentName: '[name]__[local]___[hash:base64:5]'
       },
     }, {

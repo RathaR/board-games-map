@@ -1,0 +1,31 @@
+$card-width: 100px;
+$card-height: 160px;
+$card-width-reserved: 70px;
+$card-height-reserved: 100px;
+
+.card {
+  box-sizing: border-box;
+  border: 1px solid black;
+  padding: 5px;
+  width: $card-width;
+  height: $card-height;
+
+  text-align: center;
+  line-height: $card-height;
+
+  &--available {
+
+  }
+
+  &--reserved {
+    width: $card-width-reserved;
+    height: $card-height-reserved;
+    line-height: $card-height-reserved;
+    font-size: 0.8em;
+  }
+
+  &--deck {
+
+  }
+
+}

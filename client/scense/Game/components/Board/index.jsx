@@ -1,0 +1,70 @@
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+import './styles.scss'
+import Card from '../Card';
+import Token from '../Token';
+import Noble from "../Noble";
+
+const BLOCK = 'board';
+
+class Board extends Component {
+  state = {
+  };
+
+  renderCards() {
+
+    return (<div className={`${BLOCK}__cards`}>
+      {[1,2,3].map(
+        (card, index) => (
+          <div key={index} className={`${BLOCK}__deck-container`}>
+            <div className={`${BLOCK}__card-container`}>
+              <Card type='Deck' className={'card--deck'} />
+            </div>
+            {[1,2,3,4].map(
+              (card, index) => (
+                <div key={index} className={`${BLOCK}__card-container`}>
+                  <Card type='Card' className={'card--available'} />
+                </div>))}
+          </div>))}
+    </div>)
+  }
+
+  renderNobles() {
+    return (
+      <div className={`${BLOCK}__nobles`}>
+        {[1,2,3,4,5].map(
+          (card, index) => (
+            <div key={index} className={`${BLOCK}__noble-container`}>
+              <Noble />
+            </div>))}
+      </div>);
+  }
+
+  renderTokens() {
+    return (
+      <div className={`${BLOCK}__tokens`}>
+        {[1,2,3,4,5,6].map(
+          (card, index) =>
+            <div key={index} className={`${BLOCK}__token-container`}>
+              <Token />
+            </div>)}
+      </div>);
+  }
+
+  render() {
+    return (
+      <div  className={`${BLOCK}`}>
+        {this.renderNobles()}
+        {this.renderCards()}
+        {this.renderTokens()}
+    </div>);
+  }
+}
+
+Board.propTypes = {
+  className: PropTypes.string,
+};
+
+export default Board;
+
+

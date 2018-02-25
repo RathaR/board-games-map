@@ -1,0 +1,17 @@
+$noble-size: 100px;
+$noble-size-reserved: 50px;
+
+.noble {
+  width: $noble-size;
+  height: $noble-size;
+  border: solid 1px black;
+  line-height: $noble-size;
+  text-align: center;
+
+  &--reserved {
+    width: $noble-size-reserved;
+    height: $noble-size-reserved;
+    line-height: $noble-size-reserved;
+    font-size: 0.8em;
+  }
+}

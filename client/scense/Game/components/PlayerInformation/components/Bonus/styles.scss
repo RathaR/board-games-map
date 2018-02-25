@@ -1,0 +1,12 @@
+$bonus-width: 40px;
+$bonus-height: 60px;
+
+.bonus {
+  width: $bonus-width;
+  height: $bonus-height;
+  border: 1px solid black;
+  line-height: $bonus-height;
+  text-align: center;
+  margin: 10px;
+  font-size: 0.8em;
+}

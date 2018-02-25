@@ -1,0 +1,41 @@
+.player-information {
+  border: 1px solid black;
+  text-align: center;
+  padding: 10px;
+  display: flex;
+
+  &__title {
+    text-align: left;
+    font-size: 1.5em;
+    font-weight: 500;
+    padding: 5px;
+  }
+
+  &__tokens {
+    display: flex;
+  }
+
+  &__token-container {
+    margin: 5px;
+  }
+
+  &__bonuses {
+    display: flex;
+  }
+
+  &__nobles {
+    display: flex;
+  }
+
+  &__noble-container {
+    margin: 5px;
+  }
+
+  &__reserved-cards {
+    display: flex;
+  }
+
+  &__reserved-card-container  {
+    margin: 5px;
+  }
+}

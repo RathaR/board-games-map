@@ -1,0 +1,16 @@
+$token-size: 80px;
+$token-size-minimized: 50px;
+.token {
+  width: $token-size;
+  height: $token-size;
+  border: 1px solid black;
+  border-radius: 50%;
+  text-align: center;
+  line-height: $token-size;
+
+  &--minimized {
+    height: $token-size-minimized;
+    width: $token-size-minimized;
+    line-height: $token-size-minimized;
+  }
+}

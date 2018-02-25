@@ -1,0 +1,82 @@
+import React, {Component} from 'react';
+import './styles.scss';
+import Token from '../Token';
+import Bonus from './components/Bonus';
+import Card from '../Card';
+import Noble from '../Noble';
+
+const BLOCK = 'player-information';
+
+class PlayerInformation extends Component {
+  state = {};
+
+  renderTokens() {
+    return (
+      <div className={`${BLOCK}__tokens`}>
+        {[1,2,3,4,5,6].map(
+          (elem, index) =>
+            <div key={index} className={`${BLOCK}__token-container`}>
+              <Token className={`token--minimized`} />
+            </div>)}
+      </div>)
+  }
+
+  renderBonuses() {
+    return (
+      <div className={`${BLOCK}__bonuses`}>
+        {[1,2,3,4,5].map(
+          (elem, index) =>
+            <div key={index} className={`${BLOCK}__bonus-container`}>
+              <Bonus />
+            </div>)}
+      </div>)
+  }
+
+  renderReservedCards() {
+    return (
+      <div className={`${BLOCK}__reserved-cards`}>
+        {[1,2,3].map(
+          (elem, index) =>
+            <div key={index} className={`${BLOCK}__reserved-card-container`}>
+              <Card type='Reserved' className='card--reserved'/>
+            </div>)}
+      </div>)
+  }
+
+  renderNobles() {
+    return (
+      <div className={`${BLOCK}__nobles`}>
+        {[1,2,3].map(
+          (elem, index) =>
+            <div key={index} className={`${BLOCK}__noble-container`}>
+              <Noble className='noble--reserved'/>
+            </div>)}
+      </div>)
+  }
+
+  renderPlayerName() {
+    return (<div className={`${BLOCK}__title`}>
+      Player X
+    </div>)
+  }
+
+  render() {
+    return (<div className={`${BLOCK}`}>
+      <div>
+        {this.renderPlayerName()}
+        {this.renderTokens()}
+        {this.renderBonuses()}
+      </div>
+      <div>
+        {this.renderReservedCards()}
+        {this.renderNobles()}
+      </div>
+    </div>);
+  }
+}
+
+PlayerInformation.propTypes = {};
+
+export default PlayerInformation;
+
+
