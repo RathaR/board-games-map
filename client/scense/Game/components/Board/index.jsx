@@ -20,7 +20,7 @@ class Board extends Component {
         (card, index) => (
           <div key={index} className={`${BLOCK}__deck-container`}>
             <div className={`${BLOCK}__card-container`}>
-              <Card type='Deck' className={'card--deck'} />
+              <Card type='Deck' />
             </div>
             {[1,2,3,4].map(
               (card, index) => (

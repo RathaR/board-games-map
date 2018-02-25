@@ -24,11 +24,16 @@ $card-height-reserved: 100px;
   &__cost {
     display: flex;
     justify-content: space-around;
+
+    &--deck {
+      display: none;
+    }
   }
 
   &__cost-token {
     border: 1px solid black;
     padding: 5px;
+
     &--reserved {
       padding: 3px;
     }

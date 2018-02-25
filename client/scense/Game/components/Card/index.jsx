@@ -13,12 +13,13 @@ class Card extends Component {
     const {type} = this.props;
     const blockClasses = classNames(`${BLOCK}`, {[`${BLOCK}--reserved`]: type === 'Reserved'});
     const costTokenClasses = classNames(`${BLOCK}__cost-token`, {[`${BLOCK}__cost-token--reserved`]: type === 'Reserved'});
+    const costClasses = classNames(`${BLOCK}__cost`, {[`${BLOCK}__cost--deck`]: type === 'Deck'});
 
     return (<div className={blockClasses}>
       <div className={`${BLOCK}__title`}>
         {this.props.type}
       </div>
-      <div className={`${BLOCK}__cost`}>
+      <div className={costClasses}>
         {[1,2,3,4].map((elem, index) => <div className={costTokenClasses} key={index}>{index}</div> )}
       </div>
     </div>);
