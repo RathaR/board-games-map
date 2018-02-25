@@ -46,12 +46,13 @@ class Board extends Component {
   }
 
   renderTokens() {
+    const {board: {tokens}} = this.props;
     return (
       <div className={`${BLOCK}__tokens`}>
-        {[1,2,3,4,5,6].map(
-          (card, index) =>
+        {Object.keys(tokens).map(
+          (color, index) =>
             <div key={index} className={`${BLOCK}__token-container`}>
-              <Token />
+              <Token amount={tokens[color]} color={color} />
             </div>)}
       </div>);
   }

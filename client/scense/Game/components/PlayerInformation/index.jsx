@@ -12,12 +12,14 @@ class PlayerInformation extends Component {
   state = {};
 
   renderTokens() {
+    const {playerInformation: {tokens}} = this.props;
+
     return (
       <div className={`${BLOCK}__tokens`}>
-        {[1,2,3,4,5,6].map(
-          (elem, index) =>
+        {Object.keys(tokens).map(
+          (color, index) =>
             <div key={index} className={`${BLOCK}__token-container`}>
-              <Token className={`token--minimized`} />
+              <Token amount={tokens[color]} color={color} className={`token--minimized`} />
             </div>)}
       </div>)
   }
@@ -35,6 +37,7 @@ class PlayerInformation extends Component {
 
   renderReservedCards() {
     const {playerInformation: {reserve}} = this.props;
+
     return (
       <div className={`${BLOCK}__reserved-cards`}>
         {reserve.map(

@@ -9,11 +9,13 @@ class Token extends Component {
   };
 
   render() {
+    const {color, amount} = this.props;
     const blocClasses = classNames(this.props.className, `${BLOCK}`);
+
     return (<div className={blocClasses}>
       <div className={`${BLOCK}__icon`}>
         <div className={`${BLOCK}__amount`}>
-          4
+          {amount}
         </div>
       </div>
     </div>);
@@ -22,6 +24,8 @@ class Token extends Component {
 
 Token.propTypes = {
   className: PropTypes.string,
+  color: PropTypes.string,
+  amount: PropTypes.number,
 };
 
 export default Token;
