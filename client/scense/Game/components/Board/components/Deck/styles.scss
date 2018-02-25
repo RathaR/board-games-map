@@ -1,0 +1,24 @@
+$deck-width: 100px;
+$deck-height: 160px;
+
+.deck {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  border: 1px solid black;
+  width: $deck-width ;
+  height: $deck-height;
+  text-align: center;
+
+  &__title {
+    margin-top: 5px;
+  }
+
+  &__count {
+
+  }
+
+  &__level {
+    margin-bottom: 5px;
+  }
+}

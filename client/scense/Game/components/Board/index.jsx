@@ -5,7 +5,8 @@ import classNames from 'classnames';
 import './styles.scss'
 import Card from '../Card';
 import Token from '../Token';
-import Noble from "../Noble";
+import Noble from '../Noble';
+import Deck from './components/Deck';
 
 const BLOCK = 'board';
 
@@ -14,18 +15,19 @@ class Board extends Component {
   };
 
   renderCards() {
+    const {board: {decks, cards}} = this.props;
 
     return (<div className={`${BLOCK}__cards`}>
-      {[1,2,3].map(
-        (card, index) => (
+      {decks.map(
+        (deck, index) => (
           <div key={index} className={`${BLOCK}__deck-container`}>
             <div className={`${BLOCK}__card-container`}>
-              <Card type='Deck' />
+              <Deck deck={deck} />
             </div>
-            {[1,2,3,4].map(
+            {cards.filter(card => card.level === deck.level).map(
               (card, index) => (
                 <div key={index} className={`${BLOCK}__card-container`}>
-                  <Card type='Card' className={'card--available'} />
+                  <Card type='Card' card={card} className={'card--available'} />
                 </div>))}
           </div>))}
     </div>)

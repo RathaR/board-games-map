@@ -22,27 +22,15 @@ $card-height-reserved: 100px;
 
   &__prestige {
     flex-grow: 1;
-
-    &--deck {
-      display: none;
-    }
   }
 
   &__bonus {
     flex-grow: 1;
-
-    &--deck {
-      display: none;
-    }
   }
 
   &__cost {
     display: flex;
     justify-content: space-around;
-
-    &--deck {
-      display: none;
-    }
   }
 
   &__cost-token {
@@ -62,10 +50,6 @@ $card-height-reserved: 100px;
     width: $card-width-reserved;
     height: $card-height-reserved;
     font-size: 0.8em;
-  }
-
-  &--deck {
-
   }
 
 }
