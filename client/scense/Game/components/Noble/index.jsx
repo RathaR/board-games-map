@@ -9,26 +9,28 @@ class Noble extends Component {
   };
 
   render() {
-    const {type} = this.props;
+    const {type, noble} = this.props;
+    const {bonuses, prestige} = noble;
     const blockClasses = classNames(`${BLOCK}`, {[`${BLOCK}--reserved`]: type === 'Reserved'});
     const statsClasses = classNames(`${BLOCK}__stats`, {[`${BLOCK}__stats--reserved`]: type === 'Reserved'});
-
+  debugger;
     return (<div className={blockClasses}>
       <div className={`${BLOCK}__title`}>
         Noble
       </div>
       <div className={`${BLOCK}__prestige`}>
-        1
+        {prestige}
       </div>
       <div className={statsClasses}>
-        {[1,2,3].map((elem, index) => <div key={index} className={`${BLOCK}__bonus`}>2</div>)}
+        {Object.keys(bonuses).map((color, index) => <div key={index} className={`${BLOCK}__bonus`}>{bonuses[color]}</div>)}
       </div>
     </div>);
   }
 }
 
 Noble.propTypes = {
-  className: PropTypes.string
+  className: PropTypes.string,
+  noble: PropTypes.object,
 };
 
 export default Noble;

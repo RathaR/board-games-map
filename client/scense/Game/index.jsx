@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import './styles.scss'
+import PropTypes from 'prop-types';
 import Board from './components/Board';
 import Chat from './components/Chat'
 import PlayerInformation from "./components/PlayerInformation";
@@ -11,20 +12,23 @@ class Game extends Component {
   };
 
   render() {
+    const {board, players}  = this.props.game;
     return (<div className={BLOCK}>
       <div className={`${BLOCK}__players-information`}>
-        {[1,2,3,4].map((card, index) =>
+        {players.map((playerInformation, index) =>
           <div key={index} className={`${BLOCK}__player-information-container`}>
-            <PlayerInformation />
+            <PlayerInformation playerInformation={playerInformation} />
           </div>)}
       </div>
-      <Board className={`${BLOCK}__board`} />
+      <Board className={`${BLOCK}__board`} board={board} />
       <Chat className={`${BLOCK}__chat`} />
     </div>);
   }
 }
 
-Game.propTypes = {};
+Game.propTypes = {
+  game: PropTypes.object,
+};
 
 export default Game;
 

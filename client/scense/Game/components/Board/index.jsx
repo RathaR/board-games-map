@@ -32,12 +32,13 @@ class Board extends Component {
   }
 
   renderNobles() {
+    const {board: {nobles}} = this.props;
     return (
       <div className={`${BLOCK}__nobles`}>
-        {[1,2,3,4,5].map(
-          (card, index) => (
+        {nobles.map(
+          (noble, index) => (
             <div key={index} className={`${BLOCK}__noble-container`}>
-              <Noble />
+              <Noble noble={noble} />
             </div>))}
       </div>);
   }
@@ -67,6 +68,7 @@ class Board extends Component {
 
 Board.propTypes = {
   className: PropTypes.string,
+  board: PropTypes.object,
 };
 
 export default Board;

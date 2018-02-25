@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import PropTypes from 'prop-types';
 import './styles.scss';
 import Token from '../Token';
 import Bonus from './components/Bonus';
@@ -44,23 +45,27 @@ class PlayerInformation extends Component {
   }
 
   renderNobles() {
+    const {playerInformation: {nobles}} = this.props;
     return (
       <div className={`${BLOCK}__nobles`}>
-        {[1,2,3].map(
-          (elem, index) =>
+        {nobles.map(
+          (noble, index) =>
             <div key={index} className={`${BLOCK}__noble-container`}>
-              <Noble type='Reserved'/>
+              <Noble noble={noble} />
             </div>)}
       </div>)
   }
 
   renderPlayerName() {
+    const {playerInformation: {id}} = this.props;
+
     return (<div className={`${BLOCK}__title`}>
-      Player X
+      {id}
     </div>)
   }
 
   render() {
+    debugger;
     return (<div className={`${BLOCK}`}>
       <div>
         {this.renderPlayerName()}
@@ -75,7 +80,9 @@ class PlayerInformation extends Component {
   }
 }
 
-PlayerInformation.propTypes = {};
+PlayerInformation.propTypes = {
+  playerInformation: PropTypes.object,
+};
 
 export default PlayerInformation;
 

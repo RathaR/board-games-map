@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import './styles.scss'
 
 import Game from './scense/Game'
+import {COLORS} from "./constants/common";
 
 class App extends Component {
   state = {
@@ -22,9 +23,54 @@ class App extends Component {
         gold: 1,
       },
       cards: [],
+    }, {
+      id: 'Player2',
+      nobles: [],
+      reserve: [],
+      tokens: {
+        blue: 2,
+        black: 0,
+        green: 3,
+        red: 0,
+        white: 2,
+        gold: 1,
+      },
+      cards: [],
+    }, {
+      id: 'Player3',
+      nobles: [],
+      reserve: [],
+      tokens: {
+        blue: 2,
+        black: 0,
+        green: 3,
+        red: 0,
+        white: 2,
+        gold: 1,
+      },
+      cards: [],
+    }, {
+      id: 'Player4',
+      nobles: [],
+      reserve: [],
+      tokens: {
+        blue: 2,
+        black: 0,
+        green: 3,
+        red: 0,
+        white: 2,
+        gold: 1,
+      },
+      cards: [],
     }],
     board: {
-      nobles: [],
+      nobles: [{
+        bonuses: {
+          [COLORS.RED]: 1,
+          [COLORS.GREEN]: 1
+        },
+        prestige: 2
+      }],
       tokens: {
         blue: 4,
         black: 4,
@@ -53,7 +99,7 @@ class App extends Component {
 
   render() {
     return (<div className='app'>
-      <Game />
+      <Game game={this.state} />
     </div>);
   }
 }
