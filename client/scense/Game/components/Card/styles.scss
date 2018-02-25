@@ -4,6 +4,10 @@ $card-width-reserved: 70px;
 $card-height-reserved: 100px;
 
 .card {
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: flex-end;
+
   box-sizing: border-box;
   border: 1px solid black;
   padding: 5px;
@@ -11,7 +15,24 @@ $card-height-reserved: 100px;
   height: $card-height;
 
   text-align: center;
-  line-height: $card-height;
+
+
+  &__title {
+    flex-grow: 1;
+  }
+
+  &__cost {
+    display: flex;
+    justify-content: space-around;
+  }
+
+  &__cost-token {
+    border: 1px solid black;
+    padding: 5px;
+    &--reserved {
+      padding: 3px;
+    }
+  }
 
   &--available {
 
@@ -20,7 +41,6 @@ $card-height-reserved: 100px;
   &--reserved {
     width: $card-width-reserved;
     height: $card-height-reserved;
-    line-height: $card-height-reserved;
     font-size: 0.8em;
   }
 

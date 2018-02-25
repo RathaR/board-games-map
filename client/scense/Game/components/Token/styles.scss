@@ -1,16 +1,53 @@
 $token-size: 80px;
 $token-size-minimized: 50px;
 .token {
+  position: relative;
   width: $token-size;
   height: $token-size;
   border: 1px solid black;
   border-radius: 50%;
   text-align: center;
-  line-height: $token-size;
+  display: flex;
 
   &--minimized {
     height: $token-size-minimized;
     width: $token-size-minimized;
-    line-height: $token-size-minimized;
+  }
+
+  &__icon {
+    margin: auto;
+    width: 50%;
+    height: 50%;
+    border: 1px solid black;
+    border-radius: 50%;
+    display: flex;
+
+    &--red {
+      background-color: red;
+    }
+
+    &--black {
+      background-color: black;
+    }
+
+    &--yellow {
+      background-color: yellow;
+    }
+
+    &--blue {
+      background-color: blue;
+    }
+
+    &--green {
+      background-color: green;
+    }
+
+    &--white {
+      background-color: lightgray;
+    }
+  }
+
+  &__amount {
+    margin: auto;
   }
 }

@@ -49,7 +49,7 @@ class PlayerInformation extends Component {
         {[1,2,3].map(
           (elem, index) =>
             <div key={index} className={`${BLOCK}__noble-container`}>
-              <Noble className='noble--reserved'/>
+              <Noble type='Reserved'/>
             </div>)}
       </div>)
   }

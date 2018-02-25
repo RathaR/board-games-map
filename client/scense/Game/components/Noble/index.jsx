@@ -9,9 +9,20 @@ class Noble extends Component {
   };
 
   render() {
-    const blockClasses = classNames(`${BLOCK}`, this.props.className);
+    const {type} = this.props;
+    const blockClasses = classNames(`${BLOCK}`, {[`${BLOCK}--reserved`]: type === 'Reserved'});
+    const statsClasses = classNames(`${BLOCK}__stats`, {[`${BLOCK}__stats--reserved`]: type === 'Reserved'});
+
     return (<div className={blockClasses}>
-      Noble
+      <div className={`${BLOCK}__title`}>
+        Noble
+      </div>
+      <div className={`${BLOCK}__prestige`}>
+        1
+      </div>
+      <div className={statsClasses}>
+        {[1,2,3].map((elem, index) => <div key={index} className={`${BLOCK}__bonus`}>2</div>)}
+      </div>
     </div>);
   }
 }

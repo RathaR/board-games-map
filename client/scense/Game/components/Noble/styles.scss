@@ -5,13 +5,37 @@ $noble-size-reserved: 50px;
   width: $noble-size;
   height: $noble-size;
   border: solid 1px black;
-  line-height: $noble-size;
   text-align: center;
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: space-between;
 
   &--reserved {
     width: $noble-size-reserved;
     height: $noble-size-reserved;
-    line-height: $noble-size-reserved;
     font-size: 0.8em;
+  }
+
+  &__title {
+    padding: 5px;
+  }
+
+  &__stats {
+    display: flex;
+    justify-content: space-around;
+    padding: 2px;
+
+    &--reserved {
+      display: none;
+    }
+  }
+
+  &__prestige {
+    padding: 5px;
+  }
+
+  &__bonus {
+    padding: 5px;
+    border: 1px solid black;
   }
 }

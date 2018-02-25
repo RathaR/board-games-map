@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import classNames from 'classnames';
+
 import './styles.scss'
 import Card from '../Card';
 import Token from '../Token';
@@ -52,8 +54,10 @@ class Board extends Component {
   }
 
   render() {
+    const blockClasses = classNames(`${BLOCK}`, this.props.className);
+
     return (
-      <div  className={`${BLOCK}`}>
+      <div className={blockClasses}>
         {this.renderNobles()}
         {this.renderCards()}
         {this.renderTokens()}

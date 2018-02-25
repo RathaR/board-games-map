@@ -10,9 +10,17 @@ class Card extends Component {
   };
 
   render() {
-    const blockClasses = classNames(`${BLOCK}`, this.props.className);
+    const {type} = this.props;
+    const blockClasses = classNames(`${BLOCK}`, {[`${BLOCK}--reserved`]: type === 'Reserved'});
+    const costTokenClasses = classNames(`${BLOCK}__cost-token`, {[`${BLOCK}__cost-token--reserved`]: type === 'Reserved'});
+
     return (<div className={blockClasses}>
-      {this.props.type}
+      <div className={`${BLOCK}__title`}>
+        {this.props.type}
+      </div>
+      <div className={`${BLOCK}__cost`}>
+        {[1,2,3,4].map((elem, index) => <div className={costTokenClasses} key={index}>{index}</div> )}
+      </div>
     </div>);
   }
 }
