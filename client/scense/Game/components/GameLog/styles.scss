@@ -1,12 +1,17 @@
-.chat {
-  display: flex;
+.game-log {
   font-size: 1.5em;
   font-weight: 500;
-  border: 1px solid black;
   min-width: 400px;
   min-height: 400px;
 
   &__title {
-    margin: auto;
+  }
+
+  &__events-list {
+
+  }
+
+  &__events-list-item {
+
   }
 }

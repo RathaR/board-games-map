@@ -4,11 +4,14 @@ $noble-size-reserved: 50px;
 .noble {
   width: $noble-size;
   height: $noble-size;
-  border: solid 1px black;
   text-align: center;
   display: flex;
   flex-flow: column nowrap;
   justify-content: space-between;
+
+  background: white;
+  border-radius: 5px;
+  padding: 5px;
 
   &--reserved {
     width: $noble-size-reserved;

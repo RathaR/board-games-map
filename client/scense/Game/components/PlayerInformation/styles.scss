@@ -1,14 +1,41 @@
 .player-information {
-  border: 1px solid black;
+  border-top: 1px solid black;
   text-align: center;
   padding: 10px;
   display: flex;
-
-  &__title {
+  flex-flow: column nowrap;
+  &--active-player {
+    .player-information__title {
+      color: white;
+    }
+  }
+  &__stats {
     text-align: left;
     font-size: 1.5em;
     font-weight: 500;
     padding: 5px;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__title{
+
+  }
+
+  &__prestige{
+
+  }
+
+  &__main {
+    display: flex;
+    margin-top: 10px;
+  }
+
+  &__left-container {
+  }
+
+  &__right-container {
+
   }
 
   &__tokens {
@@ -21,14 +48,6 @@
 
   &__bonuses {
     display: flex;
-  }
-
-  &__nobles {
-    display: flex;
-  }
-
-  &__noble-container {
-    margin: 5px;
   }
 
   &__reserved-cards {

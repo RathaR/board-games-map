@@ -20,7 +20,7 @@ class Token extends Component {
       [`${BLOCK}--white`]: color === COLORS.WHITE,
     });
 
-    return (<div className={blockClasses}>
+    return (<div className={blockClasses} tabIndex={1}>
       <div className={`${BLOCK}__icon`}>
         <div className={`${BLOCK}__amount`}>
           {amount}

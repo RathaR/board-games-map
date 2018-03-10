@@ -2,11 +2,13 @@ import {COLORS} from "./constants/common";
 
 const GAME_STATE = {
   game: {
-    turn: 'Player1',
     target: 15,
+    turn: 3,
+    activePlayer: 'Player2'
   },
   players: [{
     id: 'Player1',
+    prestige: 4,
     nobles: [],
     reserve: [{
       level: 1,
@@ -15,6 +17,14 @@ const GAME_STATE = {
       cost: {
         white: 2,
         black: 3,
+        blue: 3,
+      }
+    }, {
+      level: 1,
+      prestige: 2,
+      bonus: COLORS.GREEN,
+      cost: {
+        white: 2,
       }
     }, {
       level: 1,
@@ -22,7 +32,9 @@ const GAME_STATE = {
       bonus: COLORS.RED,
       cost: {
         white: 2,
-        black: 3,
+        red: 3,
+        black: 1,
+        green: 3,
       }
     }],
     tokens: {
@@ -45,6 +57,7 @@ const GAME_STATE = {
     }],
   }, {
     id: 'Player2',
+    prestige: 5,
     nobles: [{
       bonuses: {
         [COLORS.BLACK]: 2,
@@ -55,7 +68,7 @@ const GAME_STATE = {
     reserve: [],
     tokens: {
       blue: 2,
-      black: 0,
+      black: 2,
       green: 3,
       red: 0,
       white: 2,
@@ -64,6 +77,7 @@ const GAME_STATE = {
     cards: [],
   }, {
     id: 'Player3',
+    prestige: 0,
     nobles: [],
     reserve: [],
     tokens: {
@@ -77,6 +91,7 @@ const GAME_STATE = {
     cards: [],
   }, {
     id: 'Player4',
+    prestige: 1,
     nobles: [{
       bonuses: {
         [COLORS.BLACK]: 2,
@@ -93,7 +108,25 @@ const GAME_STATE = {
       white: 2,
       gold: 1,
     },
-    cards: [],
+    cards: [{
+      level: 1,
+      prestige: 1,
+      bonus: COLORS.GREEN,
+      cost: {
+        red: 1,
+        blue: 2,
+        black: 3,
+      }
+    }, {
+      level: 2,
+      prestige: 2,
+      bonus: COLORS.BLUE,
+      cost: {
+        red: 1,
+        blue: 2,
+        black: 3,
+      }
+    }],
   }],
   board: {
     nobles: [{

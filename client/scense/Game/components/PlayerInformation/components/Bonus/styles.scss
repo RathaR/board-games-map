@@ -1,24 +1,39 @@
-$bonus-width: 40px;
-$bonus-height: 60px;
+$bonus-width: 35px;
+$bonus-height: 35px;
 
 .bonus {
   width: $bonus-width;
   height: $bonus-height;
   border: 5px solid black;
+  border-radius: 5px;
   text-align: center;
   margin: 10px;
   font-size: 0.8em;
   display: flex;
+  background: white;
 
   &__amount {
     margin: auto;
   }
 
   &--red {
-    border-color: red;
+    border-color: var(--red);
   }
 
   &--green {
-    border-color: green;
+    border-color: var(--green);
+  }
+
+  &--blue {
+    border-color: var(--blue);
+  }
+
+  &--white {
+    border-color: var(--white);
+  }
+
+  &--black {
+    border-color: var(--black);
+    color: var(--black);
   }
 }

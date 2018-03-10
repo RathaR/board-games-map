@@ -1,72 +1,128 @@
-$card-width: 120px;
-$card-height: 160px;
-$card-width-reserved: 80px;
-$card-height-reserved: 100px;
-
 .card {
+  background: linear-gradient(to bottom, rgba(255,255,255,1) 0%, rgba(246,246,246,1) 33%, rgba(237,237,237,1) 100%);
+  outline: none;
   display: flex;
   flex-flow: column nowrap;
-  justify-content: flex-end;
+  justify-content: space-between;
 
   box-sizing: border-box;
-  border: 1px solid black;
+  border-radius: 5px;
   padding: 5px;
-  width: $card-width;
-  height: $card-height;
-
+  width: var(--available-card-width);
+  height: var(--available-card-height);
   text-align: center;
 
-  &__title {
-    flex-grow: 1;
+  position: relative;
+
+  &:hover, &:focus {
+    transform: translate(0, -20px) scale(1.2);
+    box-shadow: 5px 5px 15px 5px rgba(130,130,130,1);
+    transition: all 300ms;
+    cursor: pointer;
+
+    .card__actions {
+      visibility: visible;
+    }
+  }
+
+  &__top-container {
+    display: flex;
+    justify-content: space-between;
   }
 
   &__prestige {
-    flex-grow: 1;
+    padding: 5px;
+    font-weight: 700;
+    font-size: 2em;
   }
 
   &__bonus {
-    flex-grow: 1;
+    border: 1px solid black;
+    margin: 5px;
+    width: 25px;
+    height: 25px;
+
+    &--black {
+      background-color: var(--black);
+    }
+    &--blue {
+      background-color: var(--blue);
+    }
+    &--red {
+      background-color: var(--red);
+    }
+    &--green {
+      background-color: var(--green);
+    }
+    &--white {
+      background-color: var(--white);
+    }
   }
 
   &__cost {
     display: flex;
-    justify-content: space-around;
+    flex-flow: column wrap;
+    align-items: flex-start;
+    justify-content: flex-end;
+    align-content: flex-start;
   }
 
   &__cost-token {
-    border: 4px solid black;
+    border: 7px solid;
+    border-radius: 50%;
     padding: 5px;
+    margin: 5px;
+    width: 15px;
+    height: 15px;
 
     &--reserved {
       padding: 3px;
+      border: 3px solid;
     }
 
     &--red {
-      border-color: red;
+      border-color: var(--red);
     }
 
     &--blue {
-      border-color: blue;
+      border-color: var(--blue);
     }
 
     &--green {
-      border-color: green;
+      border-color: var(--green);
     }
 
     &--white {
-      border-color: lightgray;
+      border-color: var(--white);
     }
 
+    &--black {
+      border-color: var(--black);
+    }
   }
 
-  &--available {
+  &__actions {
+    position: absolute;
+    bottom: 10px;
+    margin: auto;
+    visibility: hidden;
+    display: flex;
+    flex-flow: column nowrap;
+    padding: 5px;
+    align-self: center;
+  }
 
+  &__action-button {
+    margin-top: 5px;
+    padding: 5px 20px;
+    border-radius: 10px;
+    box-shadow: none;
+    border: 1px solid;
   }
 
   &--reserved {
-    width: $card-width-reserved;
-    height: $card-height-reserved;
+    width: var(--reserved-card-width);
+    height: var(--reserved-card-height);
     font-size: 0.8em;
   }
-
 }

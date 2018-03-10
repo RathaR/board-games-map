@@ -1,10 +1,19 @@
-
-body {
-  background-color: lightyellow;
-}
-
 .app {
-  &__header {
+  --black: #5b1c07;
+  --gold: gold;
+  --green: green;
+  --blue: blue;
+  --white: lightgray;
+  --red: red;
 
-  }
+  --available-card-width: 130px;
+  --available-card-height: 180px;
+
+  --reserved-card-width: 90px;
+  --reserved-card-height: 120px;
+
+  --token-size: 80px;
+  --minimized-token-size: 50px;
+
 }
+

@@ -1,51 +1,68 @@
-$token-size: 80px;
-$token-size-minimized: 50px;
+@mixin token-colour($colour) {
+  background-color: $colour;
+  color: $colour;
+
+  box-shadow: 5px 5px 10px -2px rgba(0, 0, 0, .25);
+  //inset -2px -2px 10px rgba($colour, 0.51);
+}
+
 .token {
+  outline: none;
   position: relative;
-  width: $token-size;
-  height: $token-size;
-  border: 1px solid black;
+  width: var(--token-size);
+  height: var(--token-size);
   border-radius: 50%;
+  border: 1px solid rgba(0,0,0,0.4);
+
   text-align: center;
   display: flex;
+  font-weight: 700;
+  font-size: 2em;
 
   &--minimized {
-    height: $token-size-minimized;
-    width: $token-size-minimized;
+    height: var(--minimized-token-size);
+    width: var(--minimized-token-size);
+    font-size: 1em;
+  }
+
+  &:hover, &:focus {
+    transform: translate(0, -20px) scale(1.3);
+    transition: all 300ms;
+    cursor: pointer;
   }
 
   &--red {
-    background-color: red;
+    @include token-colour(var(--red));
   }
 
   &--black {
-    background-color: black;
+    @include token-colour(var(--black));
   }
 
   &--gold {
-    background-color: gold;
+    @include token-colour(var(--gold));
   }
 
   &--blue {
-    background-color: blue;
+    @include token-colour(var(--blue));
   }
 
   &--green {
-    background-color: green;
+    @include token-colour(var(--green));
   }
 
   &--white {
-    background-color: lightgray;
+    @include token-colour(var(--white));
   }
 
   &__icon {
     margin: auto;
-    width: 50%;
-    height: 50%;
-    border: 1px solid black;
+    width: 60%;
+    height: 60%;
     border-radius: 50%;
     display: flex;
     background-color: white;
+    border: 1px solid rgba(0,0,0,0.5);
   }
 
   &__amount {

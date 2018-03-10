@@ -27,7 +27,7 @@ class Board extends Component {
             {cards.filter(card => card.level === deck.level).map(
               (card, index) => (
                 <div key={index} className={`${BLOCK}__card-container`}>
-                  <Card type='Card' card={card} className={'card--available'} />
+                  <Card type='Card' card={card} />
                 </div>))}
           </div>))}
     </div>)

@@ -1,14 +1,16 @@
-$deck-width: 100px;
-$deck-height: 160px;
+$deck-width: 130px;
+$deck-height: 180px;
 
 .deck {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   border: 1px solid black;
+  border-radius: 5px;
   width: $deck-width ;
   height: $deck-height;
   text-align: center;
+  background: #bfbfbf;
 
   &__title {
     margin-top: 5px;
