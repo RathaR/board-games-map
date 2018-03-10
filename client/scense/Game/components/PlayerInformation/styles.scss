@@ -8,6 +8,10 @@
     .player-information__title {
       color: white;
     }
+    .player-information__prestige {
+      background-color: white;
+      border: 1px solid black;
+    }
   }
   &__stats {
     text-align: left;
@@ -23,7 +27,7 @@
   }
 
   &__prestige{
-
+    padding: 5px;
   }
 
   &__main {

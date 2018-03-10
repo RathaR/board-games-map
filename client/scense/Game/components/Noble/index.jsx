@@ -5,15 +5,12 @@ import classNames from 'classnames';
 
 const BLOCK = 'noble';
 class Noble extends Component {
-  state = {
-  };
 
   render() {
     const {type, noble} = this.props;
     const {bonuses, prestige} = noble;
     const blockClasses = classNames(`${BLOCK}`, {[`${BLOCK}--reserved`]: type === 'Reserved'});
     const statsClasses = classNames(`${BLOCK}__stats`, {[`${BLOCK}__stats--reserved`]: type === 'Reserved'});
-  debugger;
     return (<div className={blockClasses}>
       <div className={`${BLOCK}__title`}>
         Noble

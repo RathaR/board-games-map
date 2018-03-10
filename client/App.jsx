@@ -7,7 +7,7 @@ import gameState from './data';
 class App extends Component {
   render() {
     return (<div className='app'>
-      <Game state={gameState} />
+      <Game initialState={gameState} />
     </div>);
   }
 }

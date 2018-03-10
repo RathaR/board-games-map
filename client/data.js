@@ -1,6 +1,9 @@
 import {COLORS} from "./constants/common";
 
 const GAME_STATE = {
+  turn: {
+    selectedTokens: [COLORS.RED],
+  },
   game: {
     target: 15,
     turn: 3,

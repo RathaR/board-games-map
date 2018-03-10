@@ -7,6 +7,7 @@ import Card from '../Card';
 import Token from '../Token';
 import Noble from '../Noble';
 import Deck from './components/Deck';
+import {COLORS} from "../../../../constants/common";
 
 const BLOCK = 'board';
 
@@ -46,13 +47,14 @@ class Board extends Component {
   }
 
   renderTokens() {
-    const {board: {tokens}} = this.props;
+    const {board: {tokens}, turn: {selectedTokens}} = this.props;
+
     return (
       <div className={`${BLOCK}__tokens`}>
         {Object.keys(tokens).map(
-          (color, index) =>
+          (colour, index) =>
             <div key={index} className={`${BLOCK}__token-container`}>
-              <Token amount={tokens[color]} color={color} />
+              <Token isSelectable={colour !== COLORS.GOLD} isSelected={selectedTokens.includes(colour)} amount={tokens[colour]} color={colour} onSelected={this.props.onTokenSelected} />
             </div>)}
       </div>);
   }
@@ -72,6 +74,8 @@ class Board extends Component {
 Board.propTypes = {
   className: PropTypes.string,
   board: PropTypes.object,
+  turn: PropTypes.object,
+  onTokenSelected: PropTypes.func,
 };
 
 export default Board;
