@@ -17,10 +17,10 @@ class PlayerInformation extends Component {
 
     return (
       <div className={`${BLOCK}__tokens`}>
-        {Object.keys(tokens).map(
-          (color, index) =>
+        {tokens.map(
+          (token, index) =>
             <div key={index} className={`${BLOCK}__token-container`}>
-              <Token amount={tokens[color]} color={color} className={`token--minimized`} />
+              <Token amount={token.amount} color={token.colour} className={`token--minimized`} />
             </div>)}
       </div>)
   }
