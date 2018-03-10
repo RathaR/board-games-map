@@ -13,12 +13,30 @@ class Game extends Component {
     super(props);
     this.state = this.props.initialState;
 
+    this.pickSelected = this.pickSelected.bind(this);
     this.toggleTokenSelection = this.toggleTokenSelection.bind(this);
   }
 
   isPlayerActive(playerId) {
     const {game: {activePlayer}} = this.state;
     return activePlayer === playerId;
+  }
+
+  pickSelected() {
+    ///increase player gems count
+    const {board: {tokens}, turn: {selectedTokens}, game: {activePlayer}} = this.state;
+    const newTokens = tokens.map((token) => {
+      return selectedTokens.includes(token.colour) ? {colour: token.colour, amount: token.amount - 1}: token;
+    });
+
+    this.setState({
+      board: {
+        ...this.state.board,
+        tokens: newTokens
+      }, turn: {
+        ...this.state.turn,
+        selectedTokens: []
+      }});
   }
 
   toggleTokenSelection(color) {
@@ -34,7 +52,11 @@ class Game extends Component {
     if(newTokens.length > 3) {
       return;
     }
-    this.setState({turn: {selectedTokens: newTokens}});
+    this.setState({
+      turn: {
+        ...this.state.turn,
+        selectedTokens: newTokens
+      }});
   }
 
   render() {
@@ -46,7 +68,7 @@ class Game extends Component {
             <PlayerInformation playerInformation={playerInformation} isActive = {this.isPlayerActive(playerInformation.id)} />
           </div>)}
       </div>
-      <Board className={`${BLOCK}__board`} board={board} turn={turn} onTokenSelected={this.toggleTokenSelection} />
+      <Board className={`${BLOCK}__board`} board={board} turn={turn} onTokenSelected={this.toggleTokenSelection} onPickSelected={this.pickSelected} />
       <div>
         <Chat className={`${BLOCK}__chat`} />
         <GameLog className={`${BLOCK}__game-log`} />

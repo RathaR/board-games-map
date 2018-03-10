@@ -12,8 +12,12 @@ import {COLORS} from "../../../../constants/common";
 const BLOCK = 'board';
 
 class Board extends Component {
-  state = {
-  };
+
+  constructor(props) {
+    super(props);
+
+
+  }
 
   renderCards() {
     const {board: {decks, cards}} = this.props;
@@ -48,13 +52,19 @@ class Board extends Component {
 
   renderTokens() {
     const {board: {tokens}, turn: {selectedTokens}} = this.props;
+    const pickSelectedHidden = !selectedTokens.length;
+    const pickDoubleHidden = !selectedTokens.length || selectedTokens.length > 1;
 
     return (
       <div className={`${BLOCK}__tokens`}>
-        {Object.keys(tokens).map(
-          (colour, index) =>
+        <div className={`${BLOCK}__tokens-actions`}>
+          <button className={`${BLOCK}__tokens-action-button`} hidden={pickSelectedHidden} onClick={this.props.onPickSelected}>Pick selected</button>
+          <button className={`${BLOCK}__tokens-action-button`} hidden={pickDoubleHidden} onClick={this.props.onPickDouble}>Pick double</button>
+        </div>
+        {tokens.map(
+          (token, index) =>
             <div key={index} className={`${BLOCK}__token-container`}>
-              <Token isSelectable={colour !== COLORS.GOLD} isSelected={selectedTokens.includes(colour)} amount={tokens[colour]} color={colour} onSelected={this.props.onTokenSelected} />
+              <Token isSelectable={token.colour !== COLORS.GOLD} isSelected={selectedTokens.includes(token.colour)} amount={token.amount} color={token.colour} onSelected={this.props.onTokenSelected} />
             </div>)}
       </div>);
   }
@@ -76,6 +86,8 @@ Board.propTypes = {
   board: PropTypes.object,
   turn: PropTypes.object,
   onTokenSelected: PropTypes.func,
+  onPickSelected: PropTypes.func,
+  onPickDouble: PropTypes.func,
 };
 
 export default Board;

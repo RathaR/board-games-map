@@ -40,14 +40,14 @@ const GAME_STATE = {
         green: 3,
       }
     }],
-    tokens: {
-      blue: 2,
-      black: 0,
-      green: 3,
-      red: 0,
-      white: 2,
-      gold: 1,
-    },
+    tokens: [
+      {colour: COLORS.BLUE, amount: 4},
+      {colour: COLORS.GREEN, amount: 4},
+      {colour: COLORS.RED, amount: 4},
+      {colour: COLORS.WHITE, amount: 4},
+      {colour: COLORS.BLACK, amount: 4},
+      {colour: COLORS.GOLD, amount: 5},
+    ],
     cards: [{
       level: 1,
       prestige: 1,
@@ -69,28 +69,28 @@ const GAME_STATE = {
       prestige: 2
     }],
     reserve: [],
-    tokens: {
-      blue: 2,
-      black: 2,
-      green: 3,
-      red: 0,
-      white: 2,
-      gold: 1,
-    },
+    tokens: [
+      {colour: COLORS.BLUE, amount: 4},
+      {colour: COLORS.GREEN, amount: 4},
+      {colour: COLORS.RED, amount: 4},
+      {colour: COLORS.WHITE, amount: 4},
+      {colour: COLORS.BLACK, amount: 4},
+      {colour: COLORS.GOLD, amount: 5},
+    ],
     cards: [],
   }, {
     id: 'Player3',
     prestige: 0,
     nobles: [],
     reserve: [],
-    tokens: {
-      blue: 2,
-      black: 0,
-      green: 3,
-      red: 0,
-      white: 2,
-      gold: 1,
-    },
+    tokens: [
+      {colour: COLORS.BLUE, amount: 4},
+      {colour: COLORS.GREEN, amount: 4},
+      {colour: COLORS.RED, amount: 4},
+      {colour: COLORS.WHITE, amount: 4},
+      {colour: COLORS.BLACK, amount: 4},
+      {colour: COLORS.GOLD, amount: 5},
+    ],
     cards: [],
   }, {
     id: 'Player4',
@@ -103,14 +103,14 @@ const GAME_STATE = {
       prestige: 2
     }],
     reserve: [],
-    tokens: {
-      blue: 2,
-      black: 0,
-      green: 3,
-      red: 0,
-      white: 2,
-      gold: 1,
-    },
+    tokens: [
+      {colour: COLORS.BLUE, amount: 4},
+      {colour: COLORS.GREEN, amount: 4},
+      {colour: COLORS.RED, amount: 4},
+      {colour: COLORS.WHITE, amount: 4},
+      {colour: COLORS.BLACK, amount: 4},
+      {colour: COLORS.GOLD, amount: 5},
+    ],
     cards: [{
       level: 1,
       prestige: 1,
@@ -145,14 +145,14 @@ const GAME_STATE = {
       },
       prestige: 2
     }],
-    tokens: {
-      blue: 4,
-      black: 4,
-      green: 4,
-      red: 4,
-      white: 4,
-      gold: 5,
-    },
+    tokens: [
+      {colour: COLORS.BLUE, amount: 4},
+      {colour: COLORS.GREEN, amount: 4},
+      {colour: COLORS.RED, amount: 4},
+      {colour: COLORS.WHITE, amount: 4},
+      {colour: COLORS.BLACK, amount: 4},
+      {colour: COLORS.GOLD, amount: 5},
+    ],
     decks: [{level: 1, count: 14}, {level: 2, count: 15}, {level: 3, count: 18}],
     cards: [{
       level: 1,
