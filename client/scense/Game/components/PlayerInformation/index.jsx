@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import './styles.scss';
 import classNames from 'classnames';
-import Token from '../Token';
+import TokensStack from '../TokensStack';
 import Bonus from './components/Bonus';
 import Card from '../Card';
 import {COLORS} from '../../../../constants/common';
@@ -20,7 +20,8 @@ class PlayerInformation extends Component {
         {tokens.map(
           (token, index) =>
             <div key={index} className={`${BLOCK}__token-container`}>
-              <Token amount={token.amount} color={token.colour} className={`token--minimized`} />
+              <TokensStack amount={token.amount} colour={token.colour} isSelectable={false} minimized/>
+              {/*<Token amount={token.amount} color={token.colour} className={`token--minimized`} />*/}
             </div>)}
       </div>)
   }

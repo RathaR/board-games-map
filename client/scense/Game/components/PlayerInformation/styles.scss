@@ -28,6 +28,7 @@
 
   &__prestige{
     padding: 5px;
+    border-radius: 5px;
   }
 
   &__main {
@@ -44,6 +45,7 @@
 
   &__tokens {
     display: flex;
+    margin-right: 20px;
   }
 
   &__token-container {

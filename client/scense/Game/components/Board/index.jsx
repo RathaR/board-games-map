@@ -4,10 +4,11 @@ import classNames from 'classnames';
 
 import './styles.scss'
 import Card from '../Card';
-import Token from '../Token';
+import Token from '../TokensStack/сomponents/Token';
 import Noble from '../Noble';
 import Deck from './components/Deck';
 import {COLORS} from "../../../../constants/common";
+import TokensStack from "../TokensStack";
 
 const BLOCK = 'board';
 
@@ -64,7 +65,8 @@ class Board extends Component {
         {tokens.map(
           (token, index) =>
             <div key={index} className={`${BLOCK}__token-container`}>
-              <Token isSelectable={token.colour !== COLORS.GOLD} isSelected={selectedTokens.includes(token.colour)} amount={token.amount} color={token.colour} onSelected={this.props.onTokenSelected} />
+              <TokensStack isSelected={selectedTokens.includes(token.colour)} onSelected={this.props.onTokenSelected} amount={token.amount} colour={token.colour} isSelectable/>
+              {/*<Token isSelectable={token.colour !== COLORS.GOLD} isSelected={selectedTokens.includes(token.colour)} amount={token.amount} color={token.colour} onSelected={this.props.onTokenSelected} />*/}
             </div>)}
       </div>);
   }

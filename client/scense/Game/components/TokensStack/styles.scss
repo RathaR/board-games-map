@@ -1,0 +1,66 @@
+$offsetY: -3px;
+$offsetX: 2px;
+$selection-mark-size: 10px;
+
+.tokens-stack {
+  position: relative;
+  width: var(--token-size);
+  height: var(--token-size);
+
+  &--minimized {
+    width: var(--minimized-token-size);
+    height: var(--minimized-token-size);
+  }
+
+  &--selected {
+    &:after {
+      content: '';
+      width: $selection-mark-size;
+      height: $selection-mark-size;
+      position: absolute;
+      background: white;
+      bottom: -2 * $selection-mark-size;
+      left: calc(50% - #{$selection-mark-size} / 2);
+      border-radius: $selection-mark-size / 2;
+    }
+  }
+
+  .token {
+    position: absolute;
+
+    &:nth-child(2) {
+      top: 1 * $offsetY;
+      left: 1 * $offsetX;
+    }
+
+    &:nth-child(3) {
+      top: 2 * $offsetY;
+      left: 2 * $offsetX;
+    }
+
+    &:nth-child(4) {
+      top: 3 * $offsetY;
+      left: 3 * $offsetX;
+    }
+
+    &:nth-child(5) {
+      top: 4 * $offsetY;
+      left: 4 * $offsetX;
+    }
+
+    &:nth-child(6) {
+      top: 5 * $offsetY;
+      left: 5 * $offsetX;
+    }
+
+    &:nth-child(7) {
+      top: 6 * $offsetY;
+      left: 6 * $offsetX;
+    }
+
+    &:nth-child(8) {
+      top: 7 * $offsetY;
+      left: 7 * $offsetX;
+    }
+  }
+}

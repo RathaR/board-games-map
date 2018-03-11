@@ -22,6 +22,11 @@ class Game extends Component {
     return activePlayer === playerId;
   }
 
+  getActivePlayerInformation() {
+    const {players, game: {activePlayer}} = this.state;
+    return players.filter(player => player.id === activePlayer)[0];
+  }
+
   pickSelected() {
     ///increase player gems count
     const {board: {tokens}, turn: {selectedTokens}, game: {activePlayer}} = this.state;
@@ -29,7 +34,23 @@ class Game extends Component {
       return selectedTokens.includes(token.colour) ? {colour: token.colour, amount: token.amount - 1}: token;
     });
 
+    const activePlayerInformation = this.getActivePlayerInformation();
+    const newPlayerTokens = activePlayerInformation.tokens.map((token) => {
+      return selectedTokens.includes(token.colour) ? {colour: token.colour, amount: token.amount + 1}: token;
+    });
+
+    const newPlayers = this.state.players.map(player => {
+      if(player.id === activePlayer) {
+        return {
+          ...player,
+          tokens: newPlayerTokens
+        }
+      }
+      return player;
+    });
+
     this.setState({
+      players: [...newPlayers],
       board: {
         ...this.state.board,
         tokens: newTokens
