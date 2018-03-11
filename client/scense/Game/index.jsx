@@ -12,7 +12,6 @@ const BLOCK = 'game';
 class Game extends Component {
   constructor(props){
     super(props);
-    this.state = this.props.initialState;
 
     this.pickSelected = this.pickSelected.bind(this);
     this.toggleTokenSelection = this.toggleTokenSelection.bind(this);
@@ -21,12 +20,12 @@ class Game extends Component {
   }
 
   isPlayerActive(playerId) {
-    const {game: {activePlayer}} = this.state;
+    const {game: {activePlayer}} = this.props;
     return activePlayer === playerId;
   }
 
   getActivePlayerInformation() {
-    const {players, game: {activePlayer}} = this.state;
+    const {players, game: {activePlayer}} = this.props;
     return players.filter(player => player.id === activePlayer)[0];
   }
 
@@ -51,7 +50,7 @@ class Game extends Component {
   }
 
   pickSelected() {
-    const {board: {tokens}, turn: {selectedTokens}, game: {activePlayer}} = this.state;
+    const {board: {tokens}, turn: {selectedTokens}, game: {activePlayer}} = this.props;
     const newTokens = tokens.map((token) => {
       return selectedTokens.includes(token.colour) ? {colour: token.colour, amount: token.amount - 1}: token;
     });
@@ -61,7 +60,7 @@ class Game extends Component {
       return selectedTokens.includes(token.colour) ? {colour: token.colour, amount: token.amount + 1}: token;
     });
 
-    const newPlayers = this.state.players.map(player => {
+    const newPlayers = this.props.players.map(player => {
       if(player.id === activePlayer) {
         return {
           ...player,
@@ -71,23 +70,23 @@ class Game extends Component {
       return player;
     });
 
-    this.setState({
-      players: [...newPlayers],
-      game: {
-        ...this.state.game,
-        activePlayer: this.getNextPlayer(activePlayer),
-      },
-      board: {
-        ...this.state.board,
-        tokens: newTokens
-      }, turn: {
-        ...this.state.turn,
-        selectedTokens: []
-      }});
+    // this.setState({
+    //   players: [...newPlayers],
+    //   game: {
+    //     ...this.props.game,
+    //     activePlayer: this.getNextPlayer(activePlayer),
+    //   },
+    //   board: {
+    //     ...this.props.board,
+    //     tokens: newTokens
+    //   }, turn: {
+    //     ...this.props.turn,
+    //     selectedTokens: []
+    //   }});
   }
 
   toggleTokenSelection(color) {
-    const {turn: {selectedTokens}} = this.state;
+    const {turn: {selectedTokens}} = this.props;
     let newTokens;
 
     if(selectedTokens.includes(color)) {
@@ -100,16 +99,16 @@ class Game extends Component {
       return;
     }
 
-    this.setState({
-      turn: {
-        ...this.state.turn,
-        selectedTokens: newTokens
-      }});
+    // this.setState({
+    //   turn: {
+    //     ...this.props.turn,
+    //     selectedTokens: newTokens
+    //   }});
   }
 
   holdCard(card) {
-    const {game: {activePlayer}} = this.state;
-    const newPlayersInformation = this.state.players.map(playerInfo => {
+    const {game: {activePlayer}} = this.props;
+    const newPlayersInformation = this.props.players.map(playerInfo => {
       if(playerInfo.id === activePlayer) {
         return {
           ...playerInfo,
@@ -127,7 +126,7 @@ class Game extends Component {
 
     this.setState({
       game: {
-        ...this.state.game,
+        ...this.props.game,
         activePlayer: this.getNextPlayer(activePlayer),
       },
       players: [...newPlayersInformation]
@@ -139,7 +138,7 @@ class Game extends Component {
   }
 
   render() {
-    const {board, players, turn}  = this.state;
+    const {board, players, turn}  = this.props;
     return (<div className={BLOCK}>
       <div className={`${BLOCK}__players-information`}>
         {players.map((playerInformation, index) =>
@@ -162,7 +161,20 @@ class Game extends Component {
 }
 
 Game.propTypes = {
-  initialState: PropTypes.object,
+};
+
+Game.defaultProps = {
+  players: [],
+  game: {},
+  board: {
+    tokens: [],
+    cards: [],
+    decks: [],
+    nobles: [],
+  },
+  turn: {
+    selectedTokens: [],
+  },
 };
 
 export default Game;

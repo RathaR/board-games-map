@@ -1,14 +1,41 @@
-import React, { Component } from 'react';
-import './styles.scss'
+import React, {Component} from 'react';
+import { connect } from 'react-redux'
+import PropTypes from 'prop-types';
+import './styles.scss';
+import Game from './scense/Game';
+import {Provider} from 'react-redux';
 
-import Game from './scense/Game'
-import gameState from './data';
-
-class App extends Component {
-  render() {
-    return (<div className='app'>
-      <Game initialState={gameState} />
-    </div>);
+const mapStateToProps = state => {
+  return {
+    turn: state.app.turn,
+    game: state.app.game,
+    players: state.app.players,
+    board: state.app.board,
   }
-}
+};
+
+const mapDispatchToProps = dispatch => {
+  return {
+    // onTodoClick: id => {
+    //   dispatch(toggleTodo(id))
+    // }
+  }
+};
+
+const ConnectedGame = connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Game);
+
+const App = ({store}) => (
+  <div className='app'>
+    <Provider store={store}>
+      <ConnectedGame />
+    </Provider>
+  </div>);
+
+App.propTypes = {
+  store: PropTypes.object.isRequired,
+};
+
 export default App;

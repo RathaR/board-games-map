@@ -54,6 +54,7 @@
     "postcss": "^6.0.19",
     "postcss-cssnext": "^3.1.0",
     "postcss-loader": "^2.1.0",
+    "redux-devtools": "^3.4.1",
     "sass-loader": "^6.0.6",
     "style-loader": "^0.20.2",
     "webpack": "^3.11.0",
@@ -87,7 +88,9 @@
     "react-transition-group": "^1.2.1",
     "react-virtualized": "^9.18.5",
     "redux": "^3.7.2",
+    "redux-logger": "^3.0.6",
     "redux-observable": "^0.18.0",
+    "redux-thunk": "^2.2.0",
     "rimraf": "^2.6.2",
     "rxjs": "^5.5.6",
     "serve-favicon": "^2.4.5"
