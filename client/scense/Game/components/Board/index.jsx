@@ -33,7 +33,7 @@ class Board extends Component {
             {cards.filter(card => card.level === deck.level).map(
               (card, index) => (
                 <div key={index} className={`${BLOCK}__card-container`}>
-                  <Card type='Card' card={card} />
+                  <Card type='Card' card={card} onHoldClick={this.props.onCardHold} onBuyClick={this.props.onCardBuy} />
                 </div>))}
           </div>))}
     </div>)
@@ -62,11 +62,10 @@ class Board extends Component {
           <button className={`${BLOCK}__tokens-action-button`} hidden={pickSelectedHidden} onClick={this.props.onPickSelected}>Pick selected</button>
           <button className={`${BLOCK}__tokens-action-button`} hidden={pickDoubleHidden} onClick={this.props.onPickDouble}>Pick double</button>
         </div>
-        {tokens.map(
+        {tokens.filter(token => token.amount >0).map(
           (token, index) =>
             <div key={index} className={`${BLOCK}__token-container`}>
               <TokensStack isSelected={selectedTokens.includes(token.colour)} onSelected={this.props.onTokenSelected} amount={token.amount} colour={token.colour} isSelectable/>
-              {/*<Token isSelectable={token.colour !== COLORS.GOLD} isSelected={selectedTokens.includes(token.colour)} amount={token.amount} color={token.colour} onSelected={this.props.onTokenSelected} />*/}
             </div>)}
       </div>);
   }
@@ -90,6 +89,8 @@ Board.propTypes = {
   onTokenSelected: PropTypes.func,
   onPickSelected: PropTypes.func,
   onPickDouble: PropTypes.func,
+  onCardHold: PropTypes.func,
+  onCardBuy: PropTypes.func,
 };
 
 export default Board;

@@ -8,6 +8,13 @@ const BLOCK = 'card';
 
 class Card extends Component {
 
+  constructor(props) {
+    super(props);
+
+    this.handleHoldClick = this.handleHoldClick.bind(this);
+    this.handleBuyClick = this.handleBuyClick.bind(this);
+  }
+
   getCostTokenClasses(color, type) {
     return classNames(
       `${BLOCK}__cost-token`,
@@ -19,6 +26,16 @@ class Card extends Component {
     return classNames(
       `${BLOCK}__bonus`,
       `${BLOCK}__bonus--${color}`);
+  }
+
+  handleHoldClick() {
+    const {card, onHoldClick} = this.props;
+    onHoldClick(card);
+  }
+
+  handleBuyClick() {
+    const {card, onBuyClick} = this.props;
+    onBuyClick(card);
   }
 
   render() {
@@ -35,8 +52,8 @@ class Card extends Component {
         {Object.keys(cost).map((color, index) => <div className={this.getCostTokenClasses(color, type)}  key={index}>{index}</div> )}
       </div>
       <div className={`${BLOCK}__actions`}>
-        <button className={`${BLOCK}__action-button`}>Buy</button>
-        <button className={`${BLOCK}__action-button`}>Hold</button>
+        <button className={`${BLOCK}__action-button`} onClick={this.handleBuyClick}>Buy</button>
+        <button className={`${BLOCK}__action-button`} onClick={this.handleHoldClick}>Hold</button>
       </div>
     </div>);
   }
@@ -46,6 +63,8 @@ Card.propTypes = {
   className: PropTypes.string,
   type: PropTypes.string,
   card: PropTypes.object,
+  onHoldClick: PropTypes.func,
+  onBuyClick: PropTypes.func,
 };
 
 export default Card;

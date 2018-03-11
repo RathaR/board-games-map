@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import './styles.scss'
 import classNames from 'classnames';
 import Token from "./сomponents/Token";
+import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 
 const BLOCK = 'tokens-stack';
 class TokensStack extends Component {
@@ -33,7 +34,12 @@ class TokensStack extends Component {
       tokens.push(<Token key={i} color={colour} amount={amount} minimized={minimized} onSelected={this.handleSelection} isSelected={isSelected && (i === amount -1) } />)
     }
     return(<div className={blockClasses}>
-      {tokens}
+      <ReactCSSTransitionGroup
+        transitionName="example"
+        transitionEnterTimeout={500}
+        transitionLeaveTimeout={300}>
+        {tokens}
+      </ReactCSSTransitionGroup>
     </div>);
   }
 }

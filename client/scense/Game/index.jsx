@@ -5,6 +5,7 @@ import Board from './components/Board';
 import Chat from './components/Chat'
 import GameLog from './components/GameLog';
 import PlayerInformation from "./components/PlayerInformation";
+import {COLORS} from "../../constants/common";
 
 const BLOCK = 'game';
 
@@ -15,6 +16,8 @@ class Game extends Component {
 
     this.pickSelected = this.pickSelected.bind(this);
     this.toggleTokenSelection = this.toggleTokenSelection.bind(this);
+    this.holdCard = this.holdCard.bind(this);
+    this.buyCard = this.buyCard.bind(this);
   }
 
   isPlayerActive(playerId) {
@@ -27,8 +30,27 @@ class Game extends Component {
     return players.filter(player => player.id === activePlayer)[0];
   }
 
+  getNextPlayer(currentPlayer) {
+    switch (currentPlayer) {
+      case 'Player1': {
+        return 'Player2';
+      }
+      case 'Player2': {
+        return 'Player3';
+      }
+      case 'Player3': {
+        return 'Player4';
+      }
+      case 'Player4': {
+        return 'Player1';
+      }
+      default: {
+        return 'Player1';
+      }
+    }
+  }
+
   pickSelected() {
-    ///increase player gems count
     const {board: {tokens}, turn: {selectedTokens}, game: {activePlayer}} = this.state;
     const newTokens = tokens.map((token) => {
       return selectedTokens.includes(token.colour) ? {colour: token.colour, amount: token.amount - 1}: token;
@@ -51,6 +73,10 @@ class Game extends Component {
 
     this.setState({
       players: [...newPlayers],
+      game: {
+        ...this.state.game,
+        activePlayer: this.getNextPlayer(activePlayer),
+      },
       board: {
         ...this.state.board,
         tokens: newTokens
@@ -73,11 +99,43 @@ class Game extends Component {
     if(newTokens.length > 3) {
       return;
     }
+
     this.setState({
       turn: {
         ...this.state.turn,
         selectedTokens: newTokens
       }});
+  }
+
+  holdCard(card) {
+    const {game: {activePlayer}} = this.state;
+    const newPlayersInformation = this.state.players.map(playerInfo => {
+      if(playerInfo.id === activePlayer) {
+        return {
+          ...playerInfo,
+          reserve: playerInfo.reserve.concat([card]),
+          tokens: playerInfo.tokens.map(token => {
+            if(token.colour === COLORS.GOLD) {
+              return {amount: token.amount + 1, colour: COLORS.GOLD}
+            }
+            return token;
+          })
+        }
+      }
+      return playerInfo;
+    });
+
+    this.setState({
+      game: {
+        ...this.state.game,
+        activePlayer: this.getNextPlayer(activePlayer),
+      },
+      players: [...newPlayersInformation]
+    })
+  }
+
+  buyCard(card) {
+
   }
 
   render() {
@@ -89,7 +147,12 @@ class Game extends Component {
             <PlayerInformation playerInformation={playerInformation} isActive = {this.isPlayerActive(playerInformation.id)} />
           </div>)}
       </div>
-      <Board className={`${BLOCK}__board`} board={board} turn={turn} onTokenSelected={this.toggleTokenSelection} onPickSelected={this.pickSelected} />
+      <Board className={`${BLOCK}__board`} board={board} turn={turn}
+             onTokenSelected={this.toggleTokenSelection}
+             onPickSelected={this.pickSelected}
+             onCardHold={this.holdCard}
+             onCardBuy={this.buyCard}
+      />
       <div>
         <Chat className={`${BLOCK}__chat`} />
         <GameLog className={`${BLOCK}__game-log`} />

@@ -17,11 +17,10 @@ class PlayerInformation extends Component {
 
     return (
       <div className={`${BLOCK}__tokens`}>
-        {tokens.map(
+        {tokens.filter(token => token.amount >0).map(
           (token, index) =>
             <div key={index} className={`${BLOCK}__token-container`}>
               <TokensStack amount={token.amount} colour={token.colour} isSelectable={false} minimized/>
-              {/*<Token amount={token.amount} color={token.colour} className={`token--minimized`} />*/}
             </div>)}
       </div>)
   }

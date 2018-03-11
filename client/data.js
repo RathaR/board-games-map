@@ -2,12 +2,12 @@ import {COLORS} from "./constants/common";
 
 const GAME_STATE = {
   turn: {
-    selectedTokens: [COLORS.RED],
+    selectedTokens: [],
   },
   game: {
     target: 15,
     turn: 3,
-    activePlayer: 'Player2'
+    activePlayer: 'Player1'
   },
   players: [{
     id: 'Player1',
@@ -41,11 +41,11 @@ const GAME_STATE = {
       }
     }],
     tokens: [
-      {colour: COLORS.BLUE, amount: 4},
-      {colour: COLORS.GREEN, amount: 4},
-      {colour: COLORS.RED, amount: 4},
-      {colour: COLORS.WHITE, amount: 4},
-      {colour: COLORS.BLACK, amount: 4},
+      {colour: COLORS.BLUE, amount: 0},
+      {colour: COLORS.GREEN, amount: 0},
+      {colour: COLORS.RED, amount: 0},
+      {colour: COLORS.WHITE, amount: 0},
+      {colour: COLORS.BLACK, amount: 0},
       {colour: COLORS.GOLD, amount: 5},
     ],
     cards: [{
@@ -70,11 +70,11 @@ const GAME_STATE = {
     }],
     reserve: [],
     tokens: [
-      {colour: COLORS.BLUE, amount: 4},
-      {colour: COLORS.GREEN, amount: 4},
-      {colour: COLORS.RED, amount: 4},
-      {colour: COLORS.WHITE, amount: 4},
-      {colour: COLORS.BLACK, amount: 4},
+      {colour: COLORS.BLUE, amount: 0},
+      {colour: COLORS.GREEN, amount: 0},
+      {colour: COLORS.RED, amount: 0},
+      {colour: COLORS.WHITE, amount: 1},
+      {colour: COLORS.BLACK, amount: 2},
       {colour: COLORS.GOLD, amount: 5},
     ],
     cards: [],
@@ -84,12 +84,12 @@ const GAME_STATE = {
     nobles: [],
     reserve: [],
     tokens: [
-      {colour: COLORS.BLUE, amount: 4},
-      {colour: COLORS.GREEN, amount: 4},
-      {colour: COLORS.RED, amount: 4},
-      {colour: COLORS.WHITE, amount: 4},
-      {colour: COLORS.BLACK, amount: 4},
-      {colour: COLORS.GOLD, amount: 5},
+      {colour: COLORS.BLUE, amount: 0},
+      {colour: COLORS.GREEN, amount: 0},
+      {colour: COLORS.RED, amount: 0},
+      {colour: COLORS.WHITE, amount: 0},
+      {colour: COLORS.BLACK, amount: 0},
+      {colour: COLORS.GOLD, amount: 4},
     ],
     cards: [],
   }, {
@@ -104,12 +104,12 @@ const GAME_STATE = {
     }],
     reserve: [],
     tokens: [
-      {colour: COLORS.BLUE, amount: 4},
-      {colour: COLORS.GREEN, amount: 4},
-      {colour: COLORS.RED, amount: 4},
-      {colour: COLORS.WHITE, amount: 4},
-      {colour: COLORS.BLACK, amount: 4},
-      {colour: COLORS.GOLD, amount: 5},
+      {colour: COLORS.BLUE, amount: 0},
+      {colour: COLORS.GREEN, amount: 0},
+      {colour: COLORS.RED, amount: 0},
+      {colour: COLORS.WHITE, amount: 0},
+      {colour: COLORS.BLACK, amount: 0},
+      {colour: COLORS.GOLD, amount: 0},
     ],
     cards: [{
       level: 1,
