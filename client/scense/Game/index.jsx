@@ -147,7 +147,7 @@ class Game extends Component {
           </div>)}
       </div>
       <Board className={`${BLOCK}__board`} board={board} turn={turn}
-             onTokenSelected={this.toggleTokenSelection}
+             onTokenSelected={this.props.onTokenSelected}
              onPickSelected={this.pickSelected}
              onCardHold={this.holdCard}
              onCardBuy={this.buyCard}

@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import './styles.scss';
 import Game from './scense/Game';
 import {Provider} from 'react-redux';
+import toggleTokenSelection from './actions';
 
 const mapStateToProps = state => {
   return {
@@ -16,9 +17,9 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    // onTodoClick: id => {
-    //   dispatch(toggleTodo(id))
-    // }
+    onTokenSelected: colour => {
+      dispatch(toggleTokenSelection(colour))
+    }
   }
 };
 

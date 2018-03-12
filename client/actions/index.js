@@ -15,7 +15,7 @@ export function buyCard(card) {
   return {type: BUY_CARD, card};
 }
 
-export function toogleTokenSelection(colour) {
+export function toggleTokenSelection(colour) {
   return {type: TOGGLE_TOKEN_SELECTION, colour};
 }
 
