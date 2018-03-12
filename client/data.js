@@ -10,6 +10,7 @@ const GAME_STATE = {
     prestige: 4,
     nobles: [],
     reserve: ['5', '9', '2'],
+
     tokens: [
       {colour: COLORS.BLUE, amount: 0},
       {colour: COLORS.GREEN, amount: 0},
@@ -18,16 +19,7 @@ const GAME_STATE = {
       {colour: COLORS.BLACK, amount: 0},
       {colour: COLORS.GOLD, amount: 5},
     ],
-    cards: [{
-      level: 1,
-      prestige: 1,
-      bonus: COLORS.GREEN,
-      cost: {
-        red: 1,
-        blue: 2,
-        black: 3,
-      }
-    }],
+    cards: ['2', '4', '6', '5'],
   }, {
     id: 'Player2',
     prestige: 5,
@@ -47,7 +39,7 @@ const GAME_STATE = {
       {colour: COLORS.BLACK, amount: 2},
       {colour: COLORS.GOLD, amount: 5},
     ],
-    cards: [],
+    cards: ['1', '5', '3'],
   }, {
     id: 'Player3',
     prestige: 0,
@@ -61,7 +53,7 @@ const GAME_STATE = {
       {colour: COLORS.BLACK, amount: 0},
       {colour: COLORS.GOLD, amount: 4},
     ],
-    cards: [],
+    cards: ['4'],
   }, {
     id: 'Player4',
     prestige: 1,
@@ -81,25 +73,7 @@ const GAME_STATE = {
       {colour: COLORS.BLACK, amount: 0},
       {colour: COLORS.GOLD, amount: 0},
     ],
-    cards: [{
-      level: 1,
-      prestige: 1,
-      bonus: COLORS.GREEN,
-      cost: {
-        red: 1,
-        blue: 2,
-        black: 3,
-      }
-    }, {
-      level: 2,
-      prestige: 2,
-      bonus: COLORS.BLUE,
-      cost: {
-        red: 1,
-        blue: 2,
-        black: 3,
-      }
-    }],
+    cards: ['9', '11'],
   }],
   decks: [{level: 1, count: 14}, {level: 2, count: 15}, {level: 3, count: 18}],
   cards: [{
@@ -136,7 +110,7 @@ const GAME_STATE = {
     id: '4',
     level: 1,
     prestige: 0,
-    bonus: COLORS.BLACK,
+    bonus: COLORS.BLUE,
     cost: {
       white: 2,
       black: 3,
@@ -173,7 +147,7 @@ const GAME_STATE = {
     id: '8',
     level: 2,
     prestige: 0,
-    bonus: COLORS.BLACK,
+    bonus: COLORS.WHITE,
     cost: {
       white: 2,
       black: 3,
@@ -192,7 +166,7 @@ const GAME_STATE = {
     id: '10',
     level: 3,
     prestige: 0,
-    bonus: COLORS.RED,
+    bonus: COLORS.BLUE,
     cost: {
       blue: 2,
       black: 3,

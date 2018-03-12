@@ -25,13 +25,27 @@ class PlayerInformation extends Component {
       </div>)
   }
 
+
   renderBonuses() {
+    const {playerInformation: {cards}, getCard} = this.props;
+
+    const getAmount = function(colour) {
+
+      const res =  cards.map(getCard).reduce((acc, curr)=> {
+        if(curr.bonus === colour) {
+          return acc + 1;
+        }
+        return acc;
+      }, 0)
+      return res;
+    };
+
     return (
       <div className={`${BLOCK}__bonuses`}>
         {[COLORS.BLUE, COLORS.BLACK, COLORS.GREEN,  COLORS.RED, COLORS.WHITE ].map(
-          (elem, index) =>
+          (colour, index) =>
             <div key={index} className={`${BLOCK}__bonus-container`}>
-              <Bonus amount={1} color={elem} />
+              {!!getAmount(colour) && <Bonus amount={getAmount(colour)} color={colour} />}
             </div>)}
       </div>)
   }
