@@ -37,14 +37,14 @@ class PlayerInformation extends Component {
   }
 
   renderReservedCards() {
-    const {playerInformation: {reserve}} = this.props;
+    const {playerInformation: {reserve}, getCard} = this.props;
 
     return (
       <div className={`${BLOCK}__reserved-cards`}>
         {reserve.map(
-          (card, index) =>
-            <div key={index} className={`${BLOCK}__reserved-card-container`}>
-              <Card type='Reserved' className='card--reserved' card={card}/>
+          (cardId) =>
+            <div key={cardId} className={`${BLOCK}__reserved-card-container`}>
+              <Card type='Reserved' className='card--reserved' card={getCard(cardId)}/>
             </div>)}
       </div>)
   }

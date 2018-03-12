@@ -5,19 +5,19 @@ import './styles.scss';
 import Game from './scense/Game';
 import {Provider} from 'react-redux';
 import {toggleTokenSelection, switchPlayer, pickSelected} from './actions';
-import {turn, game, players, decks, cards, nobles, board, tokens, activePlayer} from './selectors/index';
+import {turn, game, players, decks, cards, nobles, board, tokens, activePlayer, card} from './selectors/index';
 
 const mapStateToProps = state => {
   return {
-    activePlayer: state.activePlayer,
+    activePlayer: activePlayer(state),
     turn: turn(state),
     game: game(state),
     players: players(state),
     decks: decks(state),
-    cards: cards(state),
     board: board(state),
     nobles: nobles(state),
     tokens: tokens(state),
+    getCard: cardId => card(state, cardId),
   }
 };
 
@@ -31,7 +31,7 @@ const mapDispatchToProps = dispatch => {
     },
     onPickSelected: () => {
       dispatch(pickSelected());
-    }
+    },
   }
 };
 

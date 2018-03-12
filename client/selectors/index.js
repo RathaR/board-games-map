@@ -18,6 +18,10 @@ export function cards(state) {
   return state.cards;
 }
 
+export function card(state, id) {
+  return cards(state).filter(card => card.id === id)[0];
+}
+
 export function decks(state) {
   return state.decks;
 }

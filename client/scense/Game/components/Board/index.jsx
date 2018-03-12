@@ -14,13 +14,8 @@ const BLOCK = 'board';
 
 class Board extends Component {
 
-  constructor(props) {
-    super(props);
-
-  }
-
   renderCards() {
-    const {cards, decks} = this.props;
+    const {decks, board: {cards}, getCard} = this.props;
 
     return (<div className={`${BLOCK}__cards`}>
       {decks.map(
@@ -29,9 +24,9 @@ class Board extends Component {
             <div className={`${BLOCK}__card-container`}>
               <Deck deck={deck} />
             </div>
-            {cards.filter(card => card.level === deck.level).map(
-              (card, index) => (
-                <div key={index} className={`${BLOCK}__card-container`}>
+            {cards.map(cardId => getCard(cardId)).filter(card => card.level === deck.level).map(
+              (card) => (
+                <div key={card.id} className={`${BLOCK}__card-container`}>
                   <Card type='Card' card={card} onHoldClick={this.props.onCardHold} onBuyClick={this.props.onCardBuy} />
                 </div>))}
           </div>))}
@@ -85,10 +80,10 @@ Board.propTypes = {
   className: PropTypes.string,
   board: PropTypes.object,
   turn: PropTypes.object,
-  cards: PropTypes.array,
   decks: PropTypes.array,
   nobles: PropTypes.array,
   tokens: PropTypes.array,
+  getCard: PropTypes.func,
   onTokenSelected: PropTypes.func,
   onPickSelected: PropTypes.func,
   onPickDouble: PropTypes.func,
