@@ -1,13 +1,9 @@
 import {COLORS} from "./constants/common";
 
 const GAME_STATE = {
+  activePlayer: 'Player1',
   turn: {
     selectedTokens: [],
-  },
-  game: {
-    target: 15,
-    turn: 3,
-    activePlayer: 'Player1'
   },
   players: [{
     id: 'Player1',
@@ -131,132 +127,133 @@ const GAME_STATE = {
       }
     }],
   }],
+  decks: [{level: 1, count: 14}, {level: 2, count: 15}, {level: 3, count: 18}],
+  cards: [{
+    level: 1,
+    prestige: 1,
+    bonus: COLORS.GREEN,
+    cost: {
+      red: 1,
+      blue: 2,
+      black: 3,
+    }
+  }, {
+    level: 1,
+    prestige: 0,
+    bonus: COLORS.RED,
+    cost: {
+      blue: 2,
+      black: 3,
+    }
+  }, {
+    level: 1,
+    prestige: 2,
+    bonus: COLORS.BLACK,
+    cost: {
+      white: 2,
+      red: 2,
+      green: 2,
+      blue: 3,
+    }
+  }, {
+    level: 1,
+    prestige: 0,
+    bonus: COLORS.BLACK,
+    cost: {
+      white: 2,
+      black: 3,
+    }
+  },{
+    level: 2,
+    prestige: 1,
+    bonus: COLORS.GREEN,
+    cost: {
+      red: 1,
+      blue: 2,
+      black: 3,
+    }
+  }, {
+    level: 2,
+    prestige: 0,
+    bonus: COLORS.RED,
+    cost: {
+      blue: 2,
+      black: 3,
+    }
+  }, {
+    level: 2,
+    prestige: 2,
+    bonus: COLORS.BLACK,
+    cost: {
+      white: 2,
+      black: 3,
+    }
+  }, {
+    level: 2,
+    prestige: 0,
+    bonus: COLORS.BLACK,
+    cost: {
+      white: 2,
+      black: 3,
+    }
+  }, {
+    level: 3,
+    prestige: 1,
+    bonus: COLORS.GREEN,
+    cost: {
+      red: 1,
+      blue: 2,
+      black: 3,
+    }
+  }, {
+    level: 3,
+    prestige: 0,
+    bonus: COLORS.RED,
+    cost: {
+      blue: 2,
+      black: 3,
+    }
+  }, {
+    level: 3,
+    prestige: 2,
+    bonus: COLORS.BLACK,
+    cost: {
+      white: 2,
+      black: 3,
+    }
+  }, {
+    level: 3,
+    prestige: 0,
+    bonus: COLORS.BLACK,
+    cost: {
+      white: 2,
+      black: 3,
+    }
+  }],
   board: {
-    nobles: [{
-      bonuses: {
-        [COLORS.RED]: 1,
-        [COLORS.GREEN]: 3
-      },
-      prestige: 1
-    }, {
-      bonuses: {
-        [COLORS.BLACK]: 2,
-        [COLORS.GREEN]: 2
-      },
-      prestige: 2
-    }],
-    tokens: [
-      {colour: COLORS.BLUE, amount: 4},
-      {colour: COLORS.GREEN, amount: 4},
-      {colour: COLORS.RED, amount: 4},
-      {colour: COLORS.WHITE, amount: 4},
-      {colour: COLORS.BLACK, amount: 4},
-      {colour: COLORS.GOLD, amount: 5},
-    ],
-    decks: [{level: 1, count: 14}, {level: 2, count: 15}, {level: 3, count: 18}],
-    cards: [{
-      level: 1,
-      prestige: 1,
-      bonus: COLORS.GREEN,
-      cost: {
-        red: 1,
-        blue: 2,
-        black: 3,
-      }
-    }, {
-      level: 1,
-      prestige: 0,
-      bonus: COLORS.RED,
-      cost: {
-        blue: 2,
-        black: 3,
-      }
-    }, {
-      level: 1,
-      prestige: 2,
-      bonus: COLORS.BLACK,
-      cost: {
-        white: 2,
-        red: 2,
-        green: 2,
-        blue: 3,
-      }
-    }, {
-      level: 1,
-      prestige: 0,
-      bonus: COLORS.BLACK,
-      cost: {
-        white: 2,
-        black: 3,
-      }
-    },{
-      level: 2,
-      prestige: 1,
-      bonus: COLORS.GREEN,
-      cost: {
-        red: 1,
-        blue: 2,
-        black: 3,
-      }
-    }, {
-      level: 2,
-      prestige: 0,
-      bonus: COLORS.RED,
-      cost: {
-        blue: 2,
-        black: 3,
-      }
-    }, {
-      level: 2,
-      prestige: 2,
-      bonus: COLORS.BLACK,
-      cost: {
-        white: 2,
-        black: 3,
-      }
-    }, {
-      level: 2,
-      prestige: 0,
-      bonus: COLORS.BLACK,
-      cost: {
-        white: 2,
-        black: 3,
-      }
-    }, {
-      level: 3,
-      prestige: 1,
-      bonus: COLORS.GREEN,
-      cost: {
-        red: 1,
-        blue: 2,
-        black: 3,
-      }
-    }, {
-      level: 3,
-      prestige: 0,
-      bonus: COLORS.RED,
-      cost: {
-        blue: 2,
-        black: 3,
-      }
-    }, {
-      level: 3,
-      prestige: 2,
-      bonus: COLORS.BLACK,
-      cost: {
-        white: 2,
-        black: 3,
-      }
-    }, {
-      level: 3,
-      prestige: 0,
-      bonus: COLORS.BLACK,
-      cost: {
-        white: 2,
-        black: 3,
-      }
-    }]
-  }
+
+  },
+  tokens: [
+    {colour: COLORS.BLUE, amount: 4},
+    {colour: COLORS.GREEN, amount: 4},
+    {colour: COLORS.RED, amount: 4},
+    {colour: COLORS.WHITE, amount: 4},
+    {colour: COLORS.BLACK, amount: 4},
+    {colour: COLORS.GOLD, amount: 5},
+  ],
+  nobles: [{
+    bonuses: {
+      [COLORS.RED]: 1,
+      [COLORS.GREEN]: 3
+    },
+    prestige: 1
+  }, {
+    bonuses: {
+      [COLORS.BLACK]: 2,
+      [COLORS.GREEN]: 2
+    },
+    prestige: 2
+  }],
 };
 
 export default GAME_STATE;

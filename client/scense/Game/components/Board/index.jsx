@@ -17,11 +17,10 @@ class Board extends Component {
   constructor(props) {
     super(props);
 
-
   }
 
   renderCards() {
-    const {board: {decks, cards}} = this.props;
+    const {cards, decks} = this.props;
 
     return (<div className={`${BLOCK}__cards`}>
       {decks.map(
@@ -40,7 +39,7 @@ class Board extends Component {
   }
 
   renderNobles() {
-    const {board: {nobles}} = this.props;
+    const {nobles} = this.props;
     return (
       <div className={`${BLOCK}__nobles`}>
         {nobles.map(
@@ -52,7 +51,7 @@ class Board extends Component {
   }
 
   renderTokens() {
-    const {board: {tokens}, turn: {selectedTokens}} = this.props;
+    const {tokens, turn: {selectedTokens}} = this.props;
     const pickSelectedHidden = !selectedTokens.length;
     const pickDoubleHidden = !selectedTokens.length || selectedTokens.length > 1;
 
@@ -86,6 +85,10 @@ Board.propTypes = {
   className: PropTypes.string,
   board: PropTypes.object,
   turn: PropTypes.object,
+  cards: PropTypes.array,
+  decks: PropTypes.array,
+  nobles: PropTypes.array,
+  tokens: PropTypes.array,
   onTokenSelected: PropTypes.func,
   onPickSelected: PropTypes.func,
   onPickDouble: PropTypes.func,

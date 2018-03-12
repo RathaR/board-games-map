@@ -4,21 +4,33 @@ import PropTypes from 'prop-types';
 import './styles.scss';
 import Game from './scense/Game';
 import {Provider} from 'react-redux';
-import toggleTokenSelection from './actions';
+import {toggleTokenSelection, switchPlayer, pickSelected} from './actions';
+import {turn, game, players, decks, cards, nobles, board, tokens, activePlayer} from './selectors/index';
 
 const mapStateToProps = state => {
   return {
-    turn: state.app.turn,
-    game: state.app.game,
-    players: state.app.players,
-    board: state.app.board,
+    activePlayer: state.activePlayer,
+    turn: turn(state),
+    game: game(state),
+    players: players(state),
+    decks: decks(state),
+    cards: cards(state),
+    board: board(state),
+    nobles: nobles(state),
+    tokens: tokens(state),
   }
 };
 
 const mapDispatchToProps = dispatch => {
   return {
+    switchPlayer: () => {
+      dispatch(switchPlayer());
+    },
     onTokenSelected: colour => {
       dispatch(toggleTokenSelection(colour))
+    },
+    onPickSelected: () => {
+      dispatch(pickSelected());
     }
   }
 };
