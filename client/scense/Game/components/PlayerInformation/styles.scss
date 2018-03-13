@@ -4,6 +4,8 @@
   padding: 10px;
   display: flex;
   flex-flow: column nowrap;
+  min-width: 500px;
+
   &--active-player {
     .player-information__title {
       color: white;
