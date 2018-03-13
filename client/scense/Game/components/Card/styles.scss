@@ -39,6 +39,7 @@
 
   &__bonus {
     border: 1px solid black;
+    border-radius: 4px;
     margin: 5px;
     width: 25px;
     height: 25px;
@@ -116,7 +117,7 @@
   &__action-button {
     margin-top: 5px;
     padding: 5px 20px;
-    border-radius: 10px;
+    border-radius: 4px;
     box-shadow: none;
     border: 1px solid;
   }
