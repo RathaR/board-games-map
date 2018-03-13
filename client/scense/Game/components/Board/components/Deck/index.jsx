@@ -11,7 +11,7 @@ class Deck extends Component {
 
   render() {
     const {deck: {level, cards}} = this.props;
-    const blockClasses = classNames(`${BLOCK}`, this.props.className);
+    const blockClasses = classNames(`${BLOCK}`, this.props.className, {[`${BLOCK}--empty`]: cards.length === 0});
 
     return (<div className={blockClasses}>
       <div className={`${BLOCK}__title`}>

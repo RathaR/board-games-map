@@ -12,6 +12,10 @@ $deck-height: 180px;
   text-align: center;
   background: #bfbfbf;
 
+  &--empty {
+    opacity: 0.2;
+  }
+
   &__title {
     margin-top: 5px;
   }
