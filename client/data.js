@@ -9,7 +9,7 @@ const GAME_STATE = {
     id: 'Player1',
     prestige: 4,
     nobles: [],
-    reserve: ['5', '9', '2'],
+    reserve: [],
 
     tokens: [
       {colour: COLORS.BLUE, amount: 0},
@@ -75,7 +75,6 @@ const GAME_STATE = {
     ],
     cards: ['9', '11'],
   }],
-  decks: [{level: 1, count: 14}, {level: 2, count: 15}, {level: 3, count: 18}],
   cards: [{
     id: '1',
     level: 1,
@@ -189,9 +188,105 @@ const GAME_STATE = {
       white: 2,
       black: 3,
     }
+  }, {
+    id: '13',
+    level: 1,
+    prestige: 3,
+    bonus: COLORS.WHITE,
+    cost: {
+      white: 6,
+      black: 3,
+      green: 4,
+    }
+  }, {
+    id: '14',
+    level: 1,
+    prestige: 0,
+    bonus: COLORS.WHITE,
+    cost: {
+      black: 3,
+      red: 1,
+    }
+  },  {
+    id: '15',
+    level: 1,
+    prestige: 0,
+    bonus: COLORS.RED,
+    cost: {
+      blue: 1,
+      red: 1,
+    }
+  }, {
+    id: '16',
+    level: 2,
+    prestige: 3,
+    bonus: COLORS.WHITE,
+    cost: {
+      white: 6,
+      black: 3,
+      green: 4,
+    }
+  }, {
+    id: '17',
+    level: 2,
+    prestige: 1,
+    bonus: COLORS.WHITE,
+    cost: {
+      blue: 3,
+      white: 3,
+      red: 1,
+    }
+  },  {
+    id: '18',
+    level: 2,
+    prestige: 1,
+    bonus: COLORS.BLUE,
+    cost: {
+      blue: 1,
+      red: 1,
+    }
+  },  {
+    id: '19',
+    level: 3,
+    prestige: 3,
+    bonus: COLORS.WHITE,
+    cost: {
+      white: 6,
+      black: 3,
+      green: 4,
+    }
+  }, {
+    id: '20',
+    level: 3,
+    prestige: 1,
+    bonus: COLORS.WHITE,
+    cost: {
+      blue: 3,
+      white: 3,
+      red: 1,
+    }
+  },  {
+    id: '21',
+    level: 3,
+    prestige: 1,
+    bonus: COLORS.BLUE,
+    cost: {
+      blue: 1,
+      red: 1,
+    }
   }],
   board: {
     cards: ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12'],
+    decks: [{
+      level: 1,
+      cards : ['13', '14', '15']
+    }, {
+      level: 2,
+      cards: ['16', '17', '18']
+    }, {
+      level: 3,
+      cards: ['19', '20', '21']
+    }],
   },
   tokens: [
     {colour: COLORS.BLUE, amount: 4},

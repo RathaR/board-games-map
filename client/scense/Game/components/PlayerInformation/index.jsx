@@ -36,7 +36,7 @@ class PlayerInformation extends Component {
           return acc + 1;
         }
         return acc;
-      }, 0)
+      }, 0);
       return res;
     };
 

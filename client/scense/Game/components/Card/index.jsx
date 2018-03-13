@@ -30,7 +30,7 @@ class Card extends Component {
 
   handleHoldClick() {
     const {card, onHoldClick} = this.props;
-    onHoldClick(card);
+    onHoldClick(card.id);
   }
 
   handleBuyClick() {

@@ -42,7 +42,7 @@ class Game extends Component {
   }
 
   render() {
-    const {board, players, turn, decks, activePlayer, nobles, tokens, onTokenSelected, onPickSelected, getCard}  = this.props;
+    const {board, players, turn, activePlayer, nobles, tokens, onTokenSelected, onPickSelected, getCard}  = this.props;
     return (<div className={BLOCK}>
       <div className={`${BLOCK}__players-information`}>
         {players.map((playerInformation, index) =>
@@ -51,11 +51,12 @@ class Game extends Component {
           </div>)}
       </div>
       <Board className={`${BLOCK}__board`}
-             board={board} turn={turn} decks={decks} nobles={nobles} tokens={tokens}
+             activePlayer={activePlayer}
+             board={board} turn={turn} nobles={nobles} tokens={tokens}
              onTokenSelected={onTokenSelected}
              onPickSelected={onPickSelected}
-             onCardHold={this.holdCard}
-             onCardBuy={this.buyCard}
+             onCardHold={this.props.onCardHold}
+             onCardBuy={this.props.onCardBuy}
              getCard={getCard}
       />
       <div>
@@ -68,6 +69,8 @@ class Game extends Component {
 
 Game.propTypes = {
   getCard: PropTypes.func,
+  onCardBuy: PropTypes.func,
+  onCardHold: PropTypes.func,
 };
 
 export default Game;

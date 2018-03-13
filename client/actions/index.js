@@ -10,11 +10,7 @@ export const CLEAR_SELECTION = 'CLEAR_SELECTION';
 export const TAKE_TOKEN = 'TAKE_TOKEN';
 export const GIVE_TOKEN = 'GIVE_TOKEN';
 
-import {turn, activePlayer} from '../selectors/index';
-
-export function holdCard(card) {
-  return {type: HOLD_CARD, card};
-}
+import {turn, activePlayer, card} from '../selectors/index';
 
 export function buyCard(card) {
   return {type: BUY_CARD, card};
@@ -34,6 +30,16 @@ export function takeToken(colour, playerId) {
 
 export function giveToken(colour, playerId) {
   return {type: GIVE_TOKEN, colour, playerId};
+}
+
+export function holdCard(cardId) {
+  return (dispatch, getState) => {
+    const playerId = activePlayer(getState());
+    const _card = card(getState(), cardId);
+
+    dispatch({type: HOLD_CARD, level: _card.level, cardId, playerId});
+    dispatch(switchPlayer());
+  }
 }
 
 export function pickSelected() {

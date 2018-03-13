@@ -15,7 +15,7 @@ const BLOCK = 'board';
 class Board extends Component {
 
   renderCards() {
-    const {decks, board: {cards}, getCard} = this.props;
+    const { board: {cards, decks}, getCard} = this.props;
 
     return (<div className={`${BLOCK}__cards`}>
       {decks.map(

@@ -10,14 +10,14 @@ class Deck extends Component {
   };
 
   render() {
-    const {deck: {count, level}} = this.props;
+    const {deck: {level, cards}} = this.props;
     const blockClasses = classNames(`${BLOCK}`, this.props.className);
 
     return (<div className={blockClasses}>
       <div className={`${BLOCK}__title`}>
         Deck
       </div>
-      <div className={`${BLOCK}__count`}>{count}</div>
+      <div className={`${BLOCK}__count`}>{cards.length}</div>
       <div className={`${BLOCK}__level`}>{level}</div>
     </div>);
   }
