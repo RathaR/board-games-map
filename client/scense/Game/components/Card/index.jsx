@@ -38,10 +38,15 @@ class Card extends Component {
     onBuyClick(card.id);
   }
 
+  isReserved() {
+    const {type} = this.props;
+    return type === 'Reserved';
+  }
+
   render() {
     const {card: {prestige, bonus, cost}, type} = this.props;
 
-    const blockClasses = classNames(`${BLOCK}`, {[`${BLOCK}--reserved`]: type === 'Reserved'});
+    const blockClasses = classNames(`${BLOCK}`, {[`${BLOCK}--reserved`]: this.isReserved()});
 
     return (<div className={blockClasses} tabIndex={1}>
       <div className={`${BLOCK}__top-container`}>
@@ -53,7 +58,7 @@ class Card extends Component {
       </div>
       <div className={`${BLOCK}__actions`}>
         <button className={`${BLOCK}__action-button`} onClick={this.handleBuyClick}>Buy</button>
-        <button className={`${BLOCK}__action-button`} onClick={this.handleHoldClick}>Hold</button>
+        {!this.isReserved() && <button className={`${BLOCK}__action-button`} onClick={this.handleHoldClick}>Hold</button>}
       </div>
     </div>);
   }
