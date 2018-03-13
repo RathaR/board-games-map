@@ -7,7 +7,6 @@ const GAME_STATE = {
   },
   players: [{
     id: 'Player1',
-    prestige: 4,
     nobles: [],
     reserve: [],
 
@@ -22,7 +21,6 @@ const GAME_STATE = {
     cards: [],
   }, {
     id: 'Player2',
-    prestige: 5,
     nobles: [{
       bonuses: {
         [COLORS.BLACK]: 2,
@@ -42,7 +40,6 @@ const GAME_STATE = {
     cards: [],
   }, {
     id: 'Player3',
-    prestige: 0,
     nobles: [],
     reserve: [],
     tokens: [
@@ -56,7 +53,6 @@ const GAME_STATE = {
     cards: [],
   }, {
     id: 'Player4',
-    prestige: 1,
     nobles: [{
       bonuses: {
         [COLORS.BLACK]: 2,
