@@ -35,7 +35,7 @@ class Card extends Component {
 
   handleBuyClick() {
     const {card, onBuyClick} = this.props;
-    onBuyClick(card);
+    onBuyClick(card.id);
   }
 
   render() {

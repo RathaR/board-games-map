@@ -12,8 +12,14 @@ export const GIVE_TOKEN = 'GIVE_TOKEN';
 
 import {turn, activePlayer, card} from '../selectors/index';
 
-export function buyCard(card) {
-  return {type: BUY_CARD, card};
+export function buyCard(cardId) {
+  return (dispatch, getState) => {
+    const playerId = activePlayer(getState());
+    const _card = card(getState(), cardId);
+
+    dispatch({type: BUY_CARD, level: _card.level,  cardId, playerId});
+    dispatch(switchPlayer());
+  }
 }
 
 export function toggleTokenSelection(colour) {

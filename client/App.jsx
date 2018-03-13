@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import './styles.scss';
 import Game from './scense/Game';
 import {Provider} from 'react-redux';
-import {toggleTokenSelection, switchPlayer, pickSelected, holdCard} from './actions';
+import {toggleTokenSelection, switchPlayer, pickSelected, holdCard, buyCard} from './actions';
 import {turn, game, players, nobles, board, tokens, activePlayer, card} from './selectors/index';
 
 const mapStateToProps = state => {
@@ -34,8 +34,8 @@ const mapDispatchToProps = dispatch => {
     onCardHold: (cardId) => {
       dispatch(holdCard(cardId));
     },
-    onCardBuy: (cardId, playerId) => {
-
+    onCardBuy: (cardId) => {
+      dispatch(buyCard(cardId));
     }
   }
 };

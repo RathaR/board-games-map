@@ -1,10 +1,12 @@
 import initialState from "../data";
-import {HOLD_CARD} from "../actions";
+import {BUY_CARD, HOLD_CARD} from "../actions";
 
 const board = function(state = initialState.board, action) {
 
   switch (action.type) {
-    case HOLD_CARD: {
+
+    case HOLD_CARD:
+    case BUY_CARD: {
       const deck = state.decks.filter(deck => deck.level === action.level)[0];
       const newCard = deck.cards[0];
 
