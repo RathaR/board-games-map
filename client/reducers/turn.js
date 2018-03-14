@@ -2,7 +2,7 @@ import {TOGGLE_TOKEN_SELECTION, CLEAR_SELECTION, PICK_SELECTED} from "../actions
 import initialState from "../data";
 
 const toggleSelection = function(selectedTokens, colour) {
-  if (selectedTokens.length === 3 && !selectedTokens.includes(action.colour)) {
+  if (selectedTokens.length === 3 && !selectedTokens.includes(colour)) {
     return state;
   }
 
