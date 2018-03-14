@@ -30,6 +30,10 @@ export function players(state) {
   return state.players;
 }
 
+export function player(state, playerId) {
+  return players(state).filter(player => player.id === playerId)[0];
+}
+
 export function board(state) {
   return state.board;
 }

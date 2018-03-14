@@ -10,14 +10,31 @@ export const CLEAR_SELECTION = 'CLEAR_SELECTION';
 export const TAKE_TOKEN = 'TAKE_TOKEN';
 export const GIVE_TOKEN = 'GIVE_TOKEN';
 
-import {turn, activePlayer, card} from '../selectors/index';
+import {turn, activePlayer, card, player} from '../selectors/index';
 
 export function buyCard(cardId) {
   return (dispatch, getState) => {
     const playerId = activePlayer(getState());
     const _card = card(getState(), cardId);
+    const _player = player(getState(), playerId);
+    const canBuy = function(cardCost, playerTokens) {
+      ///TODO: change to reducer
+      let result = true;
+      cardCost.forEach(item => {
 
-    dispatch({type: BUY_CARD, level: _card.level,  cardId, playerId});
+        const availableTokens = playerTokens.filter(token => token.colour === item.colour)[0].amount;
+        if(item.amount > availableTokens) {
+          result = false;
+        }
+      });
+
+      return result;
+    };
+    if(!canBuy(_card.cost, _player.tokens)) {
+      return;
+    }
+
+    dispatch({type: BUY_CARD, level: _card.level, card: _card,  cardId,  playerId});
     dispatch(switchPlayer());
   }
 }

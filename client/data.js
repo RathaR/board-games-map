@@ -76,200 +76,127 @@ const GAME_STATE = {
     level: 1,
     prestige: 1,
     bonus: COLORS.GREEN,
-    cost: {
-      red: 1,
-      blue: 2,
-      black: 3,
-    }
+    cost: [{colour: COLORS.RED, amount: 1}, {colour: COLORS.BLUE, amount: 2}],
   }, {
     id: '2',
     level: 1,
     prestige: 0,
     bonus: COLORS.RED,
-    cost: {
-      blue: 2,
-      black: 3,
-    }
+    cost: [{colour: COLORS.GREEN, amount: 1}, {colour: COLORS.BLACK, amount: 1}],
   }, {
     id: '3',
     level: 1,
     prestige: 2,
     bonus: COLORS.BLACK,
-    cost: {
-      white: 2,
-      red: 2,
-      green: 2,
-      blue: 3,
-    }
+    cost: [{colour: COLORS.RED, amount: 1}, {colour: COLORS.WHITE, amount: 2}],
   }, {
     id: '4',
     level: 1,
     prestige: 0,
     bonus: COLORS.BLUE,
-    cost: {
-      white: 2,
-      black: 3,
-    }
+    cost: [{colour: COLORS.BLACK, amount: 1}, {colour: COLORS.WHITE, amount: 1}, {colour: COLORS.BLUE, amount: 1}],
   },{
     id: '5',
     level: 2,
     prestige: 1,
     bonus: COLORS.GREEN,
-    cost: {
-      red: 1,
-      blue: 2,
-      black: 3,
-    }
+    cost: [{colour: COLORS.GREEN, amount: 2}],
   }, {
     id: '6',
     level: 2,
     prestige: 0,
     bonus: COLORS.RED,
-    cost: {
-      blue: 2,
-      black: 3,
-    }
+    cost: [{colour: COLORS.GREEN, amount: 1}, {colour: COLORS.WHITE, amount: 1}, {colour: COLORS.BLUE, amount: 1}],
   }, {
     id: '7',
     level: 2,
     prestige: 2,
     bonus: COLORS.BLACK,
-    cost: {
-      white: 2,
-      black: 3,
-    }
+    cost: [{colour: COLORS.GREEN, amount: 2}],
   }, {
     id: '8',
     level: 2,
     prestige: 0,
     bonus: COLORS.WHITE,
-    cost: {
-      white: 2,
-      black: 3,
-    }
+    cost: [{colour: COLORS.RED, amount: 1}],
   }, {
     id: '9',
     level: 3,
     prestige: 1,
     bonus: COLORS.GREEN,
-    cost: {
-      red: 1,
-      blue: 2,
-      black: 3,
-    }
+    cost: [{colour: COLORS.BLUE, amount: 1}],
   }, {
     id: '10',
     level: 3,
     prestige: 0,
     bonus: COLORS.BLUE,
-    cost: {
-      blue: 2,
-      black: 3,
-    }
+    cost: [{colour: COLORS.BLACK, amount: 1}],
   }, {
     id: '11',
     level: 3,
     prestige: 2,
     bonus: COLORS.BLACK,
-    cost: {
-      white: 2,
-      black: 3,
-    }
+    cost: [],
   }, {
     id: '12',
     level: 3,
     prestige: 0,
     bonus: COLORS.BLACK,
-    cost: {
-      white: 2,
-      black: 3,
-    }
+    cost: [],
   }, {
     id: '13',
     level: 1,
     prestige: 3,
     bonus: COLORS.WHITE,
-    cost: {
-      white: 6,
-      black: 3,
-      green: 4,
-    }
+    cost: [],
   }, {
     id: '14',
     level: 1,
     prestige: 0,
     bonus: COLORS.WHITE,
-    cost: {
-      black: 3,
-      red: 1,
-    }
+    cost: [],
   },  {
     id: '15',
     level: 1,
     prestige: 0,
     bonus: COLORS.RED,
-    cost: {
-      blue: 1,
-      red: 1,
-    }
+    cost: [],
   }, {
     id: '16',
     level: 2,
     prestige: 3,
     bonus: COLORS.WHITE,
-    cost: {
-      white: 6,
-      black: 3,
-      green: 4,
-    }
+    cost: [],
   }, {
     id: '17',
     level: 2,
     prestige: 1,
     bonus: COLORS.WHITE,
-    cost: {
-      blue: 3,
-      white: 3,
-      red: 1,
-    }
+    cost: [],
   },  {
     id: '18',
     level: 2,
     prestige: 1,
     bonus: COLORS.BLUE,
-    cost: {
-      blue: 1,
-      red: 1,
-    }
+    cost: [],
   },  {
     id: '19',
     level: 3,
     prestige: 3,
     bonus: COLORS.WHITE,
-    cost: {
-      white: 6,
-      black: 3,
-      green: 4,
-    }
+    cost: [],
   }, {
     id: '20',
     level: 3,
     prestige: 1,
     bonus: COLORS.WHITE,
-    cost: {
-      blue: 3,
-      white: 3,
-      red: 1,
-    }
+    cost: [],
   },  {
     id: '21',
     level: 3,
     prestige: 1,
     bonus: COLORS.BLUE,
-    cost: {
-      blue: 1,
-      red: 1,
-    }
+    cost: [],
   }],
   board: {
     cards: ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12'],
@@ -285,14 +212,26 @@ const GAME_STATE = {
     }],
   },
   tokens: [
-    {colour: COLORS.BLUE, amount: 4},
-    {colour: COLORS.GREEN, amount: 4},
-    {colour: COLORS.RED, amount: 4},
-    {colour: COLORS.WHITE, amount: 4},
-    {colour: COLORS.BLACK, amount: 4},
-    {colour: COLORS.GOLD, amount: 5},
+    {colour: COLORS.BLUE, amount: 8},
+    {colour: COLORS.GREEN, amount: 8},
+    {colour: COLORS.RED, amount: 8},
+    {colour: COLORS.WHITE, amount: 8},
+    {colour: COLORS.BLACK, amount: 8},
+    {colour: COLORS.GOLD, amount: 7},
   ],
   nobles: [{
+    bonuses: {
+      [COLORS.RED]: 1,
+      [COLORS.GREEN]: 3
+    },
+    prestige: 1
+  }, {
+    bonuses: {
+      [COLORS.BLACK]: 2,
+      [COLORS.GREEN]: 2
+    },
+    prestige: 2
+  },{
     bonuses: {
       [COLORS.RED]: 1,
       [COLORS.GREEN]: 3

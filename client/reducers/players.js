@@ -6,13 +6,29 @@ const players = function (state = initialState.players, action) {
 
   switch (action.type) {
     case BUY_CARD: {
-
+      const card = action.card;
+      const cost = card.cost;
+      const player = state.filter(item => item.id === action.playerId)[0];
+      if(!canBuy(cost, player.tokens)) {
+        return state;
+      }
+      const costColors = cost.map(item => item.colour);
       return state.map(player => {
         if(player.id === action.playerId) {
+
           return {
             ...player,
             cards: player.cards.concat([action.cardId]),
-          }
+            tokens: player.tokens.map(item => {
+              if(costColors.includes(item.colour)) {
+                return {
+                  ...item,
+                  amount: item.amount - 1,
+                };
+              }
+              return item;
+            })
+          };
         }
         return player;
       })

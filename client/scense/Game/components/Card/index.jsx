@@ -54,7 +54,7 @@ class Card extends Component {
         <div className={this.getBonusClasses(bonus)}/>
       </div>
       <div className={`${BLOCK}__cost`}>
-        {Object.keys(cost).map((color, index) => <div className={this.getCostTokenClasses(color, type)}  key={index}>{index}</div> )}
+        {cost.map((cost, index) => <div className={this.getCostTokenClasses(cost.colour, type)}  key={index}>{cost.amount}</div> )}
       </div>
       <div className={`${BLOCK}__actions`}>
         <button className={`${BLOCK}__action-button`} onClick={this.handleBuyClick}>Buy</button>
