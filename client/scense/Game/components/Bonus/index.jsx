@@ -5,28 +5,27 @@ import './styles.scss'
 import {COLORS} from "../../../../constants/common";
 
 const BLOCK = 'bonus';
-class Bonus extends Component {
-  state = {
-  };
 
-  render() {
-    const {amount, color} = this.props;
-    const blockClasses = classNames(this.props.className, `${BLOCK}`, {
-      [`${BLOCK}--red`]: color === COLORS.RED,
-      [`${BLOCK}--black`]: color === COLORS.BLACK,
-      [`${BLOCK}--green`]: color === COLORS.GREEN,
-      [`${BLOCK}--gold`]: color === COLORS.GOLD,
-      [`${BLOCK}--blue`]: color === COLORS.BLUE,
-      [`${BLOCK}--white`]: color === COLORS.WHITE,
-    });
+const getBlockClasses = function(colour, className) {
+  return classNames(className, `${BLOCK}`, {
+    [`${BLOCK}--red`]: colour === COLORS.RED,
+    [`${BLOCK}--black`]: colour === COLORS.BLACK,
+    [`${BLOCK}--green`]: colour === COLORS.GREEN,
+    [`${BLOCK}--gold`]: colour === COLORS.GOLD,
+    [`${BLOCK}--blue`]: colour === COLORS.BLUE,
+    [`${BLOCK}--white`]: colour === COLORS.WHITE,
+  });
+};
+
+const Bonus = function({amount, color, className}) {
+    const blockClasses = getBlockClasses(color, className);
 
     return (<div className={blockClasses}>
       <div className={`${BLOCK}__amount`}>
         {amount}
       </div>
     </div>);
-  }
-}
+};
 
 Bonus.propTypes = {
   color: PropTypes.string,

@@ -1,0 +1,12 @@
+.cards {
+  &__deck-container {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-between;
+    padding: 10px;
+  }
+
+  &__card-container {
+    margin: 10px;
+  }
+}

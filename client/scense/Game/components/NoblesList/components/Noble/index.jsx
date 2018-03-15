@@ -2,13 +2,10 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import './styles.scss'
 import classNames from 'classnames';
-import Bonus from "../Bonus";
+import Bonus from "../../../Bonus";
 
 const BLOCK = 'noble';
-class Noble extends Component {
-
-  render() {
-    const {type, noble} = this.props;
+const Noble = function({type, noble}) {
     const {bonuses, prestige} = noble;
     const blockClasses = classNames(`${BLOCK}`);
     return (<div className={blockClasses}>
@@ -17,8 +14,7 @@ class Noble extends Component {
       </div>
       {Object.keys(bonuses).map((color, index) => <Bonus amount={bonuses[color]} color={color} key={index} />)}
     </div>);
-  }
-}
+};
 
 Noble.propTypes = {
   className: PropTypes.string,

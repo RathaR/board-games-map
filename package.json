@@ -91,6 +91,7 @@
     "redux-logger": "^3.0.6",
     "redux-observable": "^0.18.0",
     "redux-thunk": "^2.2.0",
+    "reselect": "^3.0.1",
     "rimraf": "^2.6.2",
     "rxjs": "^5.5.6",
     "serve-favicon": "^2.4.5"

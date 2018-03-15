@@ -25,7 +25,6 @@ class PlayerInformation extends Component {
       </div>)
   }
 
-
   renderBonuses() {
     const {playerInformation: {cards}, getCard} = this.props;
 
