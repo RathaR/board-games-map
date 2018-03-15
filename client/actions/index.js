@@ -19,7 +19,7 @@ const getCardOwner = function (getState, cardId) {
     if(player.reserve.includes(cardId)) {
       playerId = player.id;
     }
-  })
+  });
   return playerId;
 };
 
@@ -56,7 +56,14 @@ export function buyCard(cardId) {
       return;
     }
 
-    dispatch({type: BUY_CARD, level: _card.level, card: _card,  cardId,  playerId});
+    dispatch({
+      type: BUY_CARD,
+      level: _card.level,
+      card: _card,
+      reserved: cardOwner === playerId,
+      cardId,
+      playerId,
+    });
     dispatch(switchPlayer());
   }
 }
