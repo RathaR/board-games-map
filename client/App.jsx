@@ -5,14 +5,15 @@ import './styles.scss';
 import Game from './scense/Game';
 import {Provider} from 'react-redux';
 import {toggleTokenSelection, switchPlayer, pickSelected, holdCard, buyCard} from './actions';
-import {turn, game, players, nobles, board, tokens, activePlayer, card} from './selectors/index';
+import {turn, game, nobles, board, tokens, card} from './selectors/index';
+import {activePlayerSelector, playersSelector} from './selectors/player';
 
 const mapStateToProps = state => {
   return {
-    activePlayer: activePlayer(state),
+    activePlayer: activePlayerSelector(state),
     turn: turn(state),
     game: game(state),
-    players: players(state),
+    players: playersSelector(state),
     board: board(state),
     nobles: nobles(state),
     tokens: tokens(state),
