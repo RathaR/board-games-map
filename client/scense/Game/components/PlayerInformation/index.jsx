@@ -58,14 +58,14 @@ class PlayerInformation extends Component {
   }
 
   renderReservedCards() {
-    const {playerInformation: {reserve}, getCard} = this.props;
+    const {playerInformation: {reserve}, getCard, onCardBuy} = this.props;
 
     return (
       <div className={`${BLOCK}__reserved-cards`}>
         {reserve.map(
           (cardId) =>
             <div key={cardId} className={`${BLOCK}__reserved-card-container`}>
-              <Card type='Reserved' className='card--reserved' card={getCard(cardId)}/>
+              <Card type='Reserved' className='card--reserved' card={getCard(cardId)} onBuyClick={onCardBuy}/>
             </div>)}
       </div>)
   }
@@ -103,6 +103,7 @@ class PlayerInformation extends Component {
 PlayerInformation.propTypes = {
   playerInformation: PropTypes.object,
   isActive: PropTypes.bool,
+  onCardBuy: PropTypes.func,
 };
 
 export default PlayerInformation;

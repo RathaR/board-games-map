@@ -16,6 +16,7 @@ const players = function (state = initialState.players, action) {
           return {
             ...player,
             cards: player.cards.concat([action.cardId]),
+            reserve: [...player.reserve].filter(cardId => cardId !== action.cardId),
             tokens: player.tokens.map(item => {
               if(costColors.includes(item.colour)) {
                 return {

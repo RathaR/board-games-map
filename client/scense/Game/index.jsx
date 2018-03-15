@@ -16,7 +16,7 @@ class Game extends Component {
       <div className={`${BLOCK}__players-information`}>
         {players.map((playerInformation, index) =>
           <div key={index} className={`${BLOCK}__player-information-container`}>
-            <PlayerInformation getCard={getCard} playerInformation={playerInformation} isActive = {activePlayer === playerInformation.id} />
+            <PlayerInformation getCard={getCard} playerInformation={playerInformation} isActive = {activePlayer === playerInformation.id} onCardBuy={this.props.onCardBuy} />
           </div>)}
       </div>
       <Board className={`${BLOCK}__board`}

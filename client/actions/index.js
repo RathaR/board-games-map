@@ -10,30 +10,49 @@ export const CLEAR_SELECTION = 'CLEAR_SELECTION';
 export const TAKE_TOKEN = 'TAKE_TOKEN';
 export const GIVE_TOKEN = 'GIVE_TOKEN';
 
-import {turn, activePlayer, card, player, playerBonuses} from '../selectors/index';
+import {turn, activePlayer, card, player, playerBonuses, players} from '../selectors/index';
+
+const getCardOwner = function (getState, cardId) {
+  const _players = players(getState());
+  let playerId;
+  _players.forEach(player => {
+    if(player.reserve.includes(cardId)) {
+      playerId = player.id;
+    }
+  })
+  return playerId;
+};
+
+const canBuyCard = function(cardCost, playerTokens, bonuses) {
+  ///TODO: change to reducer
+  let result = true;
+
+  cardCost.forEach(item => {
+
+    const availableTokens = playerTokens.filter(token => token.colour === item.colour)[0].amount;
+    const availableBonuses = bonuses.filter(bonus => bonus.bonus === item.colour)[0].amount;
+
+    if(item.amount > availableTokens + availableBonuses) {
+      result = false;
+    }
+  });
+
+  return result;
+};
 
 export function buyCard(cardId) {
   return (dispatch, getState) => {
     const playerId = activePlayer(getState());
     const _card = card(getState(), cardId);
     const _player = player(getState(), playerId);
-    const canBuy = function(cardCost, playerTokens, bonuses) {
-      ///TODO: change to reducer
-      let result = true;
-      cardCost.forEach(item => {
-
-        const availableTokens = playerTokens.filter(token => token.colour === item.colour)[0].amount;
-        const availableBonuses = bonuses.filter(bonus => bonus.bonus === item.colour)[0].amount;
-
-        if(item.amount > availableTokens + availableBonuses) {
-          result = false;
-        }
-      });
-
-      return result;
-    };
     const _bonuses = playerBonuses(getState(), playerId);
-    if(!canBuy(_card.cost, _player.tokens, _bonuses)) {
+
+    const cardOwner = getCardOwner(getState, cardId);
+    if(cardOwner && cardOwner !== playerId) {
+      return;
+    }
+
+    if(!canBuyCard(_card.cost, _player.tokens, _bonuses)) {
       return;
     }
 
