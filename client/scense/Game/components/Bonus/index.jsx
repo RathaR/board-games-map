@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import './styles.scss'
-import {COLORS} from "../../../../../../constants/common";
+import {COLORS} from "../../../../constants/common";
 
 const BLOCK = 'bonus';
 class Bonus extends Component {

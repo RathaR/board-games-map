@@ -1,13 +1,9 @@
-$bonus-width: 35px;
-$bonus-height: 35px;
-
 .bonus {
-  width: $bonus-width;
-  height: $bonus-height;
+  width: var(--bonus-size);
+  height: var(--bonus-size);
   border: 5px solid black;
   border-radius: 5px;
   text-align: center;
-  margin: 10px;
   font-size: 0.8em;
   display: flex;
   background: white;

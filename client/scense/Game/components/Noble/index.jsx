@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import './styles.scss'
 import classNames from 'classnames';
+import Bonus from "../Bonus";
 
 const BLOCK = 'noble';
 class Noble extends Component {
@@ -9,18 +10,12 @@ class Noble extends Component {
   render() {
     const {type, noble} = this.props;
     const {bonuses, prestige} = noble;
-    const blockClasses = classNames(`${BLOCK}`, {[`${BLOCK}--reserved`]: type === 'Reserved'});
-    const statsClasses = classNames(`${BLOCK}__stats`, {[`${BLOCK}__stats--reserved`]: type === 'Reserved'});
+    const blockClasses = classNames(`${BLOCK}`);
     return (<div className={blockClasses}>
-      <div className={`${BLOCK}__title`}>
-        Noble
-      </div>
       <div className={`${BLOCK}__prestige`}>
-        {prestige}
+        <span>{prestige}</span>
       </div>
-      <div className={statsClasses}>
-        {Object.keys(bonuses).map((color, index) => <div key={index} className={`${BLOCK}__bonus`}>{bonuses[color]}</div>)}
-      </div>
+      {Object.keys(bonuses).map((color, index) => <Bonus amount={bonuses[color]} color={color} key={index} />)}
     </div>);
   }
 }

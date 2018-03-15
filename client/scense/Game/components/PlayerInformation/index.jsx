@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import './styles.scss';
 import classNames from 'classnames';
 import TokensStack from '../TokensStack';
-import Bonus from './components/Bonus';
+import Bonus from '../Bonus';
 import Card from '../Card';
 import {COLORS} from '../../../../constants/common';
 
@@ -40,14 +40,22 @@ class PlayerInformation extends Component {
       return res;
     };
 
-    return (
-      <div className={`${BLOCK}__bonuses`}>
-        {[COLORS.BLUE, COLORS.BLACK, COLORS.GREEN,  COLORS.RED, COLORS.WHITE ].map(
-          (colour, index) =>
-            <div key={index} className={`${BLOCK}__bonus-container`}>
-              {!!getAmount(colour) && <Bonus amount={getAmount(colour)} color={colour} />}
-            </div>)}
-      </div>)
+    const bonusColors = [
+      COLORS.BLUE,
+      COLORS.BLACK,
+      COLORS.GREEN,
+      COLORS.RED,
+      COLORS.WHITE];
+    const bonuses = bonusColors
+      .filter(color => getAmount(color) > 0)
+      .map((colour, index) => (
+        <div key={index} className={`${BLOCK}__bonus-container`}>
+          <Bonus amount={getAmount(colour)} color={colour} />
+        </div>));
+
+    return (<div className={`${BLOCK}__bonuses`}>
+      {bonuses}
+    </div>)
   }
 
   renderReservedCards() {

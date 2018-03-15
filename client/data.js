@@ -9,7 +9,6 @@ const GAME_STATE = {
     id: 'Player1',
     nobles: [],
     reserve: [],
-
     tokens: [
       {colour: COLORS.BLUE, amount: 0},
       {colour: COLORS.GREEN, amount: 0},
@@ -21,13 +20,7 @@ const GAME_STATE = {
     cards: [],
   }, {
     id: 'Player2',
-    nobles: [{
-      bonuses: {
-        [COLORS.BLACK]: 2,
-        [COLORS.GREEN]: 2
-      },
-      prestige: 2
-    }],
+    nobles: [],
     reserve: [],
     tokens: [
       {colour: COLORS.BLUE, amount: 0},
@@ -53,13 +46,7 @@ const GAME_STATE = {
     cards: [],
   }, {
     id: 'Player4',
-    nobles: [{
-      bonuses: {
-        [COLORS.BLACK]: 2,
-        [COLORS.GREEN]: 2
-      },
-      prestige: 2
-    }],
+    nobles: [],
     reserve: [],
     tokens: [
       {colour: COLORS.BLUE, amount: 0},
@@ -222,27 +209,35 @@ const GAME_STATE = {
   nobles: [{
     bonuses: {
       [COLORS.RED]: 1,
-      [COLORS.GREEN]: 3
+      [COLORS.GREEN]: 3,
     },
-    prestige: 1
+    prestige: 0
+  }, {
+    bonuses: {
+      [COLORS.BLUE]: 1,
+      [COLORS.WHITE]: 3,
+      [COLORS.BLACK]: 3,
+    },
+    prestige: 0
   }, {
     bonuses: {
       [COLORS.BLACK]: 2,
-      [COLORS.GREEN]: 2
+      [COLORS.GREEN]: 2,
+      [COLORS.WHITE]: 2
     },
-    prestige: 2
+    prestige: 0
   },{
     bonuses: {
       [COLORS.RED]: 1,
       [COLORS.GREEN]: 3
     },
-    prestige: 1
+    prestige: 0
   }, {
     bonuses: {
       [COLORS.BLACK]: 2,
       [COLORS.GREEN]: 2
     },
-    prestige: 2
+    prestige: 0
   }],
 };
 
