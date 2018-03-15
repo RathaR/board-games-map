@@ -23,6 +23,9 @@
     .card__actions {
       visibility: visible;
     }
+    .card__cost {
+      visibility: hidden;
+    }
   }
 
   &__top-container {
