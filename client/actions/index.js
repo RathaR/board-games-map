@@ -10,27 +10,30 @@ export const CLEAR_SELECTION = 'CLEAR_SELECTION';
 export const TAKE_TOKEN = 'TAKE_TOKEN';
 export const GIVE_TOKEN = 'GIVE_TOKEN';
 
-import {turn, activePlayer, card, player} from '../selectors/index';
+import {turn, activePlayer, card, player, playerBonuses} from '../selectors/index';
 
 export function buyCard(cardId) {
   return (dispatch, getState) => {
     const playerId = activePlayer(getState());
     const _card = card(getState(), cardId);
     const _player = player(getState(), playerId);
-    const canBuy = function(cardCost, playerTokens) {
+    const canBuy = function(cardCost, playerTokens, bonuses) {
       ///TODO: change to reducer
       let result = true;
       cardCost.forEach(item => {
 
         const availableTokens = playerTokens.filter(token => token.colour === item.colour)[0].amount;
-        if(item.amount > availableTokens) {
+        const availableBonuses = bonuses.filter(bonus => bonus.bonus === item.colour)[0].amount;
+
+        if(item.amount > availableTokens + availableBonuses) {
           result = false;
         }
       });
 
       return result;
     };
-    if(!canBuy(_card.cost, _player.tokens)) {
+    const _bonuses = playerBonuses(getState(), playerId);
+    if(!canBuy(_card.cost, _player.tokens, _bonuses)) {
       return;
     }
 

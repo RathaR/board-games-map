@@ -8,10 +8,7 @@ const players = function (state = initialState.players, action) {
     case BUY_CARD: {
       const card = action.card;
       const cost = card.cost;
-      const player = state.filter(item => item.id === action.playerId)[0];
-      if(!canBuy(cost, player.tokens)) {
-        return state;
-      }
+
       const costColors = cost.map(item => item.colour);
       return state.map(player => {
         if(player.id === action.playerId) {

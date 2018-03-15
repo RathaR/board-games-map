@@ -10,38 +10,7 @@ const BLOCK = 'game';
 
 class Game extends Component {
 
-  holdCard(card) {
-    // const {game: {activePlayer}} = this.props;
-    // const newPlayersInformation = this.props.players.map(playerInfo => {
-    //   if(playerInfo.id === activePlayer) {
-    //     return {
-    //       ...playerInfo,
-    //       reserve: playerInfo.reserve.concat([card]),
-    //       tokens: playerInfo.tokens.map(token => {
-    //         if(token.colour === COLORS.GOLD) {
-    //           return {amount: token.amount + 1, colour: COLORS.GOLD}
-    //         }
-    //         return token;
-    //       })
-    //     }
-    //   }
-    //   return playerInfo;
-    // });
-    //
-    // this.setState({
-    //   game: {
-    //     ...this.props.game,
-    //     activePlayer: this.getNextPlayer(activePlayer),
-    //   },
-    //   players: [...newPlayersInformation]
-    // })
-  }
-
-  buyCard(card) {
-
-  }
-
-  render() {
+   render() {
     const {board, players, turn, activePlayer, nobles, tokens, onTokenSelected, onPickSelected, getCard}  = this.props;
     return (<div className={BLOCK}>
       <div className={`${BLOCK}__players-information`}>
