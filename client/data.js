@@ -7,6 +7,7 @@ const GAME_STATE = {
   },
   players: [{
     id: 'Player1',
+    order: 1,
     nobles: [],
     reserve: [],
     tokens: [
@@ -20,6 +21,7 @@ const GAME_STATE = {
     cards: [],
   }, {
     id: 'Player2',
+    order: 2,
     nobles: [],
     reserve: [],
     tokens: [
@@ -33,6 +35,7 @@ const GAME_STATE = {
     cards: [],
   }, {
     id: 'Player3',
+    order: 3,
     nobles: [],
     reserve: [],
     tokens: [
@@ -46,6 +49,7 @@ const GAME_STATE = {
     cards: [],
   }, {
     id: 'Player4',
+    order: 4,
     nobles: [],
     reserve: [],
     tokens: [

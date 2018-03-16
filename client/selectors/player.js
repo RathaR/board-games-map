@@ -5,16 +5,33 @@ export const playersSelector = state => state.players;
 
 export const playersCountSelector = state => state.players.length;
 
-export const activePlayerSelector = state => state.activePlayer;
+export const activePlayerIdSelector = state => state.activePlayer;
+
 
 export const playerSelector = createSelector(
   playersSelector,
   players => playerId => players.find(player => player.id === playerId)
 );
 
+export const activePlayerSelector = createSelector(
+  activePlayerIdSelector,
+  playerSelector,
+  (activePlayerId, getPlayer) => getPlayer(activePlayerId),
+);
+
+export const activePlayerCardsSelector = createSelector(
+  activePlayerSelector,
+  getActivePlayer => getActivePlayer().cards,
+);
+
+export const playerByOrderSelector = createSelector(
+  playersSelector,
+  players => order => players.find(player => player.order === order),
+);
+
 export const playerCardsSelector = createSelector(
   playerSelector,
-  playerSelector => playerId => playerSelector(playerId).cards
+  playerSelector => playerId => playerSelector(playerId).cards,
 );
 
 export const playerBonusesSelector = createSelector(

@@ -6,12 +6,12 @@ import Game from './scense/Game';
 import {Provider} from 'react-redux';
 import {toggleTokenSelection, switchPlayer, pickSelected, holdCard, buyCard} from './actions';
 import {turn, game, nobles, board, tokens} from './selectors/index';
-import {activePlayerSelector, playersSelector} from './selectors/player';
+import {activePlayerIdSelector, playersSelector} from './selectors/player';
 import {cardSelector} from './selectors/cards';
 
 const mapStateToProps = state => {
   return {
-    activePlayer: activePlayerSelector(state),
+    activePlayer: activePlayerIdSelector(state),
     turn: turn(state),
     game: game(state),
     players: playersSelector(state),

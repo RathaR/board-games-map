@@ -14,7 +14,10 @@ export const GIVE_TOKEN = 'GIVE_TOKEN';
 
 import {turn} from '../selectors/index';
 
-import {playerSelector, activePlayerSelector, playersSelector, playerBonusesSelector} from '../selectors/player';
+import {
+  playerSelector, activePlayerIdSelector, activePlayerSelector, playersSelector, playerBonusesSelector,
+  playersCountSelector, playerByOrderSelector
+} from '../selectors/player';
 
 const getCardOwner = function (getState, cardId) {
   const _players = playersSelector(getState());
@@ -47,7 +50,7 @@ const canBuyCard = function(cardCost, playerTokens, bonuses) {
 
 export function buyCard(cardId) {
   return (dispatch, getState) => {
-    const playerId = activePlayerSelector(getState());
+    const playerId = activePlayerIdSelector(getState());
     const _card = cardSelector(getState())(cardId);
     const _player = playerSelector(getState())(playerId);
     const _bonuses = playerBonusesSelector(getState())(playerId);
@@ -91,7 +94,7 @@ export function giveToken(colour, playerId) {
 
 export function holdCard(cardId) {
   return (dispatch, getState) => {
-    const playerId = activePlayerSelector(getState());
+    const playerId = activePlayerIdSelector(getState());
     const _card = cardSelector(getState())(cardId);
 
     dispatch({type: HOLD_CARD, level: _card.level, cardId, playerId});
@@ -103,7 +106,7 @@ export function pickSelected() {
 
   return (dispatch, getState) => {
     const {selectedTokens} = turn(getState());
-    const activePlayerId = activePlayerSelector(getState());
+    const activePlayerId = activePlayerIdSelector(getState());
 
     selectedTokens.forEach(colour => dispatch(giveToken(colour, activePlayerId)));
     dispatch(clearSelection());
@@ -112,5 +115,13 @@ export function pickSelected() {
 }
 
 export function switchPlayer() {
-  return {type: SWITCH_PLAYER};
+  return (dispatch, getState) => {
+    debugger;
+    const activePlayer = activePlayerSelector(getState());
+    const playersCount = playersCountSelector(getState());
+
+    const nextPlayerOrder = activePlayer.order >= playersCount ? 1 : activePlayer.order + 1;
+    const nextPlayer = playerByOrderSelector(getState())(nextPlayerOrder);
+    dispatch({type: SWITCH_PLAYER, nextPlayerId: nextPlayer.id});
+  }
 }
