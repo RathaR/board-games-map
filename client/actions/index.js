@@ -1,6 +1,8 @@
 /*
  * action types
  */
+import {cardSelector} from "../selectors/cards";
+
 export const HOLD_CARD = 'HOLD_CARD';
 export const BUY_CARD = 'BUY_CARD';
 export const TOGGLE_TOKEN_SELECTION = 'TOGGLE_TOKEN_SELECTION';
@@ -10,7 +12,7 @@ export const CLEAR_SELECTION = 'CLEAR_SELECTION';
 export const TAKE_TOKEN = 'TAKE_TOKEN';
 export const GIVE_TOKEN = 'GIVE_TOKEN';
 
-import {turn, card} from '../selectors/index';
+import {turn} from '../selectors/index';
 
 import {playerSelector, activePlayerSelector, playersSelector, playerBonusesSelector} from '../selectors/player';
 
@@ -46,7 +48,7 @@ const canBuyCard = function(cardCost, playerTokens, bonuses) {
 export function buyCard(cardId) {
   return (dispatch, getState) => {
     const playerId = activePlayerSelector(getState());
-    const _card = card(getState(), cardId);
+    const _card = cardSelector(getState())(cardId);
     const _player = playerSelector(getState())(playerId);
     const _bonuses = playerBonusesSelector(getState())(playerId);
 
@@ -90,7 +92,7 @@ export function giveToken(colour, playerId) {
 export function holdCard(cardId) {
   return (dispatch, getState) => {
     const playerId = activePlayerSelector(getState());
-    const _card = card(getState(), cardId);
+    const _card = cardSelector(getState())(cardId);
 
     dispatch({type: HOLD_CARD, level: _card.level, cardId, playerId});
     dispatch(switchPlayer());
