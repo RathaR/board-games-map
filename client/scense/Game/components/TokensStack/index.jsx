@@ -15,23 +15,23 @@ class TokensStack extends Component {
   }
   handleSelection() {
 
-    const {isSelectable, colour} = this.props;
+    const {isSelectable, color} = this.props;
     if(!isSelectable) {
       return;
     }
 
-    this.props.onSelected(colour);
+    this.props.onSelected(color);
   }
 
   render() {
-    const {amount, colour, minimized, isSelected} = this.props;
+    const {amount, color, minimized, isSelected} = this.props;
     const blockClasses = classNames(BLOCK, {
       [`${BLOCK}--minimized`]: minimized,
       [`${BLOCK}--selected`]: isSelected});
     const tokens = [];
 
     for(let i = 0; i < amount; i++) {
-      tokens.push(<Token key={i} color={colour} amount={amount} minimized={minimized} onSelected={this.handleSelection} isSelected={isSelected && (i === amount -1) } />)
+      tokens.push(<Token key={i} color={color} amount={amount} minimized={minimized} onSelected={this.handleSelection} isSelected={isSelected && (i === amount -1) } />)
     }
     return(<div className={blockClasses}>
       <ReactCSSTransitionGroup
@@ -46,7 +46,7 @@ class TokensStack extends Component {
 
 TokensStack.propTypes = {
   className: PropTypes.string,
-  colour: PropTypes.string,
+  color: PropTypes.string,
   amount: PropTypes.number,
   isSelected: PropTypes.bool,
   isSelectable: PropTypes.bool,

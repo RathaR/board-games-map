@@ -9,7 +9,7 @@ const players = function (state = initialState.players, action) {
       const card = action.card;
       const cost = card.cost;
 
-      const costColors = cost.map(item => item.colour);
+      const costColors = cost.map(item => item.color);
       return state.map(player => {
         if(player.id === action.playerId) {
 
@@ -18,7 +18,7 @@ const players = function (state = initialState.players, action) {
             cards: player.cards.concat([action.cardId]),
             reserve: [...player.reserve].filter(cardId => cardId !== action.cardId),
             tokens: player.tokens.map(item => {
-              if(costColors.includes(item.colour)) {
+              if(costColors.includes(item.color)) {
                 return {
                   ...item,
                   amount: item.amount - 1,
@@ -38,7 +38,7 @@ const players = function (state = initialState.players, action) {
           return {
             ...player,
             tokens: player.tokens.map(token => {
-              if(token.colour === action.colour) {
+              if(token.color === action.color) {
                 return {
                   ...token,
                   amount: token.amount + 1,
@@ -59,7 +59,7 @@ const players = function (state = initialState.players, action) {
             ...player,
             reserve: player.reserve.concat([action.cardId]),
             tokens: player.tokens.map(token => {
-              if(token.colour === COLORS.GOLD) {
+              if(token.color === COLORS.GOLD) {
                 return {
                   ...token,
                   amount: token.amount + 1,

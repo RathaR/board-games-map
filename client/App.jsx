@@ -24,8 +24,8 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    onTokenSelected: colour => {
-      dispatch(toggleTokenSelection(colour))
+    onTokenSelected: color => {
+      dispatch(toggleTokenSelection(color))
     },
     onPickSelected: () => {
       dispatch(pickSelected());

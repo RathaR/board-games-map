@@ -6,14 +6,14 @@ import {COLORS} from "../../../../constants/common";
 
 const BLOCK = 'bonus';
 
-const getBlockClasses = function(colour, className) {
+const getBlockClasses = function(color, className) {
   return classNames(className, `${BLOCK}`, {
-    [`${BLOCK}--red`]: colour === COLORS.RED,
-    [`${BLOCK}--black`]: colour === COLORS.BLACK,
-    [`${BLOCK}--green`]: colour === COLORS.GREEN,
-    [`${BLOCK}--gold`]: colour === COLORS.GOLD,
-    [`${BLOCK}--blue`]: colour === COLORS.BLUE,
-    [`${BLOCK}--white`]: colour === COLORS.WHITE,
+    [`${BLOCK}--red`]: color === COLORS.RED,
+    [`${BLOCK}--black`]: color === COLORS.BLACK,
+    [`${BLOCK}--green`]: color === COLORS.GREEN,
+    [`${BLOCK}--gold`]: color === COLORS.GOLD,
+    [`${BLOCK}--blue`]: color === COLORS.BLUE,
+    [`${BLOCK}--white`]: color === COLORS.WHITE,
   });
 };
 

@@ -6,9 +6,9 @@ const tokens = function(state = initialState.tokens, action) {
   switch (action.type) {
     case GIVE_TOKEN: {
       return state.map(token => {
-        if(token.colour === action.colour) {
+        if(token.color === action.color) {
           return {
-            colour: token.colour, amount: token.amount - 1,
+            color: token.color, amount: token.amount - 1,
           }
         }
         return token;

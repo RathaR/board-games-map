@@ -50,7 +50,7 @@ export const playerBonusesSelector = createSelector(
       }
       return acc;
     }, {});
-    return Object.keys(_bonuses).map(colour => {return {bonus: colour, amount: _bonuses[colour]}});
+    return Object.keys(_bonuses).map(color => {return {bonus: color, amount: _bonuses[color]}});
   }
 );
 

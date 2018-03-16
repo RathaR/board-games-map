@@ -20,7 +20,7 @@ class PlayerInformation extends Component {
         {tokens.filter(token => token.amount >0).map(
           (token, index) =>
             <div key={index} className={`${BLOCK}__token-container`}>
-              <TokensStack amount={token.amount} colour={token.colour} isSelectable={false} minimized/>
+              <TokensStack amount={token.amount} color={token.color} isSelectable={false} minimized/>
             </div>)}
       </div>)
   }
@@ -28,10 +28,10 @@ class PlayerInformation extends Component {
   renderBonuses() {
     const {playerInformation: {cards}, getCard} = this.props;
 
-    const getAmount = function(colour) {
+    const getAmount = function(color) {
 
       const res =  cards.map(getCard).reduce((acc, curr)=> {
-        if(curr.bonus === colour) {
+        if(curr.bonus === color) {
           return acc + 1;
         }
         return acc;
@@ -47,9 +47,9 @@ class PlayerInformation extends Component {
       COLORS.WHITE];
     const bonuses = bonusColors
       .filter(color => getAmount(color) > 0)
-      .map((colour, index) => (
+      .map((color, index) => (
         <div key={index} className={`${BLOCK}__bonus-container`}>
-          <Bonus amount={getAmount(colour)} color={colour} />
+          <Bonus amount={getAmount(color)} color={color} />
         </div>));
 
     return (<div className={`${BLOCK}__bonuses`}>
