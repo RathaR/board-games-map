@@ -1,12 +1,8 @@
 import { createSelector } from 'reselect';
-import {cardSelector} from  './cards';
-
-export const playersSelector = state => state.players;
+import {playersSelector, activePlayerIdSelector } from './commmon';
+import {cardSelector} from './cards';
 
 export const playersCountSelector = state => state.players.length;
-
-export const activePlayerIdSelector = state => state.activePlayer;
-
 
 export const playerSelector = createSelector(
   playersSelector,
@@ -31,7 +27,12 @@ export const playerByOrderSelector = createSelector(
 
 export const playerCardsSelector = createSelector(
   playerSelector,
-  playerSelector => playerId => playerSelector(playerId).cards,
+  getPlayer => playerId => getPlayer(playerId).cards,
+);
+
+export const playerTokensSelector = createSelector(
+  playerSelector,
+  getPlayer => playerId => getPlayer(playerId).tokens
 );
 
 export const playerBonusesSelector = createSelector(

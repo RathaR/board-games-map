@@ -1,4 +1,4 @@
-import {SWITCH_PLAYER} from '../actions';
+import {SWITCH_PLAYER} from '../actions/actionTypes';
 import initialState from '../data';
 
 const activePlayer = function(state = initialState.activePlayer, action) {

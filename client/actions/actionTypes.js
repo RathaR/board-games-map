@@ -1,0 +1,8 @@
+export const HOLD_CARD = 'HOLD_CARD';
+export const BUY_CARD = 'BUY_CARD';
+export const TOGGLE_TOKEN_SELECTION = 'TOGGLE_TOKEN_SELECTION';
+export const PICK_SELECTED = 'PICK_SELECTED';
+export const SWITCH_PLAYER = 'SWITCH_PLAYER';
+export const CLEAR_SELECTION = 'CLEAR_SELECTION';
+export const TAKE_TOKEN = 'TAKE_TOKEN';
+export const GIVE_TOKEN = 'GIVE_TOKEN';

@@ -1,5 +1,5 @@
-import initialState from "../data";
-import {BUY_CARD, HOLD_CARD} from "../actions";
+import initialState from '../data';
+import {BUY_CARD, HOLD_CARD} from '../actions/actionTypes';
 
 const board = function(state = initialState.board, action) {
 

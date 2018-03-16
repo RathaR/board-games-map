@@ -1,4 +1,3 @@
-import {COLORS} from '../constants/common';
 export function turn(state) {
   return state.turn;
 }
@@ -18,3 +17,9 @@ export function nobles(state) {
 export function board(state) {
   return state.board;
 }
+
+export const playersSelector = state => state.players;
+
+export const cardsSelector = state => state.cards;
+
+export const activePlayerIdSelector = state => state.activePlayer;

@@ -1,5 +1,5 @@
-import initialState from "../data";
-import {GIVE_TOKEN} from '../actions/index';
+import initialState from '../data';
+import {GIVE_TOKEN} from '../actions/actionTypes';
 
 const tokens = function(state = initialState.tokens, action) {
 

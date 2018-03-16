@@ -1,5 +1,5 @@
 import initialState from "../data";
-import {GIVE_TOKEN, HOLD_CARD, BUY_CARD} from '../actions/index';
+import {GIVE_TOKEN, HOLD_CARD, BUY_CARD} from '../actions/actionTypes';
 import {COLORS} from "../constants/common";
 
 const players = function (state = initialState.players, action) {
