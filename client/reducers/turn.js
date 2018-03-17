@@ -3,7 +3,7 @@ import initialState from '../data';
 
 const toggleSelection = function(selectedTokens, color) {
   if (selectedTokens.length === 3 && !selectedTokens.includes(color)) {
-    return state;
+    return {selectedTokens};
   }
 
   if (selectedTokens.includes(color)) {
