@@ -9,12 +9,6 @@ export const playerSelector = playerId => createSelector(
   players => players.find(player => player.id === playerId)
 );
 
-// export const activePlayerSelector = createSelector(
-//   activePlayerIdSelector,
-//   playerSelector,
-//   (activePlayerId, getPlayer) => getPlayer(activePlayerId),
-// );
-
 export const playerByOrderSelector = order => createSelector(
   playersSelector,
   players => players.find(player => player.order === order),
@@ -23,12 +17,6 @@ export const playerByOrderSelector = order => createSelector(
 export const playerCardsSelector = player => player.cards;
 
 export const tokensSelector = player => player.tokens;
-
-// export const playerTokensSelector = playerId => createSelector(
-//   playerSelector(playerId),
-//   tokensSelector,
-//   (player, getPlayerTokens) => getPlayerTokens(player)
-// );
 
 export const playerBonusesSelector = playerId => createSelector(
   playerSelector(playerId),
