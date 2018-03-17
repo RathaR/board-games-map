@@ -2,40 +2,30 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import './styles.scss'
-import {COLORS} from '../../../../../../constants/common';
+import {getColorModifier} from '../../../../helpers';
 
 const BLOCK = 'token';
 const noop = function () {};
+export const Token = function({color, amount, onSelected, className, isSelected, minimized}) {
 
-class Token extends Component {
-  constructor(props){
-    super(props);
-  }
-
-  render() {
-    const {color, amount} = this.props;
-    const blockClasses = classNames(this.props.className, `${BLOCK}`, {
-      [`${BLOCK}--red`]: color === COLORS.RED,
-      [`${BLOCK}--black`]: color === COLORS.BLACK,
-      [`${BLOCK}--green`]: color === COLORS.GREEN,
-      [`${BLOCK}--gold`]: color === COLORS.GOLD,
-      [`${BLOCK}--blue`]: color === COLORS.BLUE,
-      [`${BLOCK}--white`]: color === COLORS.WHITE,
-      [`${BLOCK}--selected`]: this.props.isSelected,
-      [`${BLOCK}--minimized`]: this.props.minimized,
+    const blockClasses = classNames(
+      className,
+      `${BLOCK}`,
+      getColorModifier(BLOCK, color), {
+      [`${BLOCK}--selected`]: isSelected,
+      [`${BLOCK}--minimized`]: minimized,
     });
 
-    return (
-      <div className={blockClasses} tabIndex={1} onClick={this.props.onSelected}>
-      <div className={`${BLOCK}__icon`}>
-        <div className={`${BLOCK}__amount`}>
-          {amount}
-        </div>
+  return (
+    <div className={blockClasses} tabIndex={1} onClick= {onSelected}>
+    <div className={`${BLOCK}__icon`}>
+      <div className={`${BLOCK}__amount`}>
+        {amount}
       </div>
     </div>
-     );
-  }
-}
+  </div>
+   );
+};
 
 Token.propTypes = {
   className: PropTypes.string,
