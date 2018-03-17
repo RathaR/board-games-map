@@ -18,7 +18,7 @@ const mapStateToProps = state => {
     board: board(state),
     nobles: nobles(state),
     tokens: tokens(state),
-    getCard: cardSelector(state),
+    getCard: cardId => cardSelector(cardId)(state),
   }
 };
 

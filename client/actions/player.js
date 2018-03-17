@@ -30,7 +30,7 @@ export function buyCard(cardId) {
 
     dispatch({
       type: BUY_CARD,
-      card: cardSelector(state)(cardId),
+      card: cardSelector(cardId)(state),
       reserved: cardOwner === playerId,
       playerId,
     });
@@ -43,7 +43,7 @@ export function holdCard(cardId) {
     const playerId = activePlayerIdSelector(getState());
     dispatch({
       type: HOLD_CARD,
-      card: cardSelector(getState())(cardId),
+      card: cardSelector(cardId)(getState()),
       playerId,
     });
     dispatch(switchPlayer());
