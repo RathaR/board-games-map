@@ -17,6 +17,7 @@ $block: player-information;
       border: 1px solid black;
     }
   }
+
   &__stats {
     text-align: left;
     font-size: 1.5em;
@@ -46,22 +47,5 @@ $block: player-information;
 
   &__right-container {
 
-  }
-
-  &__tokens {
-    display: flex;
-    margin-right: 20px;
-  }
-
-  &__token-container {
-    margin: 5px;
-  }
-
-  &__bonuses {
-    display: flex;
-  }
-
-  &__bonus-container {
-    margin: 10px;
   }
 }

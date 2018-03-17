@@ -1,10 +1,10 @@
 import React, {Component} from 'react';
-import { connect } from 'react-redux'
+import {connect} from 'react-redux'
 import PropTypes from 'prop-types';
 import './styles.scss';
 import Game from './scense/Game';
 import {Provider} from 'react-redux';
-import { playersSelector } from './selectors/commmon';
+import {playersSelector} from './selectors/commmon';
 
 const mapStateToProps = state => {
   return {
@@ -20,11 +20,11 @@ const ConnectedGame = connect(
 )(Game);
 
 const App = ({store}) => (
-  <div className='app'>
-    <Provider store={store}>
-      <ConnectedGame />
-    </Provider>
-  </div>);
+  <Provider store={store}>
+    <div className='app'>
+      <ConnectedGame/>
+    </div>
+  </Provider>);
 
 App.propTypes = {
   store: PropTypes.object.isRequired,

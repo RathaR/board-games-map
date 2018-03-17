@@ -11,7 +11,7 @@ const BLOCK = 'game';
 export const Game = function({board, turn, activePlayer, nobles, tokens, onTokenSelected, onPickSelected, getCard, onCardBuy, onCardHold, players}) {
     return (
       <div className={BLOCK}>
-        <Players players={players} />
+        <Players players={players} className={`${BLOCK}__players-information`} />
         <Board
           className={`${BLOCK}__board`}
           activePlayer={activePlayer}
