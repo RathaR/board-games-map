@@ -36,6 +36,7 @@ class TokensStack extends Component {
     return(<div className={blockClasses}>
       <ReactCSSTransitionGroup
         transitionName="example"
+        component="div"
         transitionEnterTimeout={500}
         transitionLeaveTimeout={500}>
         {tokens}

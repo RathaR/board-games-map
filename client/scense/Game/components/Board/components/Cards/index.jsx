@@ -14,7 +14,7 @@ const Cards = function ({cards, decks, getCard, onCardBuy, onCardHold}) {
             <ReactCSSTransitionGroup
               key={index}
               className={`${BLOCK}__deck-container`}
-              component="ul"
+              component="div"
               transitionName="example"
               transitionEnterTimeout={500}
               transitionLeaveTimeout={500}>

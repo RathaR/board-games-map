@@ -64,7 +64,7 @@ class PlayerInformation extends Component {
     return (
         <ReactCSSTransitionGroup
           className={`${BLOCK}__reserved-cards`}
-          component="ul"
+          component="div"
           transitionName="example"
           transitionEnterTimeout={500}
           transitionLeaveTimeout={500}>
