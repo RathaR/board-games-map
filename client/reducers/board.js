@@ -6,11 +6,15 @@ const board = function(state = initialState.board, action) {
     case HOLD_CARD: {
       const card = action.card;
       const deck = state.decks.find(deck => deck.level === card.level);
+      const rowIndex = state.cards.indexOf(card.id);
+
       const nextCard = deck.cards[0];
+      const newCards = [...state.cards];
+      newCards.splice(rowIndex, 1, nextCard);
 
       return {
         ...state,
-        cards: state.cards.filter(cardId => cardId !== card.id).concat(nextCard),
+        cards: newCards,
         decks: state.decks.map(item => {
           if(item === deck) {
             return {
@@ -28,11 +32,15 @@ const board = function(state = initialState.board, action) {
       }
       const card = action.card;
       const deck = state.decks.find(deck => deck.level === card.level);
+      const rowIndex = state.cards.indexOf(card.id);
+
       const nextCard = deck.cards[0];
+      const newCards = [...state.cards];
+      newCards.splice(rowIndex, 1, nextCard);
 
       return {
         ...state,
-        cards: state.cards.filter(cardId => cardId !== card.id).concat(nextCard),
+        cards: newCards,
         decks: state.decks.map(item => {
           if(item === deck) {
             return {
