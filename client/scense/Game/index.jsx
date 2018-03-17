@@ -8,15 +8,12 @@ import PlayerInformation from "./components/PlayerInformation";
 
 const BLOCK = 'game';
 
-class Game extends Component {
-
-   render() {
-    const {board, players, turn, activePlayer, nobles, tokens, onTokenSelected, onPickSelected, getCard}  = this.props;
+export const Game = function({board, players, turn, activePlayer, nobles, tokens, onTokenSelected, onPickSelected, getCard, onCardBuy, onCardHold}) {
     return (<div className={BLOCK}>
       <div className={`${BLOCK}__players-information`}>
         {players.map((playerInformation, index) =>
           <div key={index} className={`${BLOCK}__player-information-container`}>
-            <PlayerInformation getCard={getCard} playerInformation={playerInformation} isActive = {activePlayer === playerInformation.id} onCardBuy={this.props.onCardBuy} />
+            <PlayerInformation getCard={getCard} playerInformation={playerInformation} isActive = {activePlayer === playerInformation.id} onCardBuy={onCardBuy} />
           </div>)}
       </div>
       <Board className={`${BLOCK}__board`}
@@ -24,8 +21,8 @@ class Game extends Component {
              board={board} turn={turn} nobles={nobles} tokens={tokens}
              onTokenSelected={onTokenSelected}
              onPickSelected={onPickSelected}
-             onCardHold={this.props.onCardHold}
-             onCardBuy={this.props.onCardBuy}
+             onCardHold={onCardHold}
+             onCardBuy={onCardBuy}
              getCard={getCard}
       />
       <div>
@@ -33,8 +30,7 @@ class Game extends Component {
         <GameLog className={`${BLOCK}__game-log`} />
       </div>
     </div>);
-  }
-}
+};
 
 Game.propTypes = {
   getCard: PropTypes.func,
