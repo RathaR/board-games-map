@@ -44,11 +44,13 @@ class Card extends Component {
   }
 
   render() {
-    const {card: {prestige, bonus, cost}, type} = this.props;
-
+    const {card: {prestige, bonus, cost}, type, canBuy} = this.props;
+    const holdActionVisible = type !== 'Reserved';
+    const buyActionVisible = (type !== 'Reserved' || canBuy);
+    const hasActions = buyActionVisible || holdActionVisible;
     const blockClasses = classNames(`${BLOCK}`, {[`${BLOCK}--reserved`]: this.isReserved()});
 
-    return (<div className={blockClasses} tabIndex={1}>
+    return (<div className={blockClasses}>
       <div className={`${BLOCK}__top-container`}>
         <div className={`${BLOCK}__prestige`}>{prestige}</div>
         <div className={this.getBonusClasses(bonus)}/>
@@ -56,10 +58,10 @@ class Card extends Component {
       <div className={`${BLOCK}__cost`}>
         {cost.map((cost, index) => <div className={this.getCostTokenClasses(cost.color, type)} key={index}>{cost.amount}</div> )}
       </div>
-      <div className={`${BLOCK}__actions`}>
-        <button className={`${BLOCK}__action-button`} onClick={this.handleBuyClick}>Buy</button>
-        {!this.isReserved() && <button className={`${BLOCK}__action-button`} onClick={this.handleHoldClick}>Hold</button>}
-      </div>
+      {hasActions && <div className={`${BLOCK}__actions`}>
+        {buyActionVisible && <button className={`${BLOCK}__action-button`} onClick={this.handleBuyClick}>Buy</button>}
+        {holdActionVisible && <button className={`${BLOCK}__action-button`} onClick={this.handleHoldClick}>Hold</button>}
+      </div>}
     </div>);
   }
 }
@@ -70,6 +72,7 @@ Card.propTypes = {
   card: PropTypes.object,
   onHoldClick: PropTypes.func,
   onBuyClick: PropTypes.func,
+  canBuy: PropTypes.bool,
 };
 
 export default Card;

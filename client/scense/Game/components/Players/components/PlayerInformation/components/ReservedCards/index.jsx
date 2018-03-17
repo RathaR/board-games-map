@@ -6,7 +6,7 @@ import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 import Card from '../../../../../Card';
 
 const BLOCK = 'reserved-cards';
-const ReservedCards =  function({playerInformation: {reserve}, getCard, onCardBuy, className}) {
+const ReservedCards =  function({playerInformation: {reserve, id}, getCard, onCardBuy, className, activePlayer}) {
   return (
     <ReactCSSTransitionGroup
       className={classNames(BLOCK, className)}
@@ -17,7 +17,7 @@ const ReservedCards =  function({playerInformation: {reserve}, getCard, onCardBu
       {reserve.map(
         (cardId) =>
           <div key={cardId} className={`${BLOCK}__reserved-card-container`}>
-            <Card type='Reserved' className='card--reserved' card={getCard(cardId)} onBuyClick={onCardBuy}/>
+            <Card type='Reserved' canBuy={activePlayer === id} className='card--reserved' card={getCard(cardId)} onBuyClick={onCardBuy}/>
           </div>)}
     </ReactCSSTransitionGroup>)
 };

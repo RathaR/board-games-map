@@ -47,6 +47,7 @@ const PlayerInformation = function({playerInformation: {id, tokens, cards}, acti
           <ReservedCards
             className={`${BLOCK}__reserved-cards`}
             playerInformation={playerInformation}
+            activePlayerId={activePlayer}
             getCard={getCard}
             onCardBuy={onCardBuy} />
         </div>
