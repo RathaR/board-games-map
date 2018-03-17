@@ -2,10 +2,15 @@ import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import './styles.scss';
 import classNames from 'classnames';
-import TokensStack from '../TokensStack';
+import TokensStack from '../../../TokensStack';
 import ReservedCards from './components/ReservedCards';
-import Bonus from '../Bonus';
-import {BONUS_COLORS} from '../../../../constants/common';
+import Bonus from '../../../Bonus';
+import {BONUS_COLORS} from '../../../../../../constants/common';
+import {connect} from "react-redux";
+import {activePlayerIdSelector, playersSelector} from "../../../../../../selectors/commmon";
+import {buyCard} from "../../../../../../actions/player";
+import {playerPointsSelector} from "../../../../../../selectors/player";
+import {cardSelector} from "../../../../../../selectors/cards";
 
 const BLOCK = 'player-information';
 
@@ -18,8 +23,25 @@ const getAmount = function(cards, color, getCard) {
   }, 0);
 };
 
-const PlayerInformation = function({playerInformation: {id, tokens, cards}, isActive, getPlayerPoints, playerInformation, onCardBuy, getCard}) {
-    const blockClasses = classNames(BLOCK,{[`${BLOCK}--active-player`]: isActive});
+const mapStateToProps = state => {
+  return {
+    players: playersSelector(state),
+    getCard: cardId => cardSelector(cardId)(state),
+    getPlayerPoints: playerId => playerPointsSelector(playerId)(state),
+    activePlayer: activePlayerIdSelector(state),
+  }
+};
+
+const mapDispatchToProps = dispatch => {
+  return {
+    onCardBuy: (cardId) => {
+      dispatch(buyCard(cardId));
+    }
+  }
+};
+
+const PlayerInformation = function({playerInformation: {id, tokens, cards}, activePlayer, getPlayerPoints, playerInformation, onCardBuy, getCard}) {
+    const blockClasses = classNames(BLOCK,{[`${BLOCK}--active-player`]: activePlayer === id});
 
     const _tokens = tokens.filter(token => token.amount >0)
       .map((token, index) =>
@@ -62,10 +84,12 @@ const PlayerInformation = function({playerInformation: {id, tokens, cards}, isAc
 
 PlayerInformation.propTypes = {
   playerInformation: PropTypes.object,
-  isActive: PropTypes.bool,
-  onCardBuy: PropTypes.func,
 };
 
-export default PlayerInformation;
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(PlayerInformation);
+
 
 

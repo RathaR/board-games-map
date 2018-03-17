@@ -3,13 +3,13 @@ import PropTypes from 'prop-types';
 import './styles.scss'
 import classNames from 'classnames';
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
-import Card from '../../../Card';
+import Card from '../../../../../Card';
 
 const BLOCK = 'reserved-cards';
 const ReservedCards =  function({playerInformation: {reserve}, getCard, onCardBuy, className}) {
   return (
     <ReactCSSTransitionGroup
-      className={`${BLOCK} ${className}`}
+      className={classNames(BLOCK, className)}
       component="div"
       transitionName="example"
       transitionEnterTimeout={500}

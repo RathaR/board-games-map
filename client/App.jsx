@@ -8,19 +8,17 @@ import {toggleTokenSelection} from './actions/tokens';
 import {pickSelected, holdCard, buyCard} from './actions/player';
 import {turn, game, noblesSelector, board, tokens, playersSelector, activePlayerIdSelector} from './selectors/commmon';
 import {cardSelector} from './selectors/cards';
-import {playerPointsSelector} from './selectors/player';
 
 const mapStateToProps = state => {
   return {
     activePlayer: activePlayerIdSelector(state),
     turn: turn(state),
     game: game(state),
-    players: playersSelector(state),
     board: board(state),
     nobles: noblesSelector(state),
     tokens: tokens(state),
+    players: playersSelector(state),
     getCard: cardId => cardSelector(cardId)(state),
-    getPlayerPoints: playerId => playerPointsSelector(playerId)(state),
   }
 };
 
