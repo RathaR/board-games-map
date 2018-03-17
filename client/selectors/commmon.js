@@ -6,10 +6,6 @@ export function tokens(state) {
   return state.tokens;
 }
 
-export function game(state) {
-  return state.game;
-}
-
 export function noblesSelector(state) {
   return state.nobles;
 }

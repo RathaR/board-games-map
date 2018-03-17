@@ -1,11 +1,18 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
-
 import './styles.scss'
 import NoblesList from '../NoblesList';
 import TokensStack from '../TokensStack';
 import Cards from './components/Cards';
+import { connect } from 'react-redux'
+import {buyCard, holdCard, pickSelected} from "../../../../actions/player";
+import {
+  board, noblesSelector, playersSelector, tokens,
+  turn
+} from "../../../../selectors/commmon";
+import {toggleTokenSelection} from "../../../../actions/tokens";
+import {cardSelector} from "../../../../selectors/cards";
 
 const BLOCK = 'board';
 
@@ -43,6 +50,33 @@ const Board = function ({className, tokens, turn: {selectedTokens}, onPickSelect
     </div>);
 };
 
+const mapStateToProps = state => {
+  return {
+    turn: turn(state),
+    board: board(state),
+    nobles: noblesSelector(state),
+    tokens: tokens(state),
+    getCard: cardId => cardSelector(cardId)(state),
+  }
+};
+
+const mapDispatchToProps = dispatch => {
+  return {
+    onTokenSelected: color => {
+      dispatch(toggleTokenSelection(color))
+    },
+    onPickSelected: () => {
+      dispatch(pickSelected());
+    },
+    onCardHold: (cardId) => {
+      dispatch(holdCard(cardId));
+    },
+    onCardBuy: (cardId) => {
+      dispatch(buyCard(cardId));
+    }
+  }
+};
+
 Board.propTypes = {
   className: PropTypes.string,
   board: PropTypes.object,
@@ -58,6 +92,6 @@ Board.propTypes = {
   onCardBuy: PropTypes.func,
 };
 
-export default Board;
+export default connect(mapStateToProps, mapDispatchToProps)(Board);
 
 
