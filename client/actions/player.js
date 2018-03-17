@@ -18,7 +18,6 @@ export function buyCard(cardId) {
   return (dispatch, getState) => {
     const state = getState();
     const playerId = activePlayerIdSelector(state);
-    const _card = cardSelector(state)(cardId);
 
     const cardOwner = cardOwnerSelector(state)(cardId);
     if(cardOwner && cardOwner !== playerId) {
@@ -31,9 +30,8 @@ export function buyCard(cardId) {
 
     dispatch({
       type: BUY_CARD,
-      card: _card,
+      card: cardSelector(state)(cardId),
       reserved: cardOwner === playerId,
-      cardId,
       playerId,
     });
     dispatch(switchPlayer());
@@ -43,9 +41,11 @@ export function buyCard(cardId) {
 export function holdCard(cardId) {
   return (dispatch, getState) => {
     const playerId = activePlayerIdSelector(getState());
-    const _card = cardSelector(getState())(cardId);
-
-    dispatch({type: HOLD_CARD, level: _card.level, cardId, playerId});
+    dispatch({
+      type: HOLD_CARD,
+      card: cardSelector(getState())(cardId),
+      playerId,
+    });
     dispatch(switchPlayer());
   }
 }

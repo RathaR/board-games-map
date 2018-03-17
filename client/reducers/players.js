@@ -2,6 +2,7 @@ import initialState from "../data";
 import {GIVE_TOKEN, HOLD_CARD, BUY_CARD} from '../actions/actionTypes';
 import {COLORS} from "../constants/common";
 
+
 const players = function (state = initialState.players, action) {
 
   switch (action.type) {
@@ -12,13 +13,13 @@ const players = function (state = initialState.players, action) {
       const costColors = cost.map(item => item.color);
       return state.map(player => {
         if(player.id === action.playerId) {
-
           return {
             ...player,
-            cards: player.cards.concat([action.cardId]),
-            reserve: [...player.reserve].filter(cardId => cardId !== action.cardId),
+            cards: player.cards.concat([card.id]),
+            reserve: [...player.reserve].filter(cardId => cardId !== card.id),
             tokens: player.tokens.map(item => {
               if(costColors.includes(item.color)) {
+                // const bonusesCoount = player
                 return {
                   ...item,
                   amount: item.amount - 1,
@@ -28,6 +29,7 @@ const players = function (state = initialState.players, action) {
             })
           };
         }
+
         return player;
       })
     }
@@ -57,7 +59,7 @@ const players = function (state = initialState.players, action) {
         if(player.id === action.playerId) {
           return {
             ...player,
-            reserve: player.reserve.concat([action.cardId]),
+            reserve: player.reserve.concat([action.card.id]),
             tokens: player.tokens.map(token => {
               if(token.color === COLORS.GOLD) {
                 return {

@@ -4,43 +4,39 @@ import {cardSelector} from './cards';
 
 export const playersCountSelector = state => state.players.length;
 
-export const playerSelector = createSelector(
+export const playerSelector = playerId => createSelector(
   playersSelector,
-  players => playerId => players.find(player => player.id === playerId)
+  players => players.find(player => player.id === playerId)
 );
 
-export const activePlayerSelector = createSelector(
-  activePlayerIdSelector,
-  playerSelector,
-  (activePlayerId, getPlayer) => getPlayer(activePlayerId),
-);
+// export const activePlayerSelector = createSelector(
+//   activePlayerIdSelector,
+//   playerSelector,
+//   (activePlayerId, getPlayer) => getPlayer(activePlayerId),
+// );
 
-export const activePlayerCardsSelector = createSelector(
-  activePlayerSelector,
-  getActivePlayer => getActivePlayer().cards,
-);
-
-export const playerByOrderSelector = createSelector(
+export const playerByOrderSelector = order => createSelector(
   playersSelector,
-  players => order => players.find(player => player.order === order),
+  players => players.find(player => player.order === order),
 );
 
-export const playerCardsSelector = createSelector(
-  playerSelector,
-  getPlayer => playerId => getPlayer(playerId).cards,
-);
+export const playerCardsSelector = player => player.cards;
 
-export const playerTokensSelector = createSelector(
-  playerSelector,
-  getPlayer => playerId => getPlayer(playerId).tokens
-);
+export const tokensSelector = player => player.tokens;
 
-export const playerBonusesSelector = createSelector(
-  playerCardsSelector,
+// export const playerTokensSelector = playerId => createSelector(
+//   playerSelector(playerId),
+//   tokensSelector,
+//   (player, getPlayerTokens) => getPlayerTokens(player)
+// );
+
+export const playerBonusesSelector = playerId => createSelector(
+  playerSelector(playerId),
   cardSelector,
-  (playerCardsSelector, cardSelector) => playerId => {
-    const cards = playerCardsSelector(playerId)
-      .map(cardSelector);
+  (player, getCard) => {
+    debugger;
+    const cards = playerCardsSelector(player)
+      .map(getCard);
     const _bonuses = cards.reduce((acc, curr) => {
       const color = curr.bonus;
       if (acc[color]) {
