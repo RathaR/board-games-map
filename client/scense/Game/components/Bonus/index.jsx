@@ -2,25 +2,16 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import './styles.scss'
-import {COLORS} from "../../../../constants/common";
+import {getColorModifier} from '../../helpers';
 
 const BLOCK = 'bonus';
 
 const getBlockClasses = function(color, className) {
-  return classNames(className, `${BLOCK}`, {
-    [`${BLOCK}--red`]: color === COLORS.RED,
-    [`${BLOCK}--black`]: color === COLORS.BLACK,
-    [`${BLOCK}--green`]: color === COLORS.GREEN,
-    [`${BLOCK}--gold`]: color === COLORS.GOLD,
-    [`${BLOCK}--blue`]: color === COLORS.BLUE,
-    [`${BLOCK}--white`]: color === COLORS.WHITE,
-  });
+  return classNames(className, BLOCK, getColorModifier(BLOCK, color));
 };
 
 const Bonus = function({amount, color, className}) {
-    const blockClasses = getBlockClasses(color, className);
-
-    return (<div className={blockClasses}>
+    return (<div className={getBlockClasses(color, className)}>
       <div className={`${BLOCK}__amount`}>
         {amount}
       </div>
