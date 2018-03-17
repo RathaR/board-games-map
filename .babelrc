@@ -1,7 +1,11 @@
 {
   "env": {
     "client": {
-      "presets": ["env", "react"],
+      "presets": [["env",{
+        "targets": {
+          "browsers": ["last 4 Chrome versions"]
+        }
+      }], "react"],
       "plugins": [
         "transform-class-properties",
         "transform-object-rest-spread",
