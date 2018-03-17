@@ -11,7 +11,7 @@ export const getMissingTokens = function(state, playerId, cardId)
   const cardCost = cardCostSelector(card);
   
   const missingTokens = cardCost.reduce((acc, curr) => {
-    const availableTokens = playerTokens.filter(token => token.color === curr.color)[0].amount;
+    const availableTokens = playerTokens.find(token => token.color === curr.color).amount;
     const availableBonus = playerBonuses.find(bonus => bonus.bonus === curr.color);
     const bonusAmount = availableBonus ? availableBonus.amount : 0;
     if (curr.amount > availableTokens + bonusAmount) {

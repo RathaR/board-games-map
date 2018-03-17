@@ -9,6 +9,7 @@ const players = function (state = initialState.players, action) {
     case BUY_CARD: {
       const card = action.card;
       const cost = card.cost;
+      const bonuses = action.bonuses;
 
       const costColors = cost.map(item => item.color);
       return state.map(player => {
@@ -18,11 +19,16 @@ const players = function (state = initialState.players, action) {
             cards: player.cards.concat([card.id]),
             reserve: [...player.reserve].filter(cardId => cardId !== card.id),
             tokens: player.tokens.map(item => {
-              if(costColors.includes(item.color)) {
-                // const bonusesCoount = player
+              const neededToken = cost.find(costItem => costItem.color === item.color);
+              const neededTokenAmount = neededToken ? neededToken.amount : 0;
+              const availableBonus = bonuses.find(bonus => bonus.color === item.color);
+              const availableBonusAmount = availableBonus ? availableBonus.amount: 0;
+              const availableTokensAmount = item.amount;
+
+              if(neededTokenAmount && neededTokenAmount > availableBonusAmount) {
                 return {
                   ...item,
-                  amount: item.amount - 1,
+                  amount: availableTokensAmount - (neededTokenAmount - availableBonusAmount) ,
                 };
               }
               return item;

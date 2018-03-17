@@ -1,5 +1,5 @@
 import {TAKE_TOKEN, GIVE_TOKEN, BUY_CARD, HOLD_CARD} from './actionTypes';
-import {playerBonusesSelector, playerSelector} from '../selectors/player';
+import {playerBonusesSelector} from '../selectors/player';
 import {cardOwnerSelector, cardSelector} from '../selectors/cards';
 import {switchPlayer} from './activePlayer';
 import {clearSelection} from './tokens';
@@ -32,6 +32,7 @@ export function buyCard(cardId) {
       type: BUY_CARD,
       card: cardSelector(cardId)(state),
       reserved: cardOwner === playerId,
+      bonuses: playerBonusesSelector(playerId)(state),
       playerId,
     });
     dispatch(switchPlayer());

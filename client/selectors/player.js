@@ -32,7 +32,7 @@ export const playerBonusesSelector = playerId => createSelector(
       }
       return acc;
     }, {});
-    return Object.keys(_bonuses).map(color => {return {bonus: color, amount: _bonuses[color]}});
+    return Object.keys(_bonuses).map(color => {return {color: color, amount: _bonuses[color]}});
   }
 );
 
