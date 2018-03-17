@@ -1,56 +1,46 @@
 import initialState from '../data';
 import {BUY_CARD, HOLD_CARD} from '../actions/actionTypes';
 
+const drawCard = function(board, card) {
+  const deck = board.decks.find(deck => deck.level === card.level);
+  const rowIndex = board.cards.indexOf(card.id);
+
+  const newCards = [...board.cards];
+  const nextCard = deck.cards[0];
+  if(nextCard) {
+    newCards.splice(rowIndex, 1, nextCard);
+  } else {
+    newCards.splice(rowIndex, 1);
+  }
+
+  return {
+    ...board,
+    cards: newCards,
+    decks: board.decks.map(item => {
+      if(item === deck) {
+        return {
+          ...deck,
+          cards: deck.cards.filter(card => card !== nextCard),
+        }
+      }
+      return item;
+    })
+  };
+};
+
 const board = function(state = initialState.board, action) {
   switch (action.type) {
+
     case HOLD_CARD: {
-      const card = action.card;
-      const deck = state.decks.find(deck => deck.level === card.level);
-      const rowIndex = state.cards.indexOf(card.id);
-
-      const nextCard = deck.cards[0];
-      const newCards = [...state.cards];
-      newCards.splice(rowIndex, 1, nextCard);
-
-      return {
-        ...state,
-        cards: newCards,
-        decks: state.decks.map(item => {
-          if(item === deck) {
-            return {
-              ...deck,
-              cards: deck.cards.filter(card => card !== nextCard),
-            }
-          }
-          return item;
-        })
-      };
+      return drawCard(state, action.card);
     }
+
     case BUY_CARD: {
       if(action.reserved) {
         return state;
       }
-      const card = action.card;
-      const deck = state.decks.find(deck => deck.level === card.level);
-      const rowIndex = state.cards.indexOf(card.id);
 
-      const nextCard = deck.cards[0];
-      const newCards = [...state.cards];
-      newCards.splice(rowIndex, 1, nextCard);
-
-      return {
-        ...state,
-        cards: newCards,
-        decks: state.decks.map(item => {
-          if(item === deck) {
-            return {
-              ...deck,
-              cards: deck.cards.filter(card => card !== nextCard),
-            }
-          }
-          return item;
-        })
-      };
+      return drawCard(state, action.card);
     }
     default: {
       return state;
