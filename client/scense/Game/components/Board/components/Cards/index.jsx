@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import './styles.scss'
 import Deck from './components/Deck';
 import Card from '../../../Card';
+import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 
 const BLOCK = 'cards';
 const Cards = function ({cards, decks, getCard, onCardBuy, onCardHold}) {
@@ -10,7 +11,13 @@ const Cards = function ({cards, decks, getCard, onCardBuy, onCardHold}) {
     <div className={`${BLOCK}`}>
       {decks.map(
         (deck, index) => (
-          <div key={index} className={`${BLOCK}__deck-container`}>
+            <ReactCSSTransitionGroup
+              key={index}
+              className={`${BLOCK}__deck-container`}
+              component="ul"
+              transitionName="example"
+              transitionEnterTimeout={500}
+              transitionLeaveTimeout={500}>
             <div className={`${BLOCK}__card-container`}>
               <Deck deck={deck}/>
             </div>
@@ -18,8 +25,9 @@ const Cards = function ({cards, decks, getCard, onCardBuy, onCardHold}) {
               (card) => (
                 <div key={card.id} className={`${BLOCK}__card-container`}>
                   <Card type='Card' card={card} onHoldClick={onCardHold} onBuyClick={onCardBuy}/>
-                </div>))}
-          </div>))}
+                </div>
+              ))}
+            </ReactCSSTransitionGroup>))}
     </div>)
 };
 

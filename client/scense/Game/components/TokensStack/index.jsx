@@ -37,7 +37,7 @@ class TokensStack extends Component {
       <ReactCSSTransitionGroup
         transitionName="example"
         transitionEnterTimeout={500}
-        transitionLeaveTimeout={300}>
+        transitionLeaveTimeout={500}>
         {tokens}
       </ReactCSSTransitionGroup>
     </div>);

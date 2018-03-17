@@ -9,4 +9,23 @@
   &__card-container {
     margin: 10px;
   }
+
+  .example-enter {
+    opacity: 0.01;
+  }
+
+  .example-enter.example-enter-active {
+    opacity: 1;
+    transition: opacity 500ms ease-in;
+  }
+
+  .example-leave {
+    display: none;
+  }
+
+  .example-leave.example-leave-active {
+    opacity: 0.01;
+    transition: opacity 500ms ease-in;
+  }
+
 }

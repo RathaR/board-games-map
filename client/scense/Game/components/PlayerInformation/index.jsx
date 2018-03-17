@@ -6,6 +6,7 @@ import TokensStack from '../TokensStack';
 import Bonus from '../Bonus';
 import Card from '../Card';
 import {COLORS} from '../../../../constants/common';
+import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 
 const BLOCK = 'player-information';
 
@@ -61,13 +62,18 @@ class PlayerInformation extends Component {
     const {playerInformation: {reserve}, getCard, onCardBuy} = this.props;
 
     return (
-      <div className={`${BLOCK}__reserved-cards`}>
+        <ReactCSSTransitionGroup
+          className={`${BLOCK}__reserved-cards`}
+          component="ul"
+          transitionName="example"
+          transitionEnterTimeout={500}
+          transitionLeaveTimeout={500}>
         {reserve.map(
           (cardId) =>
             <div key={cardId} className={`${BLOCK}__reserved-card-container`}>
               <Card type='Reserved' className='card--reserved' card={getCard(cardId)} onBuyClick={onCardBuy}/>
             </div>)}
-      </div>)
+      </ReactCSSTransitionGroup>)
   }
 
   getPoints() {
