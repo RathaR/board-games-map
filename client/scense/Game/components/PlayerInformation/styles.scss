@@ -1,4 +1,6 @@
-.player-information {
+$block: player-information;
+
+.#{$block} {
   border-top: 1px solid black;
   text-align: center;
   padding: 10px;
@@ -7,10 +9,10 @@
   min-width: 500px;
 
   &--active-player {
-    .player-information__title {
+    .#{$block}__title {
       color: white;
     }
-    .player-information__prestige {
+    .#{$block}__prestige {
       background-color: white;
       border: 1px solid black;
     }
@@ -24,11 +26,11 @@
     justify-content: space-between;
   }
 
-  &__title{
+  &__title {
 
   }
 
-  &__prestige{
+  &__prestige {
     padding: 5px;
     border-radius: 5px;
   }
@@ -39,6 +41,7 @@
   }
 
   &__left-container {
+
   }
 
   &__right-container {
@@ -60,31 +63,5 @@
 
   &__bonus-container {
     margin: 10px;
-  }
-
-  &__reserved-cards {
-    display: flex;
-  }
-
-  &__reserved-card-container  {
-    margin: 5px;
-  }
-
-  .example-enter {
-    opacity: 0.01;
-  }
-
-  .example-enter.example-enter-active {
-    opacity: 1;
-    transition: opacity 500ms ease-in;
-  }
-
-  .example-leave {
-    opacity: 1;
-  }
-
-  .example-leave.example-leave-active {
-    opacity: 0.01;
-    transition: opacity 500ms ease-in;
   }
 }

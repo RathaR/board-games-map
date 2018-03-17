@@ -6,3 +6,11 @@ export const COLORS = {
   WHITE: 'white',
   BLUE: 'blue',
 };
+
+export const BONUS_COLORS = [
+  COLORS.BLUE,
+  COLORS.BLACK,
+  COLORS.GREEN,
+  COLORS.RED,
+  COLORS.WHITE
+];
