@@ -1,11 +1,11 @@
 import {playersSelector} from '../selectors/commmon';
-import {tokensSelector, playerBonusesSelector, playerSelector} from '../selectors/player';
+import {playerTokensSelector, playerBonusesSelector, playerSelector} from '../selectors/player';
 import {cardSelector, cardCostSelector} from '../selectors/cards';
 
 export const getMissingTokens = function(state, playerId, cardId)
 {
   const player = playerSelector(playerId)(state);
-  const playerTokens = tokensSelector(player);
+  const playerTokens = playerTokensSelector(player);
   const playerBonuses = playerBonusesSelector(playerId)(state);
   const card = cardSelector(cardId)(state);
   const cardCost = cardCostSelector(card);

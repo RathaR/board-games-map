@@ -8,7 +8,7 @@ const GAME_STATE = {
   players: [{
     id: 'Player1',
     order: 1,
-    nobles: [],
+    nobles: ['1','2'],
     reserve: [],
     tokens: [
       {color: COLORS.BLUE, amount: 5},
@@ -22,7 +22,7 @@ const GAME_STATE = {
   }, {
     id: 'Player2',
     order: 2,
-    nobles: [],
+    nobles: ['3'],
     reserve: [],
     tokens: [
       {color: COLORS.BLUE, amount: 0},
@@ -211,37 +211,42 @@ const GAME_STATE = {
     {color: COLORS.GOLD, amount: 7},
   ],
   nobles: [{
+    id: '1',
     bonuses: {
       [COLORS.RED]: 1,
       [COLORS.GREEN]: 3,
     },
-    prestige: 0
+    prestige: 3
   }, {
+    id: '2',
     bonuses: {
       [COLORS.BLUE]: 1,
       [COLORS.WHITE]: 3,
       [COLORS.BLACK]: 3,
     },
-    prestige: 0
+    prestige: 4
   }, {
+    id: '3',
     bonuses: {
       [COLORS.BLACK]: 2,
       [COLORS.GREEN]: 2,
       [COLORS.WHITE]: 2
     },
-    prestige: 0
+    prestige: 3
   },{
+    id: '4',
     bonuses: {
       [COLORS.RED]: 1,
       [COLORS.GREEN]: 3
     },
-    prestige: 0
+    prestige: 4
   }, {
+    id: '5',
     bonuses: {
       [COLORS.BLACK]: 2,
       [COLORS.GREEN]: 2
     },
-    prestige: 0
+    prestige: 5
   }],
 };
 

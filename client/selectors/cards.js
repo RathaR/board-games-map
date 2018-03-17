@@ -8,6 +8,8 @@ export const cardSelector = cardId => createSelector(
 
 export const cardCostSelector = card => card.cost;
 
+export const cardPrestigeSelector = card => card.prestige;
+
 export const cardOwnerSelector = createSelector(
   playersSelector,
   players => cardId => players.find(player => player.reserve.includes(cardId)),

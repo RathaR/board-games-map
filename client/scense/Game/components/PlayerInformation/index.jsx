@@ -76,22 +76,14 @@ class PlayerInformation extends Component {
       </ReactCSSTransitionGroup>)
   }
 
-  getPoints() {
-    const {playerInformation: {cards}, getCard} = this.props;
-
-    return cards.map(id => getCard(id)).reduce((acc, curr) => {
-      return acc + curr.prestige;
-    }, 0)
-  }
-
   render() {
-    const {playerInformation: {id}, isActive} = this.props;
+    const {playerInformation: {id}, isActive, getPlayerPoints, playerInformation} = this.props;
     const blockClasses = classNames(BLOCK,{[`${BLOCK}--active-player`]: isActive} );
 
     return (<div className={blockClasses}>
       <div className={`${BLOCK}__stats`}>
         <div className={`${BLOCK}__title`}>{id}</div>
-        <div className={`${BLOCK}__prestige`}>Points: {this.getPoints()}</div>
+        <div className={`${BLOCK}__prestige`}>Points: {getPlayerPoints(playerInformation)}</div>
       </div>
       <div className={`${BLOCK}__main`}>
         <div className={`${BLOCK}__left-container`}>

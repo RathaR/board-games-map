@@ -8,12 +8,12 @@ import PlayerInformation from "./components/PlayerInformation";
 
 const BLOCK = 'game';
 
-export const Game = function({board, players, turn, activePlayer, nobles, tokens, onTokenSelected, onPickSelected, getCard, onCardBuy, onCardHold}) {
+export const Game = function({board, players, turn, activePlayer, nobles, tokens, onTokenSelected, onPickSelected, getCard, onCardBuy, onCardHold, getPlayerPoints}) {
     return (<div className={BLOCK}>
       <div className={`${BLOCK}__players-information`}>
         {players.map((playerInformation, index) =>
           <div key={index} className={`${BLOCK}__player-information-container`}>
-            <PlayerInformation getCard={getCard} playerInformation={playerInformation} isActive = {activePlayer === playerInformation.id} onCardBuy={onCardBuy} />
+            <PlayerInformation getPlayerPoints ={getPlayerPoints} getCard={getCard} playerInformation={playerInformation} isActive = {activePlayer === playerInformation.id} onCardBuy={onCardBuy} />
           </div>)}
       </div>
       <Board className={`${BLOCK}__board`}

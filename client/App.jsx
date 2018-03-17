@@ -6,8 +6,9 @@ import Game from './scense/Game';
 import {Provider} from 'react-redux';
 import {toggleTokenSelection} from './actions/tokens';
 import {pickSelected, holdCard, buyCard} from './actions/player';
-import {turn, game, nobles, board, tokens, playersSelector, activePlayerIdSelector} from './selectors/commmon';
+import {turn, game, noblesSelector, board, tokens, playersSelector, activePlayerIdSelector} from './selectors/commmon';
 import {cardSelector} from './selectors/cards';
+import {playerPointsSelector} from './selectors/player';
 
 const mapStateToProps = state => {
   return {
@@ -16,9 +17,10 @@ const mapStateToProps = state => {
     game: game(state),
     players: playersSelector(state),
     board: board(state),
-    nobles: nobles(state),
+    nobles: noblesSelector(state),
     tokens: tokens(state),
     getCard: cardId => cardSelector(cardId)(state),
+    getPlayerPoints: playerId => playerPointsSelector(playerId)(state),
   }
 };
 

@@ -10,7 +10,7 @@ export function game(state) {
   return state.game;
 }
 
-export function nobles(state) {
+export function noblesSelector(state) {
   return state.nobles;
 }
 
