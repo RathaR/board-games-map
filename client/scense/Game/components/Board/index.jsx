@@ -32,7 +32,7 @@ const renderTokens = function (tokens, selectedTokens, onPickSelected, onPickDou
       </div>
       {tokens.filter(token => token.amount > 0).map(
         (token, index) =>
-          <div key={index} className={`${BLOCK}__token-container`}>
+          <div key={token.color} className={`${BLOCK}__token-container`}>
             <TokensStack isSelected={selectedTokens.includes(token.color)} onSelected={onTokenSelected}
                          amount={token.amount} color={token.color} isSelectable/>
           </div>)}
