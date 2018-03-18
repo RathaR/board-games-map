@@ -21,10 +21,10 @@ export const Game = function({board, turn, activePlayer, nobles, tokens, onToken
           onCardHold={onCardHold}
           onCardBuy={onCardBuy}
           getCard={getCard} />
-        <div>
-          <Chat className={`${BLOCK}__chat`} />
-          <GameLog className={`${BLOCK}__game-log`} />
-        </div>
+        {/*<div>*/}
+          {/*<Chat className={`${BLOCK}__chat`} />*/}
+          {/*<GameLog className={`${BLOCK}__game-log`} />*/}
+        {/*</div>*/}
     </div>);
 };
 
