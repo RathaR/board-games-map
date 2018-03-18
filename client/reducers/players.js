@@ -1,7 +1,6 @@
 import initialState from "../data";
-import {GIVE_TOKEN, HOLD_CARD, BUY_CARD} from '../actions/actionTypes';
+import { HOLD_CARD, BUY_CARD, PICK_SELECTED} from '../actions/actionTypes';
 import {COLORS} from "../constants/common";
-
 
 const players = function (state = initialState.players, action) {
 
@@ -40,13 +39,14 @@ const players = function (state = initialState.players, action) {
       })
     }
 
-    case GIVE_TOKEN: {
+    case PICK_SELECTED: {
+      const {playerId, selectedTokens} = action;
       return state.map(player => {
-        if(player.id === action.playerId) {
+        if(player.id === playerId) {
           return {
             ...player,
             tokens: player.tokens.map(token => {
-              if(token.color === action.color) {
+              if(selectedTokens.includes(token.color)) {
                 return {
                   ...token,
                   amount: token.amount + 1,

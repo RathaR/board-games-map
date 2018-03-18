@@ -1,19 +1,22 @@
 import initialState from '../data';
-import {GIVE_TOKEN} from '../actions/actionTypes';
+import {GIVE_TOKEN, PICK_SELECTED} from '../actions/actionTypes';
+import {tokensSelector} from '../selectors/tokens';
 
-const tokens = function(state = initialState.tokens, action) {
+const tokens = function(state = tokensSelector(initialState), action) {
 
   switch (action.type) {
-    case GIVE_TOKEN: {
-      return state.map(token => {
-        if(token.color === action.color) {
-          return {
-            color: token.color, amount: token.amount - 1,
-          }
-        }
-        return token;
+
+    case PICK_SELECTED: {
+      const {selectedTokens} = action;
+      const newState = [...state];
+      selectedTokens.forEach(color => {
+        const token = newState.find(token => token.color === color);
+        token.amount -= 1;
       });
+
+      return newState;
     }
+
     default: {
       return state;
     }

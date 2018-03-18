@@ -437,11 +437,11 @@ const GAME_STATE = {
     }],
   },
   tokens: [
-    {color: COLORS.BLUE, amount: 8},
-    {color: COLORS.GREEN, amount: 8},
-    {color: COLORS.RED, amount: 8},
-    {color: COLORS.WHITE, amount: 8},
-    {color: COLORS.BLACK, amount: 8},
+    {color: COLORS.BLUE, amount: 1},
+    {color: COLORS.GREEN, amount: 1},
+    {color: COLORS.RED, amount: 1},
+    {color: COLORS.WHITE, amount: 1},
+    {color: COLORS.BLACK, amount: 1},
     {color: COLORS.GOLD, amount: 7},
   ],
   nobles: [{

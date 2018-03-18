@@ -1,18 +1,9 @@
-import {TAKE_TOKEN, GIVE_TOKEN, BUY_CARD, HOLD_CARD} from './actionTypes';
-import {playerBonusesSelector} from '../selectors/player';
+import {BUY_CARD, HOLD_CARD, PICK_SELECTED} from './actionTypes';
+import {playerBonusesSelector, playerReservedCardsSelector, playerSelector} from '../selectors/player';
 import {cardOwnerSelector, cardSelector} from '../selectors/cards';
 import {switchPlayer} from './activePlayer';
-import {clearSelection} from './tokens';
 import {activePlayerIdSelector, turn} from '../selectors/commmon';
 import {getMissingTokens} from './helpers';
-
-export function takeToken(color, playerId) {
-  return {type: TAKE_TOKEN, color, playerId};
-}
-
-export function giveToken(color, playerId) {
-  return {type: GIVE_TOKEN, color, playerId};
-}
 
 export function buyCard(cardId) {
   return (dispatch, getState) => {
@@ -31,7 +22,7 @@ export function buyCard(cardId) {
     dispatch({
       type: BUY_CARD,
       card: cardSelector(cardId)(state),
-      reserved: cardOwner.id === playerId,
+      reserved: cardOwner && cardOwner.id === playerId,
       bonuses: playerBonusesSelector(playerId)(state),
       playerId,
     });
@@ -41,7 +32,15 @@ export function buyCard(cardId) {
 
 export function holdCard(cardId) {
   return (dispatch, getState) => {
-    const playerId = activePlayerIdSelector(getState());
+    const state = getState();
+    const playerId = activePlayerIdSelector(state);
+    const player = playerSelector(playerId)(state);
+    const reservedCards = playerReservedCardsSelector(player);
+
+    if(reservedCards.length >= 3) {
+      return;
+    }
+
     dispatch({
       type: HOLD_CARD,
       card: cardSelector(cardId)(getState()),
@@ -54,11 +53,11 @@ export function holdCard(cardId) {
 export function pickSelected() {
 
   return (dispatch, getState) => {
-    const {selectedTokens} = turn(getState());
-    const activePlayerId = activePlayerIdSelector(getState());
+    const state = getState();
+    const {selectedTokens} = turn(state);
+    const activePlayerId = activePlayerIdSelector(state);
 
-    selectedTokens.forEach(color => dispatch(giveToken(color, activePlayerId)));
-    dispatch(clearSelection());
+    dispatch({type: PICK_SELECTED, selectedTokens: selectedTokens, playerId : activePlayerId});
     dispatch(switchPlayer());
   }
 }
