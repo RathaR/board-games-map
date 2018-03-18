@@ -2,6 +2,7 @@ $noble-size: 100px;
 
 .noble {
   --bonus-size: 30px;
+  border: 1px solid rgba(0,0,0,0.5);
   font-size: 1.3em;
   display: flex;
   width: $noble-size;
