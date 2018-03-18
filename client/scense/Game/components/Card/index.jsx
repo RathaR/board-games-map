@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import './styles.scss'
 import PropTypes from  'prop-types';
 import classNames from 'classnames';
-import {COLORS} from "../../../../constants/common";
+import {CARD_VIEW_TYPE, COLORS} from "../../../../constants/common";
 
 const BLOCK = 'card';
 
@@ -19,7 +19,7 @@ class Card extends Component {
     return classNames(
       `${BLOCK}__cost-token`,
       `${BLOCK}__cost-token--${color}`,
-      {[`${BLOCK}__cost-token--reserved`]: type === 'Reserved'});
+      {[`${BLOCK}__cost-token--reserved`]: type === CARD_VIEW_TYPE.RESERVED });
   }
 
   getBonusClasses(color, type) {
@@ -38,31 +38,35 @@ class Card extends Component {
     onBuyClick(card.id);
   }
 
-  isReserved() {
-    const {type} = this.props;
-    return type === 'Reserved';
-  }
-
   render() {
-    const {card: {prestige, bonus, cost}, type, canBuy} = this.props;
-    const holdActionVisible = type !== 'Reserved';
-    const buyActionVisible = (type !== 'Reserved' || canBuy);
-    const hasActions = buyActionVisible || holdActionVisible;
-    const blockClasses = classNames(`${BLOCK}`, {[`${BLOCK}--reserved`]: this.isReserved()});
+    const {card: {prestige, bonus, cost}, type, owner, activePlayer} = this.props;
 
-    return (<div className={blockClasses}>
-      <div className={`${BLOCK}__top-container`}>
-        <div className={`${BLOCK}__prestige`}>{prestige}</div>
-        <div className={this.getBonusClasses(bonus)}/>
-      </div>
-      <div className={`${BLOCK}__cost`}>
-        {cost.map((cost, index) => <div className={this.getCostTokenClasses(cost.color, type)} key={index}>{cost.amount}</div> )}
-      </div>
-      {hasActions && <div className={`${BLOCK}__actions`}>
-        {buyActionVisible && <button className={`${BLOCK}__action-button`} onClick={this.handleBuyClick}>Buy</button>}
-        {holdActionVisible && <button className={`${BLOCK}__action-button`} onClick={this.handleHoldClick}>Hold</button>}
-      </div>}
-    </div>);
+    const holdActionPossible = type === CARD_VIEW_TYPE.BOARD;
+    const buyActionPossible = (type === CARD_VIEW_TYPE.BOARD || (type === CARD_VIEW_TYPE.RESERVED && owner === activePlayer));
+
+    const hasPossibleActions = buyActionPossible || holdActionPossible;
+    const blockClasses = classNames(
+      BLOCK,
+      {
+        [`${BLOCK}--reserved`]: type === CARD_VIEW_TYPE.RESERVED,
+        [`${BLOCK}--available`]: activePlayer === owner,
+        [`${BLOCK}--has-actions`]: hasPossibleActions,
+      });
+
+    return (
+      <div className={blockClasses}>
+        <div className={`${BLOCK}__top-container`}>
+          <div className={`${BLOCK}__prestige`}>{prestige}</div>
+          <div className={this.getBonusClasses(bonus)}/>
+        </div>
+        <div className={`${BLOCK}__cost`}>
+          {cost.map((cost, index) => <div className={this.getCostTokenClasses(cost.color, type)} key={index}>{cost.amount}</div> )}
+        </div>
+        {hasPossibleActions && <div className={`${BLOCK}__actions`}>
+          {buyActionPossible && <button className={`${BLOCK}__action-button`} onClick={this.handleBuyClick}>Buy</button>}
+          {holdActionPossible && <button className={`${BLOCK}__action-button`} onClick={this.handleHoldClick}>Hold</button>}
+        </div>}
+      </div>);
   }
 }
 
@@ -72,7 +76,6 @@ Card.propTypes = {
   card: PropTypes.object,
   onHoldClick: PropTypes.func,
   onBuyClick: PropTypes.func,
-  canBuy: PropTypes.bool,
 };
 
 export default Card;

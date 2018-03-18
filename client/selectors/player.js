@@ -21,6 +21,8 @@ export const playerTokensSelector = player => player.tokens;
 
 export const playerNoblesSelector = player => player.nobles;
 
+export const playerReservedCardsSelector = player => player.reserve;
+
 export const playerPointsSelector = player => createSelector(
   noblesSelector,
   cardsSelector,

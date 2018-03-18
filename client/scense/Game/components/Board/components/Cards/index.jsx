@@ -4,6 +4,7 @@ import './styles.scss'
 import Deck from './components/Deck';
 import Card from '../../../Card';
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
+import {CARD_VIEW_TYPE} from '../../../../../../constants/common';
 
 const BLOCK = 'cards';
 const Cards = function ({cards, decks, getCard, onCardBuy, onCardHold}) {
@@ -24,7 +25,7 @@ const Cards = function ({cards, decks, getCard, onCardBuy, onCardHold}) {
             {cards.map(cardId => getCard(cardId)).filter(card => card.level === deck.level).map(
               (card) => (
                 <div key={card.id} className={`${BLOCK}__card-container`}>
-                  <Card type='Card' card={card} onHoldClick={onCardHold} onBuyClick={onCardBuy}/>
+                  <Card type={CARD_VIEW_TYPE.BOARD} card={card} onHoldClick={onCardHold} onBuyClick={onCardBuy}/>
                 </div>
               ))}
             </ReactCSSTransitionGroup>))}

@@ -1,5 +1,6 @@
 import { createSelector } from 'reselect';
 import {cardsSelector, playersSelector} from './commmon';
+import {playerReservedCardsSelector} from './player';
 
 export const cardSelector = cardId => createSelector(
   cardsSelector,
@@ -10,7 +11,7 @@ export const cardCostSelector = card => card.cost;
 
 export const cardPrestigeSelector = card => card.prestige;
 
-export const cardOwnerSelector = createSelector(
+export const cardOwnerSelector = cardId => createSelector(
   playersSelector,
-  players => cardId => players.find(player => player.reserve.includes(cardId)),
+  players => players.find(player => playerReservedCardsSelector(player).includes(cardId)),
 );

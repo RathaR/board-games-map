@@ -4,6 +4,7 @@ import './styles.scss'
 import classNames from 'classnames';
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 import Card from '../../../../../Card';
+import {CARD_VIEW_TYPE} from '../../../../../../../../constants/common';
 
 const BLOCK = 'reserved-cards';
 const ReservedCards =  function({playerInformation: {reserve, id}, getCard, onCardBuy, className, activePlayer}) {
@@ -17,7 +18,7 @@ const ReservedCards =  function({playerInformation: {reserve, id}, getCard, onCa
       {reserve.map(
         (cardId) =>
           <div key={cardId} className={`${BLOCK}__reserved-card-container`}>
-            <Card type='Reserved' canBuy={activePlayer === id} className='card--reserved' card={getCard(cardId)} onBuyClick={onCardBuy}/>
+            <Card type={CARD_VIEW_TYPE.RESERVED} activePlayer={activePlayer} owner={id} card={getCard(cardId)} onBuyClick={onCardBuy}/>
           </div>)}
     </ReactCSSTransitionGroup>)
 };

@@ -14,3 +14,8 @@ export const BONUS_COLORS = [
   COLORS.RED,
   COLORS.WHITE
 ];
+
+export const CARD_VIEW_TYPE = {
+  RESERVED: 'reserved',
+  BOARD: 'board',
+};

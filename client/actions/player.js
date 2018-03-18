@@ -19,8 +19,8 @@ export function buyCard(cardId) {
     const state = getState();
     const playerId = activePlayerIdSelector(state);
 
-    const cardOwner = cardOwnerSelector(state)(cardId);
-    if(cardOwner && cardOwner !== playerId) {
+    const cardOwner = cardOwnerSelector(cardId)(state);
+    if(cardOwner && cardOwner.id !== playerId) {
       return;
     }
 
@@ -31,7 +31,7 @@ export function buyCard(cardId) {
     dispatch({
       type: BUY_CARD,
       card: cardSelector(cardId)(state),
-      reserved: cardOwner === playerId,
+      reserved: cardOwner.id === playerId,
       bonuses: playerBonusesSelector(playerId)(state),
       playerId,
     });
