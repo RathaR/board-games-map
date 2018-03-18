@@ -8,7 +8,7 @@ const GAME_STATE = {
   players: [{
     id: 'Player1',
     order: 1,
-    nobles: [],
+    nobles: ['6'],
     reserve: [],
     tokens: [
       {color: COLORS.BLUE, amount: 4},
@@ -205,7 +205,7 @@ const GAME_STATE = {
     level: 2,
     prestige: 3,
     bonus: COLORS.WHITE,
-    cost: [{color: COLORS.RED, amount: 2}, {color: COLORS.RED, amount: 2}, {color: COLORS.WHITE, amount: 2}],
+    cost: [{color: COLORS.RED, amount: 2}, {color: COLORS.GREEN, amount: 2}, {color: COLORS.WHITE, amount: 2}],
   }, {
     id: '25',
     level: 2,
@@ -435,6 +435,7 @@ const GAME_STATE = {
       level: 1,
       cards: ['5', '6', '7', '8', '9', '10', '11', '12', '13', '14', '15', '16', '17', '18', '19', '20']
     }],
+    nobles:['1', '2', '3', '4', '5']
   },
   tokens: [
     {color: COLORS.BLUE, amount: 8},
@@ -446,41 +447,28 @@ const GAME_STATE = {
   ],
   nobles: [{
     id: '1',
-    bonuses: {
-      [COLORS.RED]: 1,
-      [COLORS.GREEN]: 3,
-    },
+    bonuses: [{color: COLORS.RED, amount: 1},{color: COLORS.GREEN, amount: 1}],
     prestige: 3
   }, {
     id: '2',
-    bonuses: {
-      [COLORS.BLUE]: 1,
-      [COLORS.WHITE]: 3,
-      [COLORS.BLACK]: 3,
-    },
+    bonuses: [{color: COLORS.BLUE, amount: 1}, {color: COLORS.WHITE, amount: 3}],
     prestige: 4
   }, {
     id: '3',
-    bonuses: {
-      [COLORS.BLACK]: 2,
-      [COLORS.GREEN]: 2,
-      [COLORS.WHITE]: 2
-    },
+    bonuses: [{color: COLORS.BLUE, amount: 1}, {color: COLORS.WHITE, amount: 3}],
     prestige: 3
   }, {
     id: '4',
-    bonuses: {
-      [COLORS.RED]: 1,
-      [COLORS.GREEN]: 3
-    },
+    bonuses: [{color: COLORS.BLACK, amount: 3}, {color: COLORS.WHITE, amount: 3}, {color: COLORS.RED, amount: 3}],
     prestige: 4
   }, {
     id: '5',
-    bonuses: {
-      [COLORS.BLACK]: 2,
-      [COLORS.GREEN]: 2
-    },
+    bonuses: [{color: COLORS.BLUE, amount: 3}, {color: COLORS.WHITE, amount: 3}],
     prestige: 5
+  },  {
+    id: '6',
+    bonuses: [{color: COLORS.GREEN, amount: 3}, {color: COLORS.RED, amount: 3}],
+    prestige: 3
   }],
 };
 

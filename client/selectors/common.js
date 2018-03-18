@@ -10,7 +10,7 @@ export function noblesSelector(state) {
   return state.nobles;
 }
 
-export function board(state) {
+export function boardSelector(state) {
   return state.board;
 }
 

@@ -1,5 +1,5 @@
 import { createSelector } from 'reselect';
-import {cardsSelector, noblesSelector, playersSelector} from './commmon';
+import {cardsSelector, noblesSelector, playersSelector} from './common';
 import {noblePrestigeSelector, nobleSelector} from './nobles';
 import {cardPrestigeSelector} from './cards';
 

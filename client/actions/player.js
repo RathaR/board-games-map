@@ -1,32 +1,47 @@
-import {BUY_CARD, HOLD_CARD, PICK_DOUBLE, PICK_SELECTED} from './actionTypes';
+import {BUY_CARD, HOLD_CARD, PICK_DOUBLE, PICK_SELECTED, NOBLE_COMING} from './actionTypes';
 import {playerBonusesSelector, playerReservedCardsSelector, playerSelector} from '../selectors/player';
 import {cardOwnerSelector, cardSelector} from '../selectors/cards';
 import {switchPlayer} from './activePlayer';
-import {activePlayerIdSelector, turn} from '../selectors/commmon';
-import {getMissingTokens} from './helpers';
+import {activePlayerIdSelector, noblesSelector, turn} from '../selectors/common';
+import {getMissingTokens, comingNobles} from './helpers';
 import {tokenByColorSelector, tokensSelector} from "../selectors/tokens";
+import {MAX_RESERVED_CARDS} from '../constants/common';
+import {nobleSelector, playingNoblesSelector} from "../selectors/nobles";
 
 export function buyCard(cardId) {
   return (dispatch, getState) => {
-    const state = getState();
-    const playerId = activePlayerIdSelector(state);
+    const playerId = activePlayerIdSelector(getState());
 
-    const cardOwner = cardOwnerSelector(cardId)(state);
+    const cardOwner = cardOwnerSelector(cardId)(getState());
     if(cardOwner && cardOwner.id !== playerId) {
       return;
     }
 
-    if(getMissingTokens(state, playerId, cardId).length) {
+    if(getMissingTokens(getState(), playerId, cardId).length) {
       return;
     }
 
     dispatch({
       type: BUY_CARD,
-      card: cardSelector(cardId)(state),
+      card: cardSelector(cardId)(getState()),
       reserved: cardOwner && cardOwner.id === playerId,
-      bonuses: playerBonusesSelector(playerId)(state),
+      bonuses: playerBonusesSelector(playerId)(getState()),
       playerId,
     });
+
+    const playingNoblesId = playingNoblesSelector(getState());
+    const nobles = comingNobles(
+      playingNoblesId.map(nobleId => nobleSelector(nobleId)(getState())),
+      playerBonusesSelector(playerId)(getState()));
+
+    if(nobles.length) {
+      dispatch({
+        type: NOBLE_COMING,
+        noble: nobles[0],
+        playerId
+      });
+    }
+
     dispatch(switchPlayer());
   }
 }
@@ -38,7 +53,7 @@ export function holdCard(cardId) {
     const player = playerSelector(playerId)(state);
     const reservedCards = playerReservedCardsSelector(player);
 
-    if(reservedCards.length >= 3) {
+    if(reservedCards.length >= MAX_RESERVED_CARDS) {
       return;
     }
 

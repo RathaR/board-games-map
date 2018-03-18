@@ -8,11 +8,13 @@ import Cards from './components/Cards';
 import { connect } from 'react-redux'
 import {buyCard, holdCard, pickSelected, pickDouble} from "../../../../actions/player";
 import {
-  board, noblesSelector, playersSelector, tokens,
+  boardSelector, noblesSelector, playersSelector, tokens,
   turn
-} from "../../../../selectors/commmon";
+} from "../../../../selectors/common";
 import {toggleTokenSelection} from "../../../../actions/tokens";
 import {cardSelector} from "../../../../selectors/cards";
+import {nobleSelector} from "../../../../selectors/nobles";
+import {NOBLE_VIEW_MODE} from '../../../../constants/common';
 
 const BLOCK = 'board';
 
@@ -30,8 +32,7 @@ const renderTokens = function (tokens, selectedTokens, onPickSelected, onPickDou
           Pick double
         </button>
       </div>
-      {tokens.filter(token => token.amount > 0).map(
-        (token, index) =>
+      {tokens.filter(token => token.amount > 0).map(token =>
           <div key={token.color} className={`${BLOCK}__token-container`}>
             <TokensStack isSelected={selectedTokens.includes(token.color)} onSelected={onTokenSelected}
                          amount={token.amount} color={token.color} isSelectable/>
@@ -39,12 +40,22 @@ const renderTokens = function (tokens, selectedTokens, onPickSelected, onPickDou
     </div>);
 };
 
-const Board = function ({className, tokens, turn: {selectedTokens}, onPickSelected, onPickDouble, nobles, board: {cards, decks}, getCard, onCardBuy, onCardHold, onTokenSelected}) {
+const Board = function ({ className,
+                          tokens,
+                          turn: {selectedTokens},
+                          onPickSelected,
+                          onPickDouble,
+                          board: {cards, decks, nobles},
+                          getCard,
+                          getNoble,
+                          onCardBuy,
+                          onCardHold,
+                          onTokenSelected}) {
   const blockClasses = classNames(`${BLOCK}`, className);
 
   return (
     <div className={blockClasses}>
-      <NoblesList nobles={nobles}/>
+      <NoblesList nobles={nobles} getNoble={getNoble} type={NOBLE_VIEW_MODE.BOARD}/>
       <Cards cards={cards} decks={decks} getCard={getCard} onCardBuy={onCardBuy} onCardHold={onCardHold}/>
       {renderTokens(tokens, selectedTokens, onPickSelected, onPickDouble, onTokenSelected)}
     </div>);
@@ -53,10 +64,11 @@ const Board = function ({className, tokens, turn: {selectedTokens}, onPickSelect
 const mapStateToProps = state => {
   return {
     turn: turn(state),
-    board: board(state),
+    board: boardSelector(state),
     nobles: noblesSelector(state),
     tokens: tokens(state),
     getCard: cardId => cardSelector(cardId)(state),
+    getNoble: nobleId => nobleSelector(nobleId)(state),
   }
 };
 

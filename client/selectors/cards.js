@@ -1,5 +1,5 @@
 import { createSelector } from 'reselect';
-import {cardsSelector, playersSelector} from './commmon';
+import {cardsSelector, playersSelector} from './common';
 import {playerReservedCardsSelector} from './player';
 
 export const cardSelector = cardId => createSelector(

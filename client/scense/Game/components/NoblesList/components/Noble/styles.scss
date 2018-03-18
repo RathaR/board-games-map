@@ -1,12 +1,11 @@
-$noble-size: 100px;
-
 .noble {
   --bonus-size: 30px;
   border: 1px solid rgba(0,0,0,0.5);
-  font-size: 1.3em;
+  font-size: 1.2em;
+  line-height: 100%;
   display: flex;
-  width: $noble-size;
-  height: $noble-size;
+  width: var(--noble-size);
+  height: var(--noble-size);
   text-align: center;
   justify-content: space-around;
   background: white;
@@ -21,10 +20,19 @@ $noble-size: 100px;
     height: 25px;
     display: flex;
     order: 2;
-    font-weight: 700;
+    font-weight: 500;
 
     span  {
       margin: auto;
     }
+  }
+
+  &--player {
+    width: auto;
+    height: auto;
+  }
+
+  &--board {
+
   }
 }

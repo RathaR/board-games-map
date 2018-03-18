@@ -1,7 +1,7 @@
 import initialState from "../data";
-import {HOLD_CARD, BUY_CARD, PICK_SELECTED, PICK_DOUBLE} from '../actions/actionTypes';
+import {HOLD_CARD, BUY_CARD, PICK_SELECTED, PICK_DOUBLE, NOBLE_COMING} from '../actions/actionTypes';
 import {COLORS} from "../constants/common";
-import {playersSelector} from '../selectors/commmon';
+import {playersSelector} from '../selectors/common';
 
 const mapSpecificPlayer = function(state, action, newPlayerFn) {
   const {playerId} = action;
@@ -87,6 +87,14 @@ const applyHoldCardAction = (player, action) => {
   }
 };
 
+const applyNobleComingAction = (player, action) => {
+  const {noble} = action;
+  return {
+    ...player,
+    nobles: player.nobles.concat(noble.id)
+  }
+};
+
 const players = function (state = playersSelector(initialState), action) {
 
   switch (action.type) {
@@ -104,6 +112,10 @@ const players = function (state = playersSelector(initialState), action) {
 
     case HOLD_CARD: {
       return mapSpecificPlayer(state, action, applyHoldCardAction);
+    }
+
+    case NOBLE_COMING: {
+      return mapSpecificPlayer(state, action, applyNobleComingAction);
     }
 
     default: {

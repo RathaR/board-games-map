@@ -19,3 +19,10 @@ export const CARD_VIEW_TYPE = {
   RESERVED: 'reserved',
   BOARD: 'board',
 };
+
+export const NOBLE_VIEW_MODE = {
+  BOARD: 'board',
+  PLAYER: 'player',
+};
+
+export const MAX_RESERVED_CARDS = 3;

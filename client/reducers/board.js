@@ -1,5 +1,5 @@
 import initialState from '../data';
-import {BUY_CARD, HOLD_CARD} from '../actions/actionTypes';
+import {BUY_CARD, HOLD_CARD, NOBLE_COMING} from '../actions/actionTypes';
 
 const drawCard = function(board, card) {
   const deck = board.decks.find(deck => deck.level === card.level);
@@ -41,6 +41,14 @@ const board = function(state = initialState.board, action) {
       }
 
       return drawCard(state, action.card);
+    }
+    case NOBLE_COMING: {
+      const {noble} = action;
+
+      return {
+        ...state,
+        nobles: state.nobles.filter(nobleId => nobleId !== noble.id)
+      };
     }
     default: {
       return state;

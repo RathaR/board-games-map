@@ -1,6 +1,6 @@
 import { playerSelector, playerByOrderSelector, playersCountSelector} from '../selectors/player';
 import {SWITCH_PLAYER} from './actionTypes';
-import {activePlayerIdSelector} from '../selectors/commmon';
+import {activePlayerIdSelector} from '../selectors/common';
 
 export function switchPlayer() {
   return (dispatch, getState) => {

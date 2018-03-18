@@ -5,14 +5,8 @@ import turn from './turn';
 import tokens from './tokens';
 import board from './board';
 import players from './players';
-
-const cards = function (state = initialState.cards, action) {
-  return state;
-};
-
-const nobles = function (state = initialState.nobles) {
-  return state;
-};
+import nobles from './nobles';
+import cards from './cards';
 
 const rootReducer = combineReducers({cards, activePlayer, turn, players, board, nobles, tokens});
 

@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import './styles.scss';
 import Game from './scense/Game';
 import {Provider} from 'react-redux';
-import {playersSelector} from './selectors/commmon';
+import {playersSelector} from './selectors/common';
 
 const mapStateToProps = state => {
   return {
