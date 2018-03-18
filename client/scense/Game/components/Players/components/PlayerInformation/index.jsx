@@ -10,8 +10,6 @@ import {playerPointsSelector} from "../../../../../../selectors/player";
 import {cardSelector} from "../../../../../../selectors/cards";
 import PlayerTokens from './components/PlayerTokens';
 import PlayerBonuses from './components/PlayerBonuses';
-import NoblesList from '../../../NoblesList';
-import {NOBLE_VIEW_MODE} from '../../../../../../constants/common';
 import {nobleSelector} from '../../../../../../selectors/nobles';
 const BLOCK = 'player-information';
 
@@ -35,12 +33,10 @@ const mapDispatchToProps = dispatch => {
 
 const PlayerInformation = function({playerInformation: {id, tokens, cards, nobles}, activePlayer, getPlayerPoints, playerInformation, onCardBuy, getCard, getNoble}) {
     const blockClasses = classNames(BLOCK,{[`${BLOCK}--active-player`]: activePlayer === id});
-
     return (
       <div className={blockClasses}>
       <div className={`${BLOCK}__stats`}>
         <div className={`${BLOCK}__title`}>{id}</div>
-        <NoblesList nobles={nobles} getNoble={getNoble} type={NOBLE_VIEW_MODE.PLAYER}/>
         <div className={`${BLOCK}__prestige`}>Points: {getPlayerPoints(playerInformation)}</div>
       </div>
       <div className={`${BLOCK}__main`}>
