@@ -23,8 +23,7 @@ export const Token = function({color, amount, onSelected, className, isSelected,
         {amount}
       </div>
     </div>
-  </div>
-   );
+  </div>);
 };
 
 Token.propTypes = {
