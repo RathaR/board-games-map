@@ -1,4 +1,4 @@
-import {TOGGLE_TOKEN_SELECTION, PICK_SELECTED} from '../actions/actionTypes';
+import {TOGGLE_TOKEN_SELECTION, PICK_SELECTED, PICK_DOUBLE} from '../actions/actionTypes';
 import initialState from '../data';
 
 const toggleSelection = function(selectedTokens, color) {
@@ -20,6 +20,12 @@ const turn = function (state = initialState.turn, action) {
     }
 
     case PICK_SELECTED: {
+      return {
+        selectedTokens: []
+      }
+    }
+
+    case PICK_DOUBLE: {
       return {
         selectedTokens: []
       }

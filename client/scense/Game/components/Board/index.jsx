@@ -6,7 +6,7 @@ import NoblesList from '../NoblesList';
 import TokensStack from '../TokensStack';
 import Cards from './components/Cards';
 import { connect } from 'react-redux'
-import {buyCard, holdCard, pickSelected} from "../../../../actions/player";
+import {buyCard, holdCard, pickSelected, pickDouble} from "../../../../actions/player";
 import {
   board, noblesSelector, playersSelector, tokens,
   turn
@@ -67,6 +67,9 @@ const mapDispatchToProps = dispatch => {
     },
     onPickSelected: () => {
       dispatch(pickSelected());
+    },
+    onPickDouble: () => {
+      dispatch(pickDouble());
     },
     onCardHold: (cardId) => {
       dispatch(holdCard(cardId));

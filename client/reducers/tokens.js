@@ -1,5 +1,5 @@
 import initialState from '../data';
-import {GIVE_TOKEN, PICK_SELECTED} from '../actions/actionTypes';
+import {PICK_DOUBLE, PICK_SELECTED} from '../actions/actionTypes';
 import {tokensSelector} from '../selectors/tokens';
 
 const tokens = function(state = tokensSelector(initialState), action) {
@@ -14,6 +14,14 @@ const tokens = function(state = tokensSelector(initialState), action) {
         token.amount -= 1;
       });
 
+      return newState;
+    }
+
+    case PICK_DOUBLE: {
+      const {selectedToken} = action;
+      const newState = [...state];
+      const token = newState.find(token => token.color === selectedToken);
+      token.amount -= 2;
       return newState;
     }
 
