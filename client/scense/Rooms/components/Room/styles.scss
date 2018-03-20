@@ -1,0 +1,17 @@
+.room {
+  padding: 5px;
+
+  display: flex;
+
+  &__id {
+
+  }
+
+  &__actions {
+    display: flex;
+  }
+
+  &__action {
+    margin-left: 25px;
+  }
+}

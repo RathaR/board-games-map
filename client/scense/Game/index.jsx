@@ -5,10 +5,18 @@ import Board from './components/Board';
 import Chat from './components/Chat'
 import GameLog from './components/GameLog';
 import Players from './components/Players';
+import {connect} from "react-redux";
+import {playersSelector} from "../../selectors/common";
 
 const BLOCK = 'game';
 
-export const Game = function({board, turn, activePlayer, nobles, tokens, onTokenSelected, onPickSelected, getCard, onCardBuy, onCardHold, players}) {
+const mapStateToProps = state => {
+  return {
+    players: playersSelector(state),
+  }
+};
+
+ const Game = function({board, turn, activePlayer, nobles, tokens, onTokenSelected, onPickSelected, getCard, onCardBuy, onCardHold, players}) {
     return (
       <div className={BLOCK}>
         <Players players={players} className={`${BLOCK}__players-information`} />
@@ -28,13 +36,20 @@ export const Game = function({board, turn, activePlayer, nobles, tokens, onToken
     </div>);
 };
 
-Game.propTypes = {
+const mapDispatchToProps = dispatch => ({});
+
+const ConnectedGame = connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Game);
+
+ConnectedGame.propTypes = {
   getCard: PropTypes.func,
   onCardBuy: PropTypes.func,
   onCardHold: PropTypes.func,
   players: PropTypes.array,
 };
 
-export default Game;
+export default ConnectedGame;
 
 
