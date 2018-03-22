@@ -29,10 +29,6 @@ const mapStateToProps = state => {
           onCardHold={onCardHold}
           onCardBuy={onCardBuy}
           getCard={getCard} />
-        {/*<div>*/}
-          {/*<Chat className={`${BLOCK}__chat`} />*/}
-          {/*<GameLog className={`${BLOCK}__game-log`} />*/}
-        {/*</div>*/}
     </div>);
 };
 
