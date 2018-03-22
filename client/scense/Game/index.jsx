@@ -16,7 +16,7 @@ const mapStateToProps = state => {
   }
 };
 
- const Game = function({board, turn, activePlayer, nobles, tokens, onTokenSelected, onPickSelected, getCard, onCardBuy, onCardHold, players}) {
+ const Game = function({board, turn, activePlayer, nobles, tokens, onTokenSelected, onPickSelected, getCard, onCardBuy, onCardHold, players, match: {params}}) {
     return (
       <div className={BLOCK}>
         <Players players={players} className={`${BLOCK}__players-information`} />

@@ -3,11 +3,13 @@ import {COLORS} from "./constants/common";
 const GAME_STATE = {
   rooms:[{
     id: '1',
-    players: ''
+    players: 2
   }, {
-    id: '2'
+    id: '2',
+    players: 3,
   }, {
-    id: '3'
+    id: '3',
+    players: 4,
   }],
   activePlayer: 'Player1',
   turn: {

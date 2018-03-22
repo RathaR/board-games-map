@@ -8,9 +8,9 @@ import Rooms from '../Rooms';
 const Main = function () {
   return(
     <div>
-      <Route path="/game" component={Game}/>
       <Route path="/rules" component={Rules}/>
       <Route path="/rooms" component={Rooms}/>
+      <Route path="/room/:id" component={Game}/>
     </div>
   );
 };

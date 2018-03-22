@@ -9,7 +9,6 @@ const Navigation = function () {
       <nav className={classNames(BLOCK)}>
         <Link to="/rooms">Rooms</Link>
         <Link to="/rules">Rules</Link>
-        <Link to="/game">Game</Link>
       </nav>);
 };
 
