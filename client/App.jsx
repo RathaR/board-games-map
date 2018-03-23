@@ -6,7 +6,7 @@ import Navigation from './scense/Navigation';
 import { BrowserRouter, Route } from 'react-router-dom'
 import Game from './scense/Game';
 import Rules from './scense/Rules';
-import Rooms from './scense/Rooms';
+import GamesList from './scense/GamesList';
 
 const App = ({store}) => (
   <Provider store={store}>
@@ -15,8 +15,8 @@ const App = ({store}) => (
         <Navigation />
         <div>
           <Route path="/rules" component={Rules}/>
-          <Route path="/rooms" component={Rooms}/>
-          <Route path="/room/:id" component={Game}/>
+          <Route path="/games" component={GamesList}/>
+          <Route path="/game/:id" component={Game}/>
         </div>
       </div>
     </BrowserRouter>

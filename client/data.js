@@ -1,16 +1,11 @@
 import {COLORS} from "./constants/common";
 
 const GAME_STATE = {
-  rooms:[{
-    id: '1',
-    players: 2
-  }, {
-    id: '2',
-    players: 3,
-  }, {
-    id: '3',
-    players: 4,
-  }],
+  games: {
+    items: [],
+    loading: false,
+    error: null,
+  },
   activePlayer: 'Player1',
   turn: {
     selectedTokens: [],
@@ -445,7 +440,7 @@ const GAME_STATE = {
       level: 1,
       cards: ['5', '6', '7', '8', '9', '10', '11', '12', '13', '14', '15', '16', '17', '18', '19', '20']
     }],
-    nobles:['1', '2', '3', '4', '5']
+    nobles: ['1', '2', '3', '4', '5']
   },
   tokens: [
     {color: COLORS.BLUE, amount: 8},
@@ -457,7 +452,7 @@ const GAME_STATE = {
   ],
   nobles: [{
     id: '1',
-    bonuses: [{color: COLORS.RED, amount: 1},{color: COLORS.GREEN, amount: 1}],
+    bonuses: [{color: COLORS.RED, amount: 1}, {color: COLORS.GREEN, amount: 1}],
     prestige: 3
   }, {
     id: '2',
@@ -475,7 +470,7 @@ const GAME_STATE = {
     id: '5',
     bonuses: [{color: COLORS.BLUE, amount: 3}, {color: COLORS.WHITE, amount: 3}],
     prestige: 5
-  },  {
+  }, {
     id: '6',
     bonuses: [{color: COLORS.GREEN, amount: 3}, {color: COLORS.RED, amount: 3}],
     prestige: 3

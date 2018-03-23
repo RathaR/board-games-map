@@ -14,8 +14,8 @@ export function boardSelector(state) {
   return state.board;
 }
 
-export function roomsSelector(state) {
-  return state.rooms;
+export function gamesSelector(state) {
+  return state.games;
 }
 
 export const playersSelector = state => state.players;

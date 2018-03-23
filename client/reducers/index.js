@@ -7,8 +7,8 @@ import board from './board';
 import players from './players';
 import nobles from './nobles';
 import cards from './cards';
-import rooms from './rooms';
+import games from './games';
 
-const rootReducer = combineReducers({cards, activePlayer, turn, players, board, nobles, tokens, rooms});
+const rootReducer = combineReducers({cards, activePlayer, turn, players, board, nobles, tokens, games});
 
 export default rootReducer

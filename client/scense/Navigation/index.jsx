@@ -7,7 +7,7 @@ const BLOCK = 'navigation';
 const Navigation = function () {
   return(
       <nav className={classNames(BLOCK)}>
-        <Link to="/rooms">Rooms</Link>
+        <Link to="/games">Games</Link>
         <Link to="/rules">Rules</Link>
       </nav>);
 };

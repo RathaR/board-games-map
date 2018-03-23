@@ -1,0 +1,14 @@
+.games-list {
+  display: flex;
+  flex-direction: column;
+}
+
+.games-list-item {
+  display: flex;
+  flex-direction: row;
+  padding: 5px;
+
+  &__column {
+    margin-left: 10px;
+  }
+}

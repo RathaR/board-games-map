@@ -1,6 +1,24 @@
-import {COLORS} from "../../../client/constants/common";
+export const COLORS = {
+  RED: 'red',
+  GREEN: 'green',
+  GOLD: 'gold',
+  BLACK: 'black',
+  WHITE: 'white',
+  BLUE: 'blue',
+};
 
-const GAME_STATE = {
+export const GAMES = [{
+  id: '1',
+  players: 2
+}, {
+  id: '2',
+  players: 3,
+}, {
+  id: '3',
+  players: 4,
+}];
+
+export const NEW_GAME_STATE = {
   activePlayer: 'Player1',
   turn: {
     selectedTokens: [],
@@ -472,4 +490,3 @@ const GAME_STATE = {
   }],
 };
 
-export default GAME_STATE;
